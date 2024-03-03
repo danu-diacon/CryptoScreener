@@ -2422,7 +2422,11 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DoctorProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PatientProfileController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2461,6 +2465,18 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\Login\_Layout-Login.cshtml" />
+    <Content Include="Views\Shared\Login\_Login.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Shared\Register\_Register.cshtml" />
+    <Content Include="Views\Shared\Register\_Layout-Register.cshtml" />
+    <Content Include="Views\PatientProfile\Index.cshtml" />
+    <Content Include="Views\Shared\Patient_Profile\_Layout.cshtml" />
+    <Content Include="Views\Shared\Patient_Profile\_MainContent.cshtml" />
+    <Content Include="Views\DoctorProfile\Index.cshtml" />
+    <Content Include="Views\Shared\Doctor_Profile\_Layout.cshtml" />
+    <Content Include="Views\Shared\Doctor_Profile\_MainContent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2472,7 +2488,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Template\assets\plugins\datatables-\extensions\FixedColumns\examples\integration\" />
-    <Folder Include="Views\BundleConfig\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
