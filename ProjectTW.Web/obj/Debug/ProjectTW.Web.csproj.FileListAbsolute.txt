@@ -128,3 +128,7 @@ D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\obj
 D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\obj\Debug\ProjectTW.Web.csproj.CopyComplete
 D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\obj\Debug\ProjectTW.Web.dll
 D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\obj\Debug\ProjectTW.Web.pdb
+D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\bin\ProjectTW.BusinessLogic.dll
+D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\bin\ProjectTW.Domain.dll
+D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\bin\ProjectTW.BusinessLogic.pdb
+D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\bin\ProjectTW.Domain.pdb

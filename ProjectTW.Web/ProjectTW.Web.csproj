@@ -2417,7 +2417,6 @@
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_SideBar.cshtml" />
     <Content Include="Views\Shared\_MainContent.cshtml" />
-    <Content Include="Views\Shared\_ChatApi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -2477,6 +2476,7 @@
     <Content Include="Views\DoctorProfile\Index.cshtml" />
     <Content Include="Views\Shared\Doctor_Profile\_Layout.cshtml" />
     <Content Include="Views\Shared\Doctor_Profile\_MainContent.cshtml" />
+    <Content Include="Views\Shared\_ChatApi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2488,6 +2488,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Template\assets\plugins\datatables-\extensions\FixedColumns\examples\integration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectTW.BusinessLogic\ProjectTW.BusinessLogic.csproj">
+      <Project>{8754132e-eaab-458d-9206-86bac8482207}</Project>
+      <Name>ProjectTW.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectTW.Domain\ProjectTW.Domain.csproj">
+      <Project>{1c5ebb16-b0df-4c17-8772-539a9d1f3505}</Project>
+      <Name>ProjectTW.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
