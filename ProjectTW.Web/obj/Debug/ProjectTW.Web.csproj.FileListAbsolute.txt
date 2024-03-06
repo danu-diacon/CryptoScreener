@@ -132,3 +132,7 @@ D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\bin
 D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\bin\ProjectTW.Domain.dll
 D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\bin\ProjectTW.BusinessLogic.pdb
 D:\Desktop\University\Year 2\Semestru 2\TWeb\Project\ProjectTW\ProjectTW.Web\bin\ProjectTW.Domain.pdb
+D:\Desktop\University\Year 2\TW\ProjectTW\ProjectTW.Web\bin\ProjectTW.BusinessLogic.dll
+D:\Desktop\University\Year 2\TW\ProjectTW\ProjectTW.Web\bin\ProjectTW.Domain.dll
+D:\Desktop\University\Year 2\TW\ProjectTW\ProjectTW.Web\bin\ProjectTW.BusinessLogic.pdb
+D:\Desktop\University\Year 2\TW\ProjectTW\ProjectTW.Web\bin\ProjectTW.Domain.pdb
