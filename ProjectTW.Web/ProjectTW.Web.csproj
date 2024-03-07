@@ -2422,6 +2422,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DoctorProfileController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PatientProfileController.cs" />
@@ -2477,6 +2478,9 @@
     <Content Include="Views\Shared\Doctor_Profile\_Layout.cshtml" />
     <Content Include="Views\Shared\Doctor_Profile\_MainContent.cshtml" />
     <Content Include="Views\Shared\_ChatApi.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Shared\Events\_Layout.cshtml" />
+    <Content Include="Views\Shared\Events\_MainContent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
