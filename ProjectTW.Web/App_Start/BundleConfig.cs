@@ -67,7 +67,12 @@ namespace ProjectTW.Web.App_Start
             bundles.Add(new ScriptBundle("~/bundles/jquery/js").Include(
                 "~/Template/assets/js/jquery-3.2.1.min.js",
                 "~/Template/assets/js/jquery.easing.min.js",
-                "~/Template/assets/plugins/jquery-ui/smoothness/jquery-ui.min.js"));
+                "~/Template/assets/plugins/jquery-ui/smoothness/jquery-ui.min.js",
+                "~/Template/assets/plugins/calendar/moment.min.js",
+                "~/Template/assets/plugins/jquery-ui/smoothness/jquery-ui.min.js",
+                "~/Template/assets/plugins/calendar/fullcalendar.min.js",
+                "~/Template/assets/plugins/icheck/icheck.min.js",
+                "~/Template/data/calendars/hos-events.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom/js").Include("~/Template/assets/js/scripts.js"));
         }
