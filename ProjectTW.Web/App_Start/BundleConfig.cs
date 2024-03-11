@@ -29,6 +29,7 @@ namespace ProjectTW.Web.App_Start
                 "~/Template/assets/plugins/rickshaw-chart/css/extensions.css",
                 "~/Template/assets/plugins/rickshaw-chart/css/rickshaw.min.css",
                 "~/Template/assets/plugins/rickshaw-chart/css/lines.css",
+                "~/Template/assets/plugins/datepicker/css/datepicker.css",
                 "~/Template/assets/plugins/jvectormap/jquery-jvectormap-2.0.1.css")
                 .Include("~/Template/assets/plugins/icheck/skins/minimal/white.css", new CssRewriteUrlTransform()));
 
@@ -61,6 +62,9 @@ namespace ProjectTW.Web.App_Start
                 "~/Template/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
                 "~/Template/assets/plugins/gauge/gauge.min.js",
                 "~/Template/assets/plugins/icheck/icheck.min.js",
+                "~/Template/assets/plugins/datepicker/js/datepicker.js",
+                "~/Template/assets/plugins/autosize/autosize.min.js",
+                "~/Template/assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js",
                 "~/Template/assets/js/hos-dashboard.js"));
 
             // Include jQuery separately
