@@ -2422,6 +2422,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AllPatientController.cs" />
+    <Compile Include="Controllers\AllDoctorsController.cs" />
     <Compile Include="Controllers\DoctorAddController.cs" />
     <Compile Include="Controllers\DoctorEditController.cs" />
     <Compile Include="Controllers\DoctorProfileController.cs" />
@@ -2498,6 +2499,9 @@
     <Content Include="Views\Shared\Patient_Edit\_MainContent.cshtml" />
     <Content Include="Views\Shared\Patient_All\_Layout.cshtml" />
     <Content Include="Views\Shared\Patient_All\_MainContent.cshtml" />
+    <Content Include="Views\AllDoctors\Index.cshtml" />
+    <Content Include="Views\Shared\All_Doctors\_Layout.cshtml" />
+    <Content Include="Views\Shared\All_Doctors\_MainContent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

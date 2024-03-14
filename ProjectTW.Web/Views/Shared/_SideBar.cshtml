@@ -1,4 +1,5 @@
-﻿<!-- MAIN MENU - START -->
+﻿@using System.Web.Optimization;
+<!-- MAIN MENU - START -->
 <div class="page-sidebar-wrapper" id="main-menu-wrapper">
 
     <!-- USER INFO - START -->
@@ -45,16 +46,16 @@
             </a>
             <ul class="sub-menu">
                 <li>
-                    <a class="" href="hos-doctors.html">All Doctors</a>
+                    <a class="" href="AllDoctors">All Doctors</a>
                 </li>
                 <li>
-                    <a class="" href="DoctorAdd">Add Doctor</a>
+                    @Html.ActionLink("Add Doctor", "Index", "DoctorAdd")
                 </li>
                 <li>
-                    <a class="" href="DoctorEdit">Edit Doctor</a>
+                    @Html.ActionLink("Edit Doctor", "Index", "DoctorEdit")
                 </li>
                 <li>
-                    <a class="" href="DoctorProfile">Doctor Profile</a>
+                    @Html.ActionLink("Doctor Profile", "Index", "DoctorProfile")
                 </li>
             </ul>
         </li>
@@ -110,7 +111,7 @@
             </ul>
         </li>
         <li class="">
-            <a href="Events">
+            <a href="@Url.Action("Index", "Events")">
                 <i class="fa fa-calendar"></i>
                 <span class="title">Event Management</span>
             </a>
