@@ -2421,12 +2421,15 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AllPatientController.cs" />
     <Compile Include="Controllers\DoctorAddController.cs" />
     <Compile Include="Controllers\DoctorEditController.cs" />
     <Compile Include="Controllers\DoctorProfileController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PatientAddController.cs" />
+    <Compile Include="Controllers\PatientEditController.cs" />
     <Compile Include="Controllers\PatientProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2486,6 +2489,15 @@
     <Content Include="Views\DoctorEdit\Index.cshtml" />
     <Content Include="Views\Shared\Doctor_Edit\_Layout.cshtml" />
     <Content Include="Views\Shared\Doctor_Edit\_MainContent.cshtml" />
+    <Content Include="Views\PatientAdd\Index.cshtml" />
+    <Content Include="Views\AllPatient\Index.cshtml" />
+    <Content Include="Views\Shared\Patient_Add\_Layout.cshtml" />
+    <Content Include="Views\Shared\Patient_Add\_MainContent.cshtml" />
+    <Content Include="Views\PatientEdit\Index.cshtml" />
+    <Content Include="Views\Shared\Patient_Edit\_Layout.cshtml" />
+    <Content Include="Views\Shared\Patient_Edit\_MainContent.cshtml" />
+    <Content Include="Views\Shared\Patient_All\_Layout.cshtml" />
+    <Content Include="Views\Shared\Patient_All\_MainContent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
