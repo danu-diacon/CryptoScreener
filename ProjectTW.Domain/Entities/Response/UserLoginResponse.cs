@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectTW.BusinessLogic.Interfaces
+namespace ProjectTW.Domain.Entities.Response
 {
-     public interface ISession
+     public class UserLoginResponse
      {
+          public bool Success { get; set; }
      }
 }

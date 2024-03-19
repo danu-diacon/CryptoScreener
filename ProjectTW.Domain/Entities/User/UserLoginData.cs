@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTW.Domain.Entities.User
 {
-     public class ULoginData
+     public class UserLoginData
      {
           public string Credential { get; set; }
 
@@ -15,7 +15,5 @@ namespace ProjectTW.Domain.Entities.User
           public string Ip { get; set; }
 
           public DateTime LoginTime { get; set; }
-
-
      }
 }

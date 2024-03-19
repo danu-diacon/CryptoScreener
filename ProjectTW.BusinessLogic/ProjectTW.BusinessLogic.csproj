@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppBL\LoginBL.cs" />
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="Core\AdminAPI.cs" />
     <Compile Include="Core\UserAPI.cs" />
-    <Compile Include="Interfaces\ISession.cs" />
-    <Compile Include="MainBL\SessionBL.cs" />
+    <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

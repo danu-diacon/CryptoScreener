@@ -1,36 +1,55 @@
-﻿<div class="login-wrapper row">
-    <div id="login" class="login loginpage offset-xl-4 offset-lg-3 offset-md-3 offset-0 col-12 col-md-6 col-xl-4">
-        <h1><a href="#" title="Login Page" tabindex="-1">Complete Admin</a></h1>
+﻿@using System.Web.Optimization
+@model ProjectTW.Web.Models.UserData
 
-        <form name="loginform" id="loginform" action="index.html" method="post">
-            <p>
-                <label for="user_login">
-                    Username<br />
-                    <input type="text" name="log" id="user_login" class="input" value="demo" size="20" />
-                </label>
-            </p>
-            <p>
-                <label for="user_pass">
-                    Password<br />
-                    <input type="password" name="pwd" id="user_pass" class="input" value="demo" size="20" />
-                </label>
-            </p>
-            <p class="forgetmenot">
-                <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> Remember me</label>
-            </p>
+<div class="login-wrapper row">
+     <div id="login" class="login loginpage offset-xl-4 offset-lg-3 offset-md-3 offset-0 col-12 col-md-6 col-xl-4">
+          <h1><a href="#" title="Login Page" tabindex="-1">Easy Med</a></h1>
+
+          
+               @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "loginform" }))
+               {
+                    @Html.AntiForgeryToken()
+                    <p>
+                         @Html.LabelFor(m => m.Credential, new { @for = "user_login" })
+                         @Html.TextBoxFor(m => m.Credential, new
+                   {
+                       placeholder = "example@gmail.com",
+                       title = "Please enter you username",
+                       value = "admin",
+                       name = "log",
+                       id = "user_login",
+                       @class = "input"
+                   })
+                    </p>
+                    <p>
+                         @Html.LabelFor(m => m.Password, new { @for = "user_pass" })
+                         @Html.TextBoxFor(m => m.Password, new
+                    {
+                        @class = "input",
+                        type = "password",
+                        title = "Please enter your password",
+                        placeholder = "******",
+                        value = "admin",
+                        name = "pwd",
+                        id = "user_pass"
+                    })
+                    </p>
+                    <p class="forgetmenot">
+                         <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> Remember me</label>
+                    </p>
 
 
 
-            <p class="submit">
-                <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="Sign In" />
-            </p>
-        </form>
+                    <p class="submit">
+                         <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="Sign In" />
+                    </p>
+               }
 
-        <p id="nav">
-            <a class="float-left" href="#" title="Password Lost and Found">Forgot password?</a>
-            <a class="float-right" href="Register" title="Sign Up">Sign Up</a>
-        </p>
+          <p id="nav">
+               <a class="float-left" href="#" title="Password Lost and Found">Forgot password?</a>
+               <a class="float-right" href="Register" title="Sign Up">Sign Up</a>
+          </p>
 
 
-    </div>
+     </div>
 </div>
