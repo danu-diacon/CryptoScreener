@@ -1,5 +1,5 @@
-﻿using ProjectTW.BusinessLogic.Interfaces;
-using ProjectTW.BusinessLogic.MainBL;
+﻿using ProjectTW.BusinessLogic.AppBL;
+using ProjectTW.BusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +10,9 @@ namespace ProjectTW.BusinessLogic
 {
      public class BusinessLogic
      {
-          public ISession GetSessionBL()
+          public ILogin GetLoginBL()
           {
-               return new SessionBL();
+               return new LoginBL();
           }
      }
 }
