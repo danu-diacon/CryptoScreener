@@ -179,6 +179,18 @@
     <Content Include="Scripts\jquery-ui-1.13.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Template\aditional\assets\css\app-rtl.css" />
+    <Content Include="Template\aditional\assets\css\app-rtl.min.css" />
+    <Content Include="Template\aditional\assets\css\app.css" />
+    <Content Include="Template\aditional\assets\css\app.min.css" />
+    <Content Include="Template\aditional\assets\css\bootstrap.css" />
+    <Content Include="Template\aditional\assets\css\bootstrap.min.css" />
+    <Content Include="Template\aditional\assets\css\icons.css" />
+    <Content Include="Template\aditional\assets\css\icons.min.css" />
+    <Content Include="Template\aditional\assets\js\app.js" />
+    <Content Include="Template\aditional\assets\js\app.min.js" />
+    <Content Include="Template\aditional\assets\js\vendor.js" />
+    <Content Include="Template\aditional\assets\js\vendor.min.js" />
     <Content Include="Template\assets\css\animate.min.css" />
     <Content Include="Template\assets\css\index.html" />
     <Content Include="Template\assets\css\responsive.css" />
@@ -198,7 +210,7 @@
     <Content Include="Template\assets\images\login-logo.png" />
     <Content Include="Template\assets\images\logo-folded.png" />
     <Content Include="Template\assets\images\logo-nav.png" />
-    <Content Include="Template\assets\images\logo.png" />
+    <Content Include="Template\assets\images\logo-med.png" />
     <Content Include="Template\assets\index.html" />
     <Content Include="Template\assets\js\blo-dashboard.js" />
     <Content Include="Template\assets\js\chart-chartjs.js" />
@@ -2503,6 +2515,12 @@
     <Content Include="Views\AllDoctors\Index.cshtml" />
     <Content Include="Views\Shared\All_Doctors\_Layout.cshtml" />
     <Content Include="Views\Shared\All_Doctors\_MainContent.cshtml" />
+    <Content Include="Template\aditional\assets\css\app-rtl.min.css.map" />
+    <Content Include="Template\aditional\assets\css\app.min.css.map" />
+    <Content Include="Template\aditional\assets\css\bootstrap.min.css.map" />
+    <Content Include="Template\aditional\assets\css\icons.min.css.map" />
+    <Content Include="Template\aditional\assets\js\app.min.js.map" />
+    <Content Include="Template\aditional\assets\js\vendor.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

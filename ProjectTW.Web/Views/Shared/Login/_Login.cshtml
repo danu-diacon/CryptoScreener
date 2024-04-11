@@ -1,55 +1,58 @@
 ﻿@using System.Web.Optimization
 @model ProjectTW.Web.Models.UserData
 
-<div class="login-wrapper row">
-     <div id="login" class="login loginpage offset-xl-4 offset-lg-3 offset-md-3 offset-0 col-12 col-md-6 col-xl-4">
-          <h1><a href="#" title="Login Page" tabindex="-1">Easy Med</a></h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+            <div class="card">
 
-          
-               @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "loginform" }))
-               {
-                    @Html.AntiForgeryToken()
-                    <p>
-                         @Html.LabelFor(m => m.Credential, new { @for = "user_login" })
-                         @Html.TextBoxFor(m => m.Credential, new
-                   {
-                       placeholder = "example@gmail.com",
-                       title = "Please enter you username",
-                       value = "admin",
-                       name = "log",
-                       id = "user_login",
-                       @class = "input"
-                   })
-                    </p>
-                    <p>
-                         @Html.LabelFor(m => m.Password, new { @for = "user_pass" })
-                         @Html.TextBoxFor(m => m.Password, new
+                <div class="card-body p-4">
+
+                    <div class="text-center w-75 m-auto">
+                        <a>
+                            <span><img src="~/Template/assets/images/logo-med.png" alt="" height="150"></span>
+                        </a>
+                        <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
+                    </div>
+
+                    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @action = "#" }))
                     {
-                        @class = "input",
-                        type = "password",
-                        title = "Please enter your password",
-                        placeholder = "******",
-                        value = "admin",
-                        name = "pwd",
-                        id = "user_pass"
-                    })
-                    </p>
-                    <p class="forgetmenot">
-                         <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> Remember me</label>
-                    </p>
+                        @Html.AntiForgeryToken()
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.Credential, new { @for = "emailaddress" })
+                            @Html.TextBoxFor(m => m.Credential, new
+                        {
+                            placeholder = "Enter your email",
+                            id = "emailaddress",
+                            @class = "form-control"
+                        })
+                        </div>
 
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.Password, new { @for = "password" })
+                            @Html.TextBoxFor(m => m.Password, new
+                            {
+                                placeholder = "Enter your password",
+                                type = "password",
+                                id = "password",
+                                @class = "form-control"
+                            })
+                        </div>
+                        <div class="form-group mb-0 text-center">
+                            <button class="btn btn-primary btn-block" type="submit"> Log In </button>
+                        </div>
+                    }
+                    </div> <!-- end card-body -->
+            </div>
+            <!-- end card -->
 
-
-                    <p class="submit">
-                         <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="Sign In" />
-                    </p>
-               }
-
-          <p id="nav">
-               <a class="float-left" href="#" title="Password Lost and Found">Forgot password?</a>
-               <a class="float-right" href="Register" title="Sign Up">Sign Up</a>
-          </p>
-
-
-     </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="text-muted">Don't have an account? @Html.ActionLink("Sign Up", "Index", "Register")</p>
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
 </div>
