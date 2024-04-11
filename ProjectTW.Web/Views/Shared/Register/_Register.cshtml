@@ -1,53 +1,50 @@
-﻿<div class="register-wrapper row">
-    <div id="register" class="login loginpage offset-xl-4 offset-lg-3 offset-md-3 offset-0 col-12 col-md-6 col-xl-4">
-        <h1><a href="#" title="Login Page" tabindex="-1">Complete Admin</a></h1>
+﻿<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+            <div class="card">
 
-        <form name="loginform" id="loginform" action="index.html" method="post">
-            <p>
-                <label for="user_login">
-                    Full Name<br />
-                    <input type="text" name="log" id="user_login" class="input" value="" size="20" />
-                </label>
-            </p>
-            <p>
-                <label for="user_login2">
-                    Email<br />
-                    <input type="text" name="log" id="user_login2" class="input" value="" size="20" />
-                </label>
-            </p>
-            <p>
-                <label for="user_login3">
-                    Username<br />
-                    <input type="text" name="log" id="user_login3" class="input" value="" size="20" />
-                </label>
-            </p>
-            <p>
-                <label for="user_pass">
-                    Password<br />
-                    <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" />
-                </label>
-            </p>
-            <p>
-                <label for="user_pass2">
-                    Confirm Password<br />
-                    <input type="password" name="pwd1" id="user_pass2" class="input" value="" size="20" />
-                </label>
-            </p>
-            <p class="forgetmenot">
-                <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="icheck-minimal-aero" checked> I agree to terms to conditions</label>
-            </p>
+                <div class="card-body p-4">
 
+                    <div class="text-center w-75 m-auto">
+                        <a href="index.html">
+                            <span><img src="~/Template/assets/images/logo-med.png" alt="" height="150"></span>
+                        </a>
+                        <p class="text-muted mb-4 mt-3">Don't have an account? Create your own account, it takes less than a minute</p>
+                    </div>
 
+                    <form action="#">
 
-            <p class="submit">
-                <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" value="Sign Up" />
-            </p>
-        </form>
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailaddress">Email address</label>
+                            <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" required id="password" placeholder="Enter your password">
+                        </div>
+                        <br />
+                        <div class="form-group mb-0 text-center">
+                            <button class="btn btn-primary btn-block" type="submit"> Sign Up </button>
+                        </div>
 
-        <p id="nav">
-            <a class="float-left" href="#" title="Password Lost and Found">Forgot password?</a>
-            <a class="float-right" href="Login" title="Sign Up">Sign In</a>
-        </p>
-        <div class="clearfix"></div>
+                    </form>
+
+                </div> <!-- end card-body -->
+            </div>
+            <!-- end card -->
+
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="text-muted">Already have account? @Html.ActionLink("Sign In", "Index", "Login")</p>
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+
+        </div> <!-- end col -->
     </div>
+    <!-- end row -->
 </div>
