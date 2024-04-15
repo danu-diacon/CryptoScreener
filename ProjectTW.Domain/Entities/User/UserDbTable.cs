@@ -16,13 +16,13 @@ namespace ProjectTW.Domain.Entities.User
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Username")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Username cannot be longer than 30 characters")]
-        public string Username { get; set; }
+        [Display(Name = "Full Name")]
+        [StringLength(30, ErrorMessage = "Username cannot be longer than 30 characters")]
+        public string FullName { get; set; }
 
         [Required]
         [Display(Name = "Password")]
-        [StringLength(50, MinimumLength = 8, ErrorMessage = "Password cannot be shorter than 8 characteres")]
+        [StringLength(50, ErrorMessage = "Password cannot be shorter than 8 characteres")]
         public string Password { get; set; }
 
         [Required]

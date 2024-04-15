@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjectTW.Domain.Entities.Response
 {
-     public class UserLoginResponse
-     {
-          public bool Success { get; set; }
+    public class UserRegisterResponse
+    {
+        public bool Success { get; set; }
         public string Message { get; set; }
     }
 }

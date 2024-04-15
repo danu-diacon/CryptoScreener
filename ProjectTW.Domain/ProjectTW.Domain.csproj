@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Response\UserLoginResponse.cs" />
+    <Compile Include="Entities\Response\UserRegisterResponse.cs" />
     <Compile Include="Entities\User\UserDbTable.cs" />
     <Compile Include="Entities\User\UserLoginData.cs" />
+    <Compile Include="Entities\User\UserRegisterData.cs" />
     <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
