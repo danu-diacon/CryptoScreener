@@ -52,11 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppBL\LoginBL.cs" />
+    <Compile Include="AppBL\RegisterBL.cs" />
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="Core\AdminAPI.cs" />
     <Compile Include="Core\UserAPI.cs" />
     <Compile Include="DBModel\UserContext.cs" />
     <Compile Include="Interfaces\ILogin.cs" />
+    <Compile Include="Interfaces\IRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

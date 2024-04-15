@@ -14,5 +14,10 @@ namespace ProjectTW.BusinessLogic
           {
                return new LoginBL();
           }
+
+        public IRegister GetRegisterBL()
+        {
+            return new RegisterBL();
+        }
      }
 }
