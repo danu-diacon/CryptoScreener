@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace ProjectTW.BusinessLogic
 {
-    public class BusinessLogic
-    {
-        public ILogin GetLoginBL()
-        {
-            return new LoginBL();
-        }
+     public class BusinessLogic
+     {
+          public ILogin GetLoginBL()
+          {
+               return new LoginBL();
+          }
 
         public IRegister GetRegisterBL()
         {
             return new RegisterBL();
         }
-    }
+     }
 }

@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace ProjectTW.BusinessLogic.Core
 {
-    public class UserAPI
-    {
+     public class UserAPI
+     {
         public UserLoginResponse LoginResponse(UserLoginData loginData)
         {
             //SQL request
@@ -29,7 +29,7 @@ namespace ProjectTW.BusinessLogic.Core
             }
 
             return new UserLoginResponse() { Success = true };
-        }
+          }
 
         public UserRegisterResponse RegisterResponse(UserRegisterData registerData)
         {
@@ -63,5 +63,5 @@ namespace ProjectTW.BusinessLogic.Core
 
             return new UserRegisterResponse { Success = true };
         }
-    }
+     }
 }

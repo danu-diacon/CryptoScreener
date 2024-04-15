@@ -29,7 +29,7 @@ namespace ProjectTW.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(NewUserData register)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 UserRegisterData userRegisterData = new UserRegisterData()
                 {
@@ -41,7 +41,7 @@ namespace ProjectTW.Web.Controllers
                 };
 
                 var userRegister = _register.UserRegisterAction(userRegisterData);
-                if (userRegister.Success)
+                if(userRegister.Success)
                 {
                     return RedirectToAction("Index", "Home");
                 }
