@@ -80,7 +80,7 @@ namespace ProjectTW.BusinessLogic.Core
                 UserSession current;
                 var validate = new EmailAddressAttribute();
 
-                current = (from e in db.Sesions where e.Email == loginEmail select e).FirstOrDefault();
+                current = (from e in db.Sessions where e.Email == loginEmail select e).FirstOrDefault();
 
                 if (current != null)
                 {
@@ -94,7 +94,7 @@ namespace ProjectTW.BusinessLogic.Core
                 }
                 else
                 {
-                    db.Sesions.Add(new UserSession { Email = loginEmail,
+                    db.Sessions.Add(new UserSession { Email = loginEmail,
                         CookieString = apiCookie.Value,
                         ExpireTime = DateTime.Now.AddMinutes(60) });
                     db.SaveChanges();
@@ -110,7 +110,7 @@ namespace ProjectTW.BusinessLogic.Core
 
             using (var db = new SessionContext())
             {
-                session = db.Sesions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
+                session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
             }
 
             if (session == null) { return null; }

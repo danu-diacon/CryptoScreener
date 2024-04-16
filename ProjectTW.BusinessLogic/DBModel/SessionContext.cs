@@ -15,6 +15,6 @@ namespace ProjectTW.BusinessLogic.DBModel
         { 
         }
 
-        public virtual DbSet<UserSession> Sesions { get; set; }
+        public virtual DbSet<UserSession> Sessions { get; set; }
     }
 }
