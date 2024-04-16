@@ -13,45 +13,51 @@ namespace ProjectTW.Web.Controllers
     public class LoginController : Controller
     {
         public readonly ILogin _login;
+        public readonly ISession _session;
 
         public LoginController()
-          {
-               var bl = new BusinessLogic.BusinessLogic();
-               _login = bl.GetLoginBL();
-          }
+        {
+            var bl = new BusinessLogic.BusinessLogic();
+            _login = bl.GetLoginBL();
 
-          // GET: Login
-          public ActionResult Index()
-          {
-               return View();
-          }
+            _session = bl.GetSessionBL();
+        }
 
-          [HttpPost]
-          [ValidateAntiForgeryToken]
-          public ActionResult Index(UserData login)
-          {
-               if(ModelState.IsValid)
-               {
-                    UserLoginData userLoginData = new UserLoginData()
-                    {
-                         Credential = login.Credential,
-                         Password = login.Password,
-                         Ip = Request.UserHostAddress,
-                         LoginTime = DateTime.Now
-                    };
+        // GET: Login
+        public ActionResult Index()
+        {
+            return View();
+        }
 
-                    var userLogin = _login.UserLoginAction(userLoginData);
-                    if(userLogin.Success)
-                    {
-                         return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                         return View();
-                    }
-               }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(UserData login)
+        {
+            if(ModelState.IsValid)
+            {
+                UserLoginData userLoginData = new UserLoginData()
+                {
+                    Credential = login.Credential,
+                    Password = login.Password,
+                    Ip = Request.UserHostAddress,
+                    LoginTime = DateTime.Now
+                };
 
-               return View();
-          }
+                var userLogin = _login.UserLoginAction(userLoginData);
+                if(userLogin.Success)
+                {
+                    HttpCookie cookie = _session.GenCookie(login.Credential);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+
+            return View();
+        }
     }
 }

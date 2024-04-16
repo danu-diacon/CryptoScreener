@@ -6,17 +6,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace ProjectTW.Web.Controllers
 {
     public class RegisterController : Controller
     {
         public readonly IRegister _register;
+        public readonly ISession _session;
 
         public RegisterController()
         {
             var bl = new BusinessLogic.BusinessLogic();
             _register = bl.GetRegisterBL();
+
+            _session = bl.GetSessionBL();
         }
 
         // GET: Register
@@ -43,6 +47,9 @@ namespace ProjectTW.Web.Controllers
                 var userRegister = _register.UserRegisterAction(userRegisterData);
                 if(userRegister.Success)
                 {
+                    HttpCookie cookie = _session.GenCookie(register.Email);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else

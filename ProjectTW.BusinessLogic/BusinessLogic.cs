@@ -19,5 +19,10 @@ namespace ProjectTW.BusinessLogic
         {
             return new RegisterBL();
         }
+
+        public ISession GetSessionBL()
+        {
+            return new SessionBL();
+        }
      }
 }

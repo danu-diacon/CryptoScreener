@@ -2442,6 +2442,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AllPatientController.cs" />
     <Compile Include="Controllers\AllDoctorsController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DoctorAddController.cs" />
     <Compile Include="Controllers\DoctorEditController.cs" />
     <Compile Include="Controllers\Doctor\DoctorProfileController.cs" />
@@ -2452,6 +2453,7 @@
     <Compile Include="Controllers\PatientEditController.cs" />
     <Compile Include="Controllers\PatientProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2539,6 +2541,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Template\assets\plugins\datatables-\extensions\FixedColumns\examples\integration\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectTW.BusinessLogic\ProjectTW.BusinessLogic.csproj">
