@@ -18,7 +18,7 @@
 
                     @if (!ViewData.ModelState.IsValid)
                     {
-                        <div class="error-summary">
+                        <div class="alert alert-danger" role="alert">
                             <ul>
                                 @foreach (var key in ViewData.ModelState.Keys)
                                 {

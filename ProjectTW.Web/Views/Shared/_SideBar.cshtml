@@ -7,7 +7,7 @@
 
         <div class="profile-image col-4">
             <a href="">
-                <img alt="" src="Template/data/profile/profile-hospital.jpg" class="img-fluid rounded-circle">
+                <img alt="" src="~/Template/data/profile/profile-hospital.jpg" class="img-fluid rounded-circle">
             </a>
         </div>
 
@@ -46,7 +46,7 @@
             </a>
             <ul class="sub-menu">
                 <li>
-                    <a class="" href="AllDoctors">All Doctors</a>
+                    @Html.ActionLink("All Doctors", "Index", "AllDoctors")
                 </li>
                 <li>
                     @Html.ActionLink("Add Doctor", "Index", "DoctorAdd")
@@ -67,16 +67,16 @@
             </a>
             <ul class="sub-menu">
                 <li>
-                    <a class="" href="AllPatient">All Patients</a>
+                    @Html.ActionLink("All Patients", "Index", "AllPatient")
                 </li>
                 <li>
-                    <a class="" href="PatientAdd">Add Patient</a>
+                    @Html.ActionLink("Add Patient", "Index", "AddPatient")
                 </li>
                 <li>
-                    <a class="" href="PatientEdit">Edit Patient</a>
+                    @Html.ActionLink("Edit Patient", "Index", "PatientEdit")
                 </li>
                 <li>
-                    <a class="" href="PatientProfile">Patient Profile</a>
+                    @Html.ActionLink("Patient Profile", "Index", "PatientProfile")
                 </li>
             </ul>
         </li>
