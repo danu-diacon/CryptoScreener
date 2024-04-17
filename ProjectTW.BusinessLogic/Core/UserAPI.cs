@@ -22,7 +22,7 @@ namespace ProjectTW.BusinessLogic.Core
 
             using (var db = new UserContext())
             {
-                result = db.Users.FirstOrDefault(u => u.Email == loginData.Credential && u.Password == HashPassword);
+                result = db.Users.FirstOrDefault(u => u.Email == loginData.Email && u.Password == HashPassword);
             }
 
             if (result == null)
@@ -56,7 +56,7 @@ namespace ProjectTW.BusinessLogic.Core
                 Password = HashPassword,
                 Email = registerData.Email,
                 LastLogin = registerData.LoginTime,
-
+                Level = registerData.Level
             };
 
             using (var db = new UserContext())

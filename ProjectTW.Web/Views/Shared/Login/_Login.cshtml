@@ -15,12 +15,27 @@
                         <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
                     </div>
 
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="error-summary">
+                            <ul>
+                                @foreach (var key in ViewData.ModelState.Keys)
+                                {
+                                    foreach (var error in ViewData.ModelState[key].Errors)
+                                    {
+                                        <li>@error.ErrorMessage</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+
                     @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @action = "#" }))
                     {
                         @Html.AntiForgeryToken()
                         <div class="form-group mb-3">
                             <label for="emailaddress">Email address</label>
-                            <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email" name="Credential">
+                            <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email" name="Email">
                         </div>
 
                         <div class="form-group mb-3">

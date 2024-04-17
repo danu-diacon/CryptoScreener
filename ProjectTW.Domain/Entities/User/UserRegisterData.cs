@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectTW.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,7 @@ namespace ProjectTW.Domain.Entities.User
         public string Ip { get; set; }
 
         public DateTime LoginTime { get; set; }
+
+        public UserRole Level { get; set; }
     }
 }

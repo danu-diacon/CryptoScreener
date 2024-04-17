@@ -1,5 +1,6 @@
 ﻿using ProjectTW.BusinessLogic.Interfaces;
 using ProjectTW.Domain.Entities.User;
+using ProjectTW.Domain.Enums;
 using ProjectTW.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,8 @@ namespace ProjectTW.Web.Controllers
                     FullName = register.FullName,
                     Password = register.Password,
                     Ip = Request.UserHostAddress,
-                    LoginTime = DateTime.Now
+                    LoginTime = DateTime.Now,
+                    Level = UserRole.Doctor
                 };
 
                 var userRegister = _register.UserRegisterAction(userRegisterData);
@@ -54,6 +56,7 @@ namespace ProjectTW.Web.Controllers
                 }
                 else
                 {
+                    ModelState.AddModelError("", userRegister.Message);
                     return View();
                 }
             }

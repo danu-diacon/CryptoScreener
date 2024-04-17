@@ -37,7 +37,7 @@ namespace ProjectTW.Web.Controllers
             {
                 UserLoginData userLoginData = new UserLoginData()
                 {
-                    Credential = login.Credential,
+                    Email = login.Email,
                     Password = login.Password,
                     Ip = Request.UserHostAddress,
                     LoginTime = DateTime.Now
@@ -46,13 +46,14 @@ namespace ProjectTW.Web.Controllers
                 var userLogin = _login.UserLoginAction(userLoginData);
                 if(userLogin.Success)
                 {
-                    HttpCookie cookie = _session.GenCookie(login.Credential);
+                    HttpCookie cookie = _session.GenCookie(login.Email);
                     ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
+                    ModelState.AddModelError("", userLogin.Message);
                     return View();
                 }
             }
