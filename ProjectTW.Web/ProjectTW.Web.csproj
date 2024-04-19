@@ -2438,20 +2438,21 @@
     <Content Include="Views\Shared\_MainContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilters\LogedIn.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AllPatientController.cs" />
-    <Compile Include="Controllers\AllDoctorsController.cs" />
+    <Compile Include="Controllers\Patient\AllPatientController.cs" />
+    <Compile Include="Controllers\Doctor\AllDoctorsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\DoctorAddController.cs" />
-    <Compile Include="Controllers\DoctorEditController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorAddController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorEditController.cs" />
     <Compile Include="Controllers\Doctor\DoctorProfileController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\PatientAddController.cs" />
-    <Compile Include="Controllers\PatientEditController.cs" />
-    <Compile Include="Controllers\PatientProfileController.cs" />
+    <Compile Include="Controllers\Patient\PatientAddController.cs" />
+    <Compile Include="Controllers\Patient\PatientEditController.cs" />
+    <Compile Include="Controllers\Patient\PatientProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,5 +1,7 @@
-﻿<div class='logo-area'>
-    
+﻿@using System.Web.Optimization;
+@model ProjectTW.Domain.Entities.User.UserMinimal
+<div class='logo-area'>
+
 </div>
 <div class='quick-area'>
     <div class='float-left'>
@@ -9,170 +11,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
             </li>
-            <li class="message-toggle-wrapper list-inline-item">
-                <a href="#" data-toggle="dropdown" class="toggle">
-                    <i class="fa fa-envelope"></i>
-                    <span class="badge badge-pill badge-accent">7</span>
-                </a>
-                <ul class="dropdown-menu messages animated fadeIn">
-
-                    <li class="list dropdown-item">
-
-                        <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-                            <li class="unread status-available">
-                                <a href="javascript:;">
-                                    <div class="user-img">
-                                        <img src="~/Template/data/profile/avatar-1.png" alt="user-image" class="rounded-circle img-inline">
-                                    </div>
-                                    <div>
-                                        <span class="name">
-                                            <strong>Clarine Vassar</strong>
-                                            <span class="time small">- 15 mins ago</span>
-                                            <span class="profile-status available float-right"></span>
-                                        </span>
-                                        <span class="desc small">
-                                            Sometimes it takes a lifetime to win a battle.
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class=" status-away">
-                                <a href="javascript:;">
-                                    <div class="user-img">
-                                        <img src="~/Template/data/profile/avatar-2.png" alt="user-image" class="rounded-circle img-inline">
-                                    </div>
-                                    <div>
-                                        <span class="name">
-                                            <strong>Brooks Latshaw</strong>
-                                            <span class="time small">- 45 mins ago</span>
-                                            <span class="profile-status away float-right"></span>
-                                        </span>
-                                        <span class="desc small">
-                                            Sometimes it takes a lifetime to win a battle.
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class=" status-busy">
-                                <a href="javascript:;">
-                                    <div class="user-img">
-                                        <img src="~/Template/data/profile/avatar-3.png" alt="user-image" class="rounded-circle img-inline">
-                                    </div>
-                                    <div>
-                                        <span class="name">
-                                            <strong>Clementina Brodeur</strong>
-                                            <span class="time small">- 1 hour ago</span>
-                                            <span class="profile-status busy float-right"></span>
-                                        </span>
-                                        <span class="desc small">
-                                            Sometimes it takes a lifetime to win a battle.
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class=" status-offline">
-                                <a href="javascript:;">
-                                    <div class="user-img">
-                                        <img src="~/Template/data/profile/avatar-4.png" alt="user-image" class="rounded-circle img-inline">
-                                    </div>
-                                    <div>
-                                        <span class="name">
-                                            <strong>Carri Busey</strong>
-                                            <span class="time small">- 5 hours ago</span>
-                                            <span class="profile-status offline float-right"></span>
-                                        </span>
-                                        <span class="desc small">
-                                            Sometimes it takes a lifetime to win a battle.
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class=" status-offline">
-                                <a href="javascript:;">
-                                    <div class="user-img">
-                                        <img src="~/Template/data/profile/avatar-5.png" alt="user-image" class="rounded-circle img-inline">
-                                    </div>
-                                    <div>
-                                        <span class="name">
-                                            <strong>Melissa Dock</strong>
-                                            <span class="time small">- Yesterday</span>
-                                            <span class="profile-status offline float-right"></span>
-                                        </span>
-                                        <span class="desc small">
-                                            Sometimes it takes a lifetime to win a battle.
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class=" status-available">
-                                <a href="javascript:;">
-                                    <div class="user-img">
-                                        <img src="~/Template/data/profile/avatar-1.png" alt="user-image" class="rounded-circle img-inline">
-                                    </div>
-                                    <div>
-                                        <span class="name">
-                                            <strong>Verdell Rea</strong>
-                                            <span class="time small">- 14th Mar</span>
-                                            <span class="profile-status available float-right"></span>
-                                        </span>
-                                        <span class="desc small">
-                                            Sometimes it takes a lifetime to win a battle.
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class=" status-busy">
-                                <a href="javascript:;">
-                                    <div class="user-img">
-                                        <img src="~/Template/data/profile/avatar-2.png" alt="user-image" class="rounded-circle img-inline">
-                                    </div>
-                                    <div>
-                                        <span class="name">
-                                            <strong>Linette Lheureux</strong>
-                                            <span class="time small">- 16th Mar</span>
-                                            <span class="profile-status busy float-right"></span>
-                                        </span>
-                                        <span class="desc small">
-                                            Sometimes it takes a lifetime to win a battle.
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class=" status-away">
-                                <a href="javascript:;">
-                                    <div class="user-img">
-                                        <img src="~/Template/data/profile/avatar-3.png" alt="user-image" class="rounded-circle img-inline">
-                                    </div>
-                                    <div>
-                                        <span class="name">
-                                            <strong>Araceli Boatright</strong>
-                                            <span class="time small">- 16th Mar</span>
-                                            <span class="profile-status away float-right"></span>
-                                        </span>
-                                        <span class="desc small">
-                                            Sometimes it takes a lifetime to win a battle.
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="external">
-                        <a href="javascript:;">
-                            <span>Read All Messages</span>
-                        </a>
-                    </li>
-                </ul>
-
-            </li>
             <li class="notify-toggle-wrapper list-inline-item">
-                <a href="#" data-toggle="dropdown" class="toggle">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-accent">3</span>
-                </a>
                 <ul class="dropdown-menu notifications animated fadeIn">
                     <li class="total dropdown-item">
                         <span class="small">
@@ -301,7 +140,7 @@
             <li class="profile list-inline-item">
                 <a href="#" data-toggle="dropdown" class="toggle">
                     <img src="~/Template/data/profile/profile-hospital.jpg" alt="user-image" class="rounded-circle img-inline">
-                    <span>Dr. Alan Wilson <i class="fa fa-angle-down"></i></span>
+                    <span>@Html.DisplayFor(user => user.FullName) <i class="fa fa-angle-down"></i></span>
                 </a>
                 <ul class="dropdown-menu profile animated fadeIn">
                     <li class="dropdown-item">

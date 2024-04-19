@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization;
+@model ProjectTW.Domain.Entities.User.UserMinimal
 <!-- MAIN MENU - START -->
 <div class="page-sidebar-wrapper" id="main-menu-wrapper">
 
@@ -14,13 +15,13 @@
         <div class="profile-details col-8">
 
             <h3>
-                <a href="">Dr. Alan Wilson</a>
+                <a href="">@Html.DisplayFor(user => user.FullName)</a>
 
                 <!-- Available statuses: online, idle, busy, away and offline -->
                 <span class="profile-status online"></span>
             </h3>
 
-            <p class="profile-title">Surgeon</p>
+            <p class="profile-title">@Html.DisplayFor(user => user.Level)</p>
 
         </div>
 
@@ -59,27 +60,31 @@
                 </li>
             </ul>
         </li>
-        <li class="">
-            <a href="javascript:;">
-                <i class="fa fa-users"></i>
-                <span class="title">Patients</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    @Html.ActionLink("All Patients", "Index", "AllPatient")
-                </li>
-                <li>
-                    @Html.ActionLink("Add Patient", "Index", "AddPatient")
-                </li>
-                <li>
-                    @Html.ActionLink("Edit Patient", "Index", "PatientEdit")
-                </li>
-                <li>
-                    @Html.ActionLink("Patient Profile", "Index", "PatientProfile")
-                </li>
-            </ul>
-        </li>
+        @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
+        {
+            <li class="">
+                <a href="javascript:;">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Patients</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        @Html.ActionLink("All Patients", "Index", "AllPatient")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Add Patient", "Index", "AddPatient")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Edit Patient", "Index", "PatientEdit")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Patient Profile", "Index", "PatientProfile")
+                    </li>
+                </ul>
+            </li>
+        }
+
         <li class="">
             <a href="javascript:;">
                 <i class="fa fa-calendar-o"></i>
