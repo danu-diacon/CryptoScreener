@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectTW.Web.Extension;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,11 @@ namespace ProjectTW.Web.Controllers
            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
            {
                 return RedirectToAction("Index", "Login");
-           }
+            }
+            
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-            return View();
+            return View(user);
         }
     }
 }
