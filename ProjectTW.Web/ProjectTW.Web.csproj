@@ -2441,6 +2441,8 @@
     <Compile Include="ActionFilters\LogedIn.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BookAppointmentController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorScheduleController.cs" />
     <Compile Include="Controllers\Patient\AllPatientController.cs" />
     <Compile Include="Controllers\Doctor\AllDoctorsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -2532,6 +2534,12 @@
     <Content Include="Template\aditional\assets\css\icons.min.css.map" />
     <Content Include="Template\aditional\assets\js\app.min.js.map" />
     <Content Include="Template\aditional\assets\js\vendor.min.js.map" />
+    <Content Include="Views\DoctorSchedule\Index.cshtml" />
+    <Content Include="Views\Shared\Doctor\Doctor_Schedule\_Layout.cshtml" />
+    <Content Include="Views\Shared\Doctor\Doctor_Schedule\_MainContent.cshtml" />
+    <Content Include="Views\BookAppointment\Index.cshtml" />
+    <Content Include="Views\Shared\Book_Appointment\_Layout.cshtml" />
+    <Content Include="Views\Shared\Book_Appointment\_MainContent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

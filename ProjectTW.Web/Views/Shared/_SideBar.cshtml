@@ -46,18 +46,19 @@
                 <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-                <li>
-                    @Html.ActionLink("All Doctors", "Index", "AllDoctors")
-                </li>
-                <li>
-                    @Html.ActionLink("Add Doctor", "Index", "DoctorAdd")
-                </li>
-                <li>
-                    @Html.ActionLink("Edit Doctor", "Index", "DoctorEdit")
-                </li>
-                <li>
-                    @Html.ActionLink("Doctor Profile", "Index", "DoctorProfile")
-                </li>
+                 <li>
+                      @Html.ActionLink("All Doctors", "Index", "AllDoctors")
+                 </li>
+                 <li>
+                      @Html.ActionLink("Add Doctor", "Index", "DoctorAdd")
+                 </li>
+                 <li>
+                      @Html.ActionLink("Edit Doctor", "Index", "DoctorEdit")
+                 </li>
+                 <li>
+                      @Html.ActionLink("Doctor Profile", "Index", "DoctorProfile")
+                 </li>
+                
             </ul>
         </li>
         @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
@@ -93,10 +94,10 @@
             </a>
             <ul class="sub-menu">
                 <li>
-                    <a class="" href="hos-doc-schedule.html">Doctor Schedule</a>
+                    <a class="" href="DoctorSchedule">Doctor Schedule</a>
                 </li>
                 <li>
-                    <a class="" href="hos-book-appointment.html">Book Appointment</a>
+                    <a class="" href="BookAppointment">Book Appointment</a>
                 </li>
             </ul>
         </li>
