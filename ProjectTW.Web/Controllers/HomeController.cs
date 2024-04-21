@@ -16,7 +16,7 @@ namespace ProjectTW.Web.Controllers
            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
            {
                 return RedirectToAction("Index", "Login");
-            }
+           }
             
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 

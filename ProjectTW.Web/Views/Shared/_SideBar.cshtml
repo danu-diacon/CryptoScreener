@@ -46,22 +46,23 @@
                 <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-                 <li>
-                      @Html.ActionLink("All Doctors", "Index", "AllDoctors")
-                 </li>
-                 <li>
-                      @Html.ActionLink("Add Doctor", "Index", "DoctorAdd")
-                 </li>
-                 <li>
-                      @Html.ActionLink("Edit Doctor", "Index", "DoctorEdit")
-                 </li>
-                 <li>
-                      @Html.ActionLink("Doctor Profile", "Index", "DoctorProfile")
-                 </li>
-                
+                <li>
+                    @Html.ActionLink("All Doctors", "Index", "AllDoctors")
+                </li>
+                <li>
+                    @Html.ActionLink("Add Doctor", "Index", "DoctorAdd")
+                </li>
+                <li>
+                    @Html.ActionLink("Edit Doctor", "Index", "DoctorEdit")
+                </li>
+                <li>
+                    @Html.ActionLink("Doctor Profile", "Index", "DoctorProfile")
+                </li>
+
             </ul>
+
         </li>
-        @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
+        @if (Model != null && !(Model.Level == ProjectTW.Domain.Enums.UserRole.Patient))
         {
             <li class="">
                 <a href="javascript:;">
@@ -74,7 +75,7 @@
                         @Html.ActionLink("All Patients", "Index", "AllPatient")
                     </li>
                     <li>
-                        @Html.ActionLink("Add Patient", "Index", "AddPatient")
+                        @Html.ActionLink("Add Patient", "Index", "PatientAdd")
                     </li>
                     <li>
                         @Html.ActionLink("Edit Patient", "Index", "PatientEdit")
@@ -85,7 +86,6 @@
                 </ul>
             </li>
         }
-
         <li class="">
             <a href="javascript:;">
                 <i class="fa fa-calendar-o"></i>
@@ -94,28 +94,31 @@
             </a>
             <ul class="sub-menu">
                 <li>
-                    <a class="" href="DoctorSchedule">Doctor Schedule</a>
+                    @Html.ActionLink("Doctor Schedule", "Index", "DoctorSchedule")
                 </li>
                 <li>
-                    <a class="" href="BookAppointment">Book Appointment</a>
+                    @Html.ActionLink("Book Appointment", "Index", "BookAppointment")
                 </li>
             </ul>
         </li>
-        <li class="">
-            <a href="javascript:;">
-                <i class="fa fa-bar-chart"></i>
-                <span class="title">Reports</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    <a class="" href="hos-report-patient.html">Patient</a>
-                </li>
-                <li>
-                    <a class="" href="hos-report-hospital.html">Hospital</a>
-                </li>
-            </ul>
-        </li>
+        @if (Model != null && (Model.Level == ProjectTW.Domain.Enums.UserRole.Admin))
+        {
+            <li class="">
+                <a href="javascript:;">
+                    <i class="fa fa-bar-chart"></i>
+                    <span class="title">Reports</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a class="" href="hos-report-patient.html">Patient</a>
+                    </li>
+                    <li>
+                        <a class="" href="hos-report-hospital.html">Hospital</a>
+                    </li>
+                </ul>
+            </li>
+        }
         <li class="">
             <a href="@Url.Action("Index", "Events")">
                 <i class="fa fa-calendar"></i>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectTW.Web.Extension;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace ProjectTW.Web.Controllers
         // GET: BookAppointment
         public ActionResult Index()
         {
-            return View();
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+            return View(user);
         }
     }
 }
