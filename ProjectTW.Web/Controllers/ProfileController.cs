@@ -7,9 +7,9 @@ using System.Web.Mvc;
 
 namespace ProjectTW.Web.Controllers
 {
-    public class PatientProfileController : Controller
+    public class ProfileController : Controller
     {
-        // GET: PatientProfile
+        // GET: Profile
         public ActionResult Index()
         {
             var user = System.Web.HttpContext.Current.GetMySessionObject();

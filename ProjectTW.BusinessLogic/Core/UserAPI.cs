@@ -103,6 +103,7 @@ namespace ProjectTW.BusinessLogic.Core
                 FullName = registerData.FullName,
                 Password = HashPassword,
                 Email = registerData.Email,
+                Biography = "In the United States, the Ed.D. tends to be granted by the school of education of universities and is a terminal degree in education. Majors within the Ed.D. may include: counseling, curriculum and instruction/curriculum and teaching, educational administration, education policy, educational psychology, educational technology, higher education, human resource development, language/linguistics or leadership. ",
                 LastLogin = registerData.LoginTime,
                 Level = registerData.Level
             };
@@ -178,6 +179,7 @@ namespace ProjectTW.BusinessLogic.Core
                     Id = currentUserPatient.Id,
                     FullName = currentUserPatient.FullName,
                     Email = currentUserPatient.Email,
+                    Biography = currentUserPatient.Biography,
                     LastLogin = currentUserPatient.LastLogin,
                     Level = currentUserPatient.Level
 
@@ -198,6 +200,8 @@ namespace ProjectTW.BusinessLogic.Core
                     Id = currentUserDoctor.Id,
                     FullName = currentUserDoctor.FullName,
                     Email = currentUserDoctor.Email,
+                    Specilality = currentUserDoctor.Specilality,
+                    Biography = currentUserDoctor.Biography,
                     LastLogin = currentUserDoctor.LastLogin,
                     Level = currentUserDoctor.Level
 

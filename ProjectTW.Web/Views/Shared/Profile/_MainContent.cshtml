@@ -1,4 +1,6 @@
-﻿<section class="wrapper main-wrapper row" style=''>
+﻿@using System.Web.Optimization;
+@model ProjectTW.Domain.Entities.User.UserMinimal
+<section class="wrapper main-wrapper row" style=''>
 
     <div class='col-12'>
         <div class="page-title">
@@ -69,8 +71,7 @@
                             <div class="">
 
                                 <h4>Biography:</h4>
-                                <p>In the United States, the Ed.D. tends to be granted by the school of education of universities and is a terminal degree in education. Majors within the Ed.D. may include: counseling, curriculum and instruction/curriculum and teaching, educational administration, education policy, educational psychology, educational technology, higher education, human resource development, language/linguistics or leadership. </p>
-                                <p>In the United States, the Ed.D. tends to be granted by the school of education of universities and is a terminal degree in education. Majors within the Ed.D. may include: counseling, curriculum and instruction/curriculum and teaching, educational administration, education policy, educational psychology, educational technology, higher education, human resource development, language/linguistics or leadership. </p>
+                                <p>@Model.Biography</p>
                                 <div class="clearfix"></div>
                                 <hr>
                                 <h4>Education:</h4>

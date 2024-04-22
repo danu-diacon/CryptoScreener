@@ -21,7 +21,8 @@
                 <span class="profile-status online"></span>
             </h3>
 
-            <p class="profile-title">@Html.DisplayFor(user => user.Level)</p>
+            <p class="profile-title">@Html.DisplayFor(user => user.Level) @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
+                        {@Html.DisplayFor(user => user.Specilality)}</p>
 
         </div>
 
@@ -57,10 +58,6 @@
                     <li>
                         @Html.ActionLink("Edit Doctor", "Index", "DoctorEdit")
                     </li>
-                    <li>
-                        @Html.ActionLink("Doctor Profile", "Index", "DoctorProfile")
-                    </li>
-
                 </ul>
 
             </li>
@@ -82,9 +79,6 @@
                     </li>
                     <li>
                         @Html.ActionLink("Edit Patient", "Index", "PatientEdit")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Patient Profile", "Index", "PatientProfile")
                     </li>
                 </ul>
             </li>
@@ -126,7 +120,7 @@
             </a>
         </li>
         <li class="">
-            <a href="@Url.Action("Index", "PatientProfile")">
+            <a href="@Url.Action("Index", "Profile")">
                 <i class="fa fa-user"></i>
                 Profile
             </a>
