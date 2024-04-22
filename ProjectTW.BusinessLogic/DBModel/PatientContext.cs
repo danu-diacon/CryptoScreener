@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ProjectTW.BusinessLogic.DBModel
 {
-    public class UserContext : DbContext
+    public class PatientContext : DbContext
     {
-        public UserContext() :
+        public PatientContext() :
             base("name=ProjectTW")
-        { 
+        {
         }
 
-        public virtual DbSet<UserDbTable> Users { get; set; }
+        public virtual DbSet<PatientDbTable> Patients { get; set; }
     }
 }

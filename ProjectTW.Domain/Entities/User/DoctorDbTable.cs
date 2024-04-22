@@ -1,15 +1,15 @@
 ﻿using ProjectTW.Domain.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectTW.Domain.Entities.User
 {
-    public class UserDbTable
+    public class DoctorDbTable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -21,14 +21,21 @@ namespace ProjectTW.Domain.Entities.User
         public string FullName { get; set; }
 
         [Required]
+        [Display(Name = "Email Address")]
+        [StringLength(30)]
+        public string Email { get; set; }
+
+        [Required]
         [Display(Name = "Password")]
         [StringLength(50, ErrorMessage = "Password cannot be shorter than 8 characteres")]
         public string Password { get; set; }
 
         [Required]
-        [Display(Name = "Email Address")]
-        [StringLength(30)]
-        public string Email { get; set; }
+        public DoctorSpeciality Specilality { get; set; }
+
+        public string ProfileImage {  get; set; }
+
+        public string Biography { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime LastLogin { get; set; }

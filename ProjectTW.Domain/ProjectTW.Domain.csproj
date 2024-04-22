@@ -53,11 +53,14 @@
   <ItemGroup>
     <Compile Include="Entities\Response\UserLoginResponse.cs" />
     <Compile Include="Entities\Response\UserRegisterResponse.cs" />
-    <Compile Include="Entities\User\UserDbTable.cs" />
+    <Compile Include="Entities\User\AdminDbTable.cs" />
+    <Compile Include="Entities\User\DoctorDbTable.cs" />
+    <Compile Include="Entities\User\PatientDbTable.cs" />
     <Compile Include="Entities\User\UserLoginData.cs" />
     <Compile Include="Entities\User\UserMinimal.cs" />
     <Compile Include="Entities\User\UserRegisterData.cs" />
     <Compile Include="Entities\User\UserSession.cs" />
+    <Compile Include="Enums\DoctorSpecilality.cs" />
     <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

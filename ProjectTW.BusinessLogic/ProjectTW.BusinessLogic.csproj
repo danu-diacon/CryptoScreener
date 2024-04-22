@@ -58,8 +58,10 @@
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="Core\AdminAPI.cs" />
     <Compile Include="Core\UserAPI.cs" />
+    <Compile Include="DBModel\AdminContext.cs" />
+    <Compile Include="DBModel\DoctorContext.cs" />
+    <Compile Include="DBModel\PatientContext.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
-    <Compile Include="DBModel\UserContext.cs" />
     <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
     <Compile Include="Interfaces\ISession.cs" />

@@ -207,16 +207,7 @@
     <Content Include="Template\assets\fonts\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Template\assets\fonts\font-awesome\index.html" />
     <Content Include="Template\assets\fonts\index.html" />
-    <Content Include="Template\assets\images\apple-touch-icon-114-precomposed.png" />
-    <Content Include="Template\assets\images\apple-touch-icon-144-precomposed.png" />
-    <Content Include="Template\assets\images\apple-touch-icon-57-precomposed.png" />
-    <Content Include="Template\assets\images\apple-touch-icon-72-precomposed.png" />
-    <Content Include="Template\assets\images\favicon.png" />
     <Content Include="Template\assets\images\index.html" />
-    <Content Include="Template\assets\images\login-bg.png" />
-    <Content Include="Template\assets\images\login-logo.png" />
-    <Content Include="Template\assets\images\logo-folded.png" />
-    <Content Include="Template\assets\images\logo-nav.png" />
     <Content Include="Template\assets\images\logo-med.png" />
     <Content Include="Template\assets\index.html" />
     <Content Include="Template\assets\js\blo-dashboard.js" />
@@ -2442,7 +2433,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookAppointmentController.cs" />
-    <Compile Include="Controllers\Doctor\DoctorScheduleController.cs" />
     <Compile Include="Controllers\Patient\AllPatientController.cs" />
     <Compile Include="Controllers\Doctor\AllDoctorsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -2534,9 +2524,6 @@
     <Content Include="Template\aditional\assets\css\icons.min.css.map" />
     <Content Include="Template\aditional\assets\js\app.min.js.map" />
     <Content Include="Template\aditional\assets\js\vendor.min.js.map" />
-    <Content Include="Views\DoctorSchedule\Index.cshtml" />
-    <Content Include="Views\Shared\Doctor\Doctor_Schedule\_Layout.cshtml" />
-    <Content Include="Views\Shared\Doctor\Doctor_Schedule\_MainContent.cshtml" />
     <Content Include="Views\BookAppointment\Index.cshtml" />
     <Content Include="Views\Shared\Book_Appointment\_Layout.cshtml" />
     <Content Include="Views\Shared\Book_Appointment\_MainContent.cshtml" />

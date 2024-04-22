@@ -17,39 +17,87 @@ namespace ProjectTW.BusinessLogic.Core
      {
         public UserLoginResponse LoginResponse(UserLoginData loginData)
         {
-            UserDbTable result;
+            PatientDbTable resultPatient;
+            DoctorDbTable resultDoctor;
+            AdminDbTable resultAdmin;
+
             var HashPassword = LoginHelper.HashGen(loginData.Password);
 
-            using (var db = new UserContext())
+            //Search in Patient Table
+            using (var dbPatient = new PatientContext())
             {
-                result = db.Users.FirstOrDefault(u => u.Email == loginData.Email && u.Password == HashPassword);
+                resultPatient = dbPatient.Patients.FirstOrDefault(u => u.Email == loginData.Email && u.Password == HashPassword);
+            }
+            if (resultPatient != null)
+            {
+                return new UserLoginResponse() { Success = true };
             }
 
-            if (result == null)
+            //Search in Doctor Table
+            using (var dbDoctor = new DoctorContext())
             {
-                return new UserLoginResponse() { Success = false, Message = "The Username or Password is Incorrect" };
+                resultDoctor = dbDoctor.Doctors.FirstOrDefault(u => u.Email == loginData.Email && u.Password == HashPassword);
+            }
+            if (resultDoctor != null)
+            {
+                return new UserLoginResponse() { Success = true };
             }
 
-            return new UserLoginResponse() { Success = true };
+            //Search in Admin Table
+            using (var dbAdmin = new AdminContext())
+            {
+                resultAdmin = dbAdmin.Admins.FirstOrDefault(u => u.Email == loginData.Email && u.Password == HashPassword);
+            }
+            if (resultAdmin != null)
+            {
+                return new UserLoginResponse() { Success = true };
+            }
+
+            
+            return new UserLoginResponse() { Success = false, Message = "The Username or Password is Incorrect" };
           }
 
         public UserRegisterResponse RegisterResponse(UserRegisterData registerData)
         {
-            UserDbTable result;
-            
-            using (var db = new UserContext())
-            {
-                result = db.Users.FirstOrDefault(u => u.Email == registerData.Email);
-            }
+            PatientDbTable resultPatient;
+            DoctorDbTable resultDoctor;
+            AdminDbTable resultAdmin;
 
-            if (result != null)
+            //Search in Patients Table
+            using (var dbPatient = new PatientContext())
+            {
+                resultPatient = dbPatient.Patients.FirstOrDefault(u => u.Email == registerData.Email);
+            }
+            if (resultPatient != null)
             {
                 return new UserRegisterResponse() { Success = false, Message = "A user with this email already exists" };
             }
 
+            //Search in Doctors Table
+            using (var dbDoctor = new DoctorContext())
+            {
+                resultDoctor = dbDoctor.Doctors.FirstOrDefault(u => u.Email == registerData.Email);
+            }
+            if (resultDoctor != null)
+            {
+                return new UserRegisterResponse() { Success = false, Message = "A user with this email already exists" };
+            }
+
+            //Search in Admins Table
+            using (var dbAdmin = new AdminContext())
+            {
+                resultAdmin = dbAdmin.Admins.FirstOrDefault(u => u.Email == registerData.Email);
+            }
+            if (resultAdmin != null)
+            {
+                return new UserRegisterResponse() { Success = false, Message = "A user with this email already exists" };
+            }
+
+
+            //Add new User Patient
             var HashPassword = LoginHelper.HashGen(registerData.Password);
 
-            var todo = new UserDbTable
+            var todo = new PatientDbTable
             {
 
                 FullName = registerData.FullName,
@@ -59,9 +107,9 @@ namespace ProjectTW.BusinessLogic.Core
                 Level = registerData.Level
             };
 
-            using (var db = new UserContext())
+            using (var db = new PatientContext())
             {
-                db.Users.Add(todo);
+                db.Patients.Add(todo);
                 db.SaveChanges();
             }
 
@@ -106,7 +154,9 @@ namespace ProjectTW.BusinessLogic.Core
         public UserMinimal UserCookie(string cookie)
         {
             UserSession session;
-            UserDbTable currentUser;
+            PatientDbTable currentUserPatient;
+            DoctorDbTable currentUserDoctor;
+            AdminDbTable currentUserAdmin;
 
             using (var db = new SessionContext())
             {
@@ -114,24 +164,68 @@ namespace ProjectTW.BusinessLogic.Core
             }
 
             if (session == null) { return null; }
-            using (var db = new UserContext())
+
+            //Search in Patients Table
+            using (var db = new PatientContext())
             {
-                currentUser = db.Users.FirstOrDefault(u => u.Email == session.Email);
+                currentUserPatient = db.Patients.FirstOrDefault(u => u.Email == session.Email);
             }
 
-            if (currentUser == null) { return null; };
-
-            var userMinimal = new UserMinimal()
+            if (currentUserPatient != null)
             {
-                Id = currentUser.Id,
-                FullName = currentUser.FullName,
-                Email = currentUser.Email,
-                LastLogin = currentUser.LastLogin,
-                Level = currentUser.Level
+                var userMinimal = new UserMinimal()
+                {
+                    Id = currentUserPatient.Id,
+                    FullName = currentUserPatient.FullName,
+                    Email = currentUserPatient.Email,
+                    LastLogin = currentUserPatient.LastLogin,
+                    Level = currentUserPatient.Level
 
-            };
+                };
+                return userMinimal;
+            }
 
-            return userMinimal;
+            //Search in Doctors Table
+            using (var dbDoctor = new DoctorContext())
+            {
+                currentUserDoctor = dbDoctor.Doctors.FirstOrDefault(u => u.Email == session.Email);
+            }
+
+            if (currentUserDoctor != null)
+            {
+                var userMinimal = new UserMinimal()
+                {
+                    Id = currentUserDoctor.Id,
+                    FullName = currentUserDoctor.FullName,
+                    Email = currentUserDoctor.Email,
+                    LastLogin = currentUserDoctor.LastLogin,
+                    Level = currentUserDoctor.Level
+
+                };
+                return userMinimal;
+            }
+
+            //Search in Admins Table
+            using (var dbAdmin = new AdminContext())
+            {
+                currentUserAdmin = dbAdmin.Admins.FirstOrDefault(u => u.Email == session.Email);
+            }
+
+            if (currentUserAdmin != null)
+            {
+                var userMinimal = new UserMinimal()
+                {
+                    Id = currentUserAdmin.Id,
+                    FullName = currentUserAdmin.FullName,
+                    Email = currentUserAdmin.Email,
+                    LastLogin = currentUserAdmin.LastLogin,
+                    Level = currentUserAdmin.Level
+
+                };
+                return userMinimal;
+            }
+
+            return null;
         }
      }
 }

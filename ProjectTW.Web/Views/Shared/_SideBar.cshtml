@@ -36,32 +36,35 @@
         <li class="open">
             <a href="Home">
                 <i class="fa fa-dashboard"></i>
-                <span class="title">Dashboard</span>
+                <span class="title">Home</span>
             </a>
         </li>
-        <li class="">
-            <a href="javascript:;">
-                <i class="fa fa-user-md"></i>
-                <span class="title">Doctors</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    @Html.ActionLink("All Doctors", "Index", "AllDoctors")
-                </li>
-                <li>
-                    @Html.ActionLink("Add Doctor", "Index", "DoctorAdd")
-                </li>
-                <li>
-                    @Html.ActionLink("Edit Doctor", "Index", "DoctorEdit")
-                </li>
-                <li>
-                    @Html.ActionLink("Doctor Profile", "Index", "DoctorProfile")
-                </li>
+        @if (Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Admin)
+        {
+            <li class="">
+                <a href="javascript:;">
+                    <i class="fa fa-user-md"></i>
+                    <span class="title">Doctors</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        @Html.ActionLink("All Doctors", "Index", "AllDoctors")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Add Doctor", "Index", "DoctorAdd")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Edit Doctor", "Index", "DoctorEdit")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Doctor Profile", "Index", "DoctorProfile")
+                    </li>
 
-            </ul>
+                </ul>
 
-        </li>
+            </li>
+        }
         @if (Model != null && !(Model.Level == ProjectTW.Domain.Enums.UserRole.Patient))
         {
             <li class="">
@@ -94,9 +97,6 @@
             </a>
             <ul class="sub-menu">
                 <li>
-                    @Html.ActionLink("Doctor Schedule", "Index", "DoctorSchedule")
-                </li>
-                <li>
                     @Html.ActionLink("Book Appointment", "Index", "BookAppointment")
                 </li>
             </ul>
@@ -123,6 +123,12 @@
             <a href="@Url.Action("Index", "Events")">
                 <i class="fa fa-calendar"></i>
                 <span class="title">Event Management</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="@Url.Action("Index", "PatientProfile")">
+                <i class="fa fa-user"></i>
+                Profile
             </a>
         </li>
     </ul>
