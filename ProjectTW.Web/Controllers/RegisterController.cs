@@ -43,7 +43,7 @@ namespace ProjectTW.Web.Controllers
                     Password = register.Password,
                     Ip = Request.UserHostAddress,
                     LoginTime = DateTime.Now,
-                    Level = UserRole.Patient
+                    Level = UserRole.Admin
                 };
 
                 var userRegister = _register.UserRegisterAction(userRegisterData);

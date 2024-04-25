@@ -2430,7 +2430,9 @@
     <Content Include="Views\Shared\_MainContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionFilters\LogedIn.cs" />
+    <Compile Include="ActionFilters\AdminModAttribute.cs" />
+    <Compile Include="ActionFilters\DoctorModAttribute.cs" />
+    <Compile Include="ActionFilters\PatientModAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookAppointmentController.cs" />

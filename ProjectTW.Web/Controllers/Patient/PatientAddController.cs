@@ -1,4 +1,5 @@
-﻿using ProjectTW.Web.Extension;
+﻿using ProjectTW.Web.ActionFilters;
+using ProjectTW.Web.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace ProjectTW.Web.Controllers
 {
     public class PatientAddController : Controller
     {
-        // GET: PatientAdd
+          // GET: PatientAdd
+
+          [AdminMod]
         public ActionResult Index()
         {
             var user = System.Web.HttpContext.Current.GetMySessionObject();

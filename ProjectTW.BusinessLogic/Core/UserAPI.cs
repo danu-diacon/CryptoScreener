@@ -97,24 +97,24 @@ namespace ProjectTW.BusinessLogic.Core
             //Add new User Patient
             var HashPassword = LoginHelper.HashGen(registerData.Password);
 
-            var todo = new PatientDbTable
-            {
+                var todo = new PatientDbTable
+                {
 
-                FullName = registerData.FullName,
-                Password = HashPassword,
-                Email = registerData.Email,
-                Biography = "In the United States, the Ed.D. tends to be granted by the school of education of universities and is a terminal degree in education. Majors within the Ed.D. may include: counseling, curriculum and instruction/curriculum and teaching, educational administration, education policy, educational psychology, educational technology, higher education, human resource development, language/linguistics or leadership. ",
-                LastLogin = registerData.LoginTime,
-                Level = registerData.Level
-            };
+                    FullName = registerData.FullName,
+                    Password = HashPassword,
+                    Email = registerData.Email,
+                    Biography = "In the United States, the Ed.D. tends to be granted by the school of education of universities and is a terminal degree in education. Majors within the Ed.D. may include: counseling, curriculum and instruction/curriculum and teaching, educational administration, education policy, educational psychology, educational technology, higher education, human resource development, language/linguistics or leadership. ",
+                    LastLogin = registerData.LoginTime,
+                    Level = registerData.Level
+                };
 
-            using (var db = new PatientContext())
-            {
-                db.Patients.Add(todo);
-                db.SaveChanges();
-            }
+                using (var db = new PatientContext())
+                {
+                    db.Patients.Add(todo);
+                    db.SaveChanges();
+                } 
 
-            return new UserRegisterResponse { Success = true };
+               return new UserRegisterResponse { Success = true };
         }
 
         public HttpCookie Cookie(string loginEmail)
