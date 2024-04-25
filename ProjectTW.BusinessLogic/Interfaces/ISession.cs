@@ -13,5 +13,9 @@ namespace ProjectTW.BusinessLogic.Interfaces
         HttpCookie GenCookie(string loginEmail);
 
         UserMinimal GetUserByCookie(string apiCookieValue);
+
+        bool NewAppointment(int DoctorId, int PatientId, DateTime AppointmentDate);
+
+        List<AppointmentsDbTable> GetAllAppointments(int doctorID);
     }
 }

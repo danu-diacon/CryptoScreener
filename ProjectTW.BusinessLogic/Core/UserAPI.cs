@@ -231,5 +231,33 @@ namespace ProjectTW.BusinessLogic.Core
 
             return null;
         }
-     }
+
+        public bool AddAppointment(int DoctorId, int PatientId, DateTime AppointmentDate)
+        {
+            var NewAppointment = new AppointmentsDbTable
+            {
+                DoctorId = DoctorId,
+                PatientId = PatientId,
+                AppointmentDate = AppointmentDate
+            };
+
+            using (var db = new AppointmentContext())
+            {
+                db.Appointments.Add(NewAppointment);
+                db.SaveChanges();
+            }
+
+            return true;
+        }
+
+        public List<AppointmentsDbTable> AllAppointments(int doctorID)
+        {
+            using (var db = new AppointmentContext())
+            {
+                var appointments = db.Appointments.Where(p => p.DoctorId == doctorID).ToList();
+
+                return appointments;
+            }
+        }
+    }
 }

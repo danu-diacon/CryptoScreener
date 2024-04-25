@@ -198,6 +198,7 @@
     <Content Include="Template\aditional\assets\js\app.min.js" />
     <Content Include="Template\aditional\assets\js\vendor.js" />
     <Content Include="Template\aditional\assets\js\vendor.min.js" />
+    <Content Include="Template\aditional\ErrorPage\Style.css" />
     <Content Include="Template\assets\css\animate.min.css" />
     <Content Include="Template\assets\css\index.html" />
     <Content Include="Template\assets\css\responsive.css" />
@@ -2433,6 +2434,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookAppointmentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\Patient\AllPatientController.cs" />
     <Compile Include="Controllers\Doctor\AllDoctorsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -2523,6 +2525,11 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Shared\Profile\_Layout.cshtml" />
     <Content Include="Views\Shared\Profile\_MainContent.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutError.cshtml" />
+    <Content Include="Views\Shared\Events\_MainContent.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Shared\Events\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

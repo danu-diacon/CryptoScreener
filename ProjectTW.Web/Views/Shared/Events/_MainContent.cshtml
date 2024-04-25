@@ -1,53 +1,24 @@
-﻿<section class="wrapper main-wrapper row" style=''>
+﻿@using ProjectTW.Domain.Entities.User
+@model List<AppointmentsDbTable>
 
-     <div class='col-12'>
-          <div class="page-title">
+@if (Model != null && Model.Count > 0)
+{
+    <h2>Lista programărilor:</h2>
+    <ul>
+        @foreach (var appointment in Model)
+        {
+            <li>
+                <strong>Programare ID:</strong> @appointment.Id <br />
+                <strong>Doctor ID:</strong> @appointment.DoctorId <br />
+                <strong>Patient ID:</strong> @appointment.PatientId <br />
+                <strong>Data Programării:</strong> @appointment.AppointmentDate <br />
+                <strong>Status Programare:</strong> @appointment.AppointmentStatus <br />
+            </li>
+        }
 
-               <div class="float-left">
-                    <!-- PAGE HEADING TAG - START --><h1 class="title">Hospital Events</h1><!-- PAGE HEADING TAG - END -->
-               </div>
-
-
-          </div>
-     </div>
-     <div class="clearfix"></div>
-     <!-- MAIN CONTENT AREA STARTS -->
-
-     <div class="col-xl-12">
-          <section class="box nobox ">
-               <div class="content-body">
-                    <div class="row">
-                         <div class="col-3 col-lg-2">
-
-                              <form method="post" id="add_event_form">
-                                   <input type="text" class="form-control new-event-form" placeholder="Add new event..." />
-                              </form>
-
-                              <div id='external-events'>
-                                   <h4>Draggable Events</h4>
-                                   <div class='fc-event bg-purple'>My Event 1</div>
-                                   <div class='fc-event bg-purple'>My Event 2</div>
-                                   <div class='fc-event bg-purple'>My Event 3</div>
-                                   <div class='fc-event bg-purple'>My Event 4</div>
-                                   <div class='fc-event bg-purple'>My Event 5</div>
-                                   <br>
-                                   <label class="form-label" for='drop-remove' style="font-size:13px;">
-                                        <input type="checkbox" id='drop-remove' class="iCheck"> <span>Drop&nbsp;&&nbsp;Remove</span>
-                                   </label>
-
-                                   <h4>Created Events</h4>
-                              </div>
-                         </div>
-
-
-                         <div id='hos-events-calendar' class="col-9 col-lg-10"></div>
-
-                    </div>
-               </div>
-          </section>
-     </div>
-
-
-
-     <!-- MAIN CONTENT AREA ENDS -->
-</section>
+    </ul>
+}
+else
+{
+    <p>Nu există programări disponibile.</p>
+}

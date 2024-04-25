@@ -59,6 +59,7 @@
     <Compile Include="Core\AdminAPI.cs" />
     <Compile Include="Core\UserAPI.cs" />
     <Compile Include="DBModel\AdminContext.cs" />
+    <Compile Include="DBModel\AppointmentContext.cs" />
     <Compile Include="DBModel\DoctorContext.cs" />
     <Compile Include="DBModel\PatientContext.cs" />
     <Compile Include="DBModel\SessionContext.cs" />

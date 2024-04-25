@@ -21,7 +21,7 @@
                 <span class="profile-status online"></span>
             </h3>
 
-            <p class="profile-title">@Html.DisplayFor(user => user.Level) @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
+            <p class="profile-title">@Html.DisplayFor(user => user.Level) @if (Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
                         {@Html.DisplayFor(user => user.Specilality)}</p>
 
         </div>
