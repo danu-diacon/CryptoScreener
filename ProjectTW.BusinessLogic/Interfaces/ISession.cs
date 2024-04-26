@@ -14,8 +14,10 @@ namespace ProjectTW.BusinessLogic.Interfaces
 
         UserMinimal GetUserByCookie(string apiCookieValue);
 
-        bool NewAppointment(int DoctorId, int PatientId, DateTime AppointmentDate);
+        bool NewAppointment(NewAppointmentData AppointmentData);
 
         List<AppointmentsDbTable> GetAllAppointments(int doctorID);
+
+        UserMinimal GetPatientById(int Id);
     }
 }

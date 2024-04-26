@@ -24,14 +24,19 @@ namespace ProjectTW.BusinessLogic.AppBL
             return UserCookie(apiCookieValue);
         }
 
-        public bool NewAppointment(int DoctorId, int PatientId, DateTime AppointmentDate)
+        public bool NewAppointment(NewAppointmentData AppointmentData)
         {
-            return AddAppointment(DoctorId, PatientId, AppointmentDate);
+            return AddAppointment(AppointmentData);
         }
 
         public List<AppointmentsDbTable> GetAllAppointments(int doctorID)
         {
             return AllAppointments(doctorID);
+        }
+
+        public UserMinimal GetPatientById(int Id)
+        {
+            return PatientId(Id);
         }
     }
 }

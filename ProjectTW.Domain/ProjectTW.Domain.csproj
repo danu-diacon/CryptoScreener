@@ -56,6 +56,7 @@
     <Compile Include="Entities\User\AdminDbTable.cs" />
     <Compile Include="Entities\User\AppointmentsDbTable.cs" />
     <Compile Include="Entities\User\DoctorDbTable.cs" />
+    <Compile Include="Entities\User\NewAppointmentData.cs" />
     <Compile Include="Entities\User\PatientDbTable.cs" />
     <Compile Include="Entities\User\UserLoginData.cs" />
     <Compile Include="Entities\User\UserMinimal.cs" />

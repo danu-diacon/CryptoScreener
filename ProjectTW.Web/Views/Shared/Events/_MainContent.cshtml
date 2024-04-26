@@ -1,24 +1,45 @@
-﻿@using ProjectTW.Domain.Entities.User
-@model List<AppointmentsDbTable>
+﻿<br />
+<br />
+<br />
+<div class="col-xl-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title float-left">Programări</h2>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
 
-@if (Model != null && Model.Count > 0)
-{
-    <h2>Lista programărilor:</h2>
-    <ul>
-        @foreach (var appointment in Model)
-        {
-            <li>
-                <strong>Programare ID:</strong> @appointment.Id <br />
-                <strong>Doctor ID:</strong> @appointment.DoctorId <br />
-                <strong>Patient ID:</strong> @appointment.PatientId <br />
-                <strong>Data Programării:</strong> @appointment.AppointmentDate <br />
-                <strong>Status Programare:</strong> @appointment.AppointmentStatus <br />
-            </li>
-        }
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Full Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.AllAppointments != null && ViewBag.AllAppointments.Count > 0)
+                            {
+                                int i = 1;
 
-    </ul>
-}
-else
-{
-    <p>Nu există programări disponibile.</p>
-}
+                                foreach (var appointment in ViewBag.AllAppointments)
+                                {
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <td>@appointment.FullName</td>
+                                        <td>@appointment.AppointmentDateTime.ToShortDateString()</td>
+                                        <td>@appointment.AppointmentDateTime.ToShortTimeString()</td>
+                                    </tr>
+                                    i++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

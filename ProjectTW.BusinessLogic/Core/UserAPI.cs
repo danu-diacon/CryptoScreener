@@ -232,13 +232,13 @@ namespace ProjectTW.BusinessLogic.Core
             return null;
         }
 
-        public bool AddAppointment(int DoctorId, int PatientId, DateTime AppointmentDate)
+        public bool AddAppointment(NewAppointmentData AppointmentData)
         {
             var NewAppointment = new AppointmentsDbTable
             {
-                DoctorId = DoctorId,
-                PatientId = PatientId,
-                AppointmentDate = AppointmentDate
+                DoctorId = AppointmentData.DoctorId,
+                PatientId = AppointmentData.PatientId,
+                AppointmentDate = AppointmentData.AppointmentDate
             };
 
             using (var db = new AppointmentContext())
@@ -258,6 +258,32 @@ namespace ProjectTW.BusinessLogic.Core
 
                 return appointments;
             }
+        }
+
+        public UserMinimal PatientId(int Id)
+        {
+            using (var db = new PatientContext())
+            {
+                var resultPatient = db.Patients.FirstOrDefault(e => e.Id == Id);
+
+                if (resultPatient == null)
+                {
+                    return null;
+                }
+
+                UserMinimal userMinimal = new UserMinimal
+                {
+                    Id = resultPatient.Id,
+                    FullName = resultPatient.FullName,
+                    Email = resultPatient.Email,
+                    Biography = resultPatient.Biography,
+                    LastLogin = resultPatient.LastLogin,
+                    Level = resultPatient.Level
+                };
+
+                return userMinimal;
+            }
+
         }
     }
 }
