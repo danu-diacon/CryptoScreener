@@ -10,10 +10,10 @@ namespace ProjectTW.BusinessLogic
 {
      public class BusinessLogic
      {
-          public ILogin GetLoginBL()
-          {
-               return new LoginBL();
-          }
+        public ILogin GetLoginBL()
+        {
+            return new LoginBL();
+        }
 
         public IRegister GetRegisterBL()
         {
@@ -23,6 +23,11 @@ namespace ProjectTW.BusinessLogic
         public ISession GetSessionBL()
         {
             return new SessionBL();
+        }
+
+        public IDoctor GetDoctorBL()
+        {
+            return new DoctorBL();
         }
      }
 }

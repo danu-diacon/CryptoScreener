@@ -2454,6 +2454,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\NewDoctorData.cs" />
     <Compile Include="Models\NewUserData.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2542,6 +2543,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ProfileImages\" />
     <Folder Include="Template\assets\plugins\datatables-\extensions\FixedColumns\examples\integration\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

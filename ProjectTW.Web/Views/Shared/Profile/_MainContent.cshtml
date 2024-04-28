@@ -1,5 +1,4 @@
 ﻿@using System.Web.Optimization;
-@model ProjectTW.Domain.Entities.User.UserMinimal
 <section class="wrapper main-wrapper row" style=''>
 
     <div class='col-12'>
@@ -71,7 +70,7 @@
                             <div class="">
 
                                 <h4>Biography:</h4>
-                                <p>@Model.Biography</p>
+                                <p>@ViewBag.user.Biography</p>
                                 <div class="clearfix"></div>
                                 <hr>
                                 <h4>Education:</h4>
@@ -124,15 +123,6 @@
                             </div>
 
                         </div>
-
-
-
-
-
-
-
-
-
                     </div>
                 </div>
             </div>

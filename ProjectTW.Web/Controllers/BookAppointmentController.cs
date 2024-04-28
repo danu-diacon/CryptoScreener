@@ -14,7 +14,8 @@ namespace ProjectTW.Web.Controllers
         {
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-            return View(user);
+            ViewBag.User = user;
+            return View();
         }
     }
 }

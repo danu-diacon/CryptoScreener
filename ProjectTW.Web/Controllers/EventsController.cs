@@ -34,7 +34,8 @@ namespace ProjectTW.Web.Controllers
                 };
 
                 _session.NewAppointment(AppointmentData);
-                return View(user);
+                ViewBag.User = user;
+                return View();
             }        
             
             if(user.Level == Domain.Enums.UserRole.Doctor)
@@ -58,10 +59,12 @@ namespace ProjectTW.Web.Controllers
                 }
 
                 ViewBag.AllAppointments = appointments;
-                return View(user);
+                ViewBag.User = user;
+                return View();
             }
 
-            return View(user);
+            ViewBag.User = user;
+            return View();
         }
     }
 }

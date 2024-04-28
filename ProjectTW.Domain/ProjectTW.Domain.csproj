@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +57,7 @@
     <Compile Include="Entities\User\AdminDbTable.cs" />
     <Compile Include="Entities\User\AppointmentsDbTable.cs" />
     <Compile Include="Entities\User\DoctorDbTable.cs" />
+    <Compile Include="Entities\Doctor\DoctorRegisterData.cs" />
     <Compile Include="Entities\User\NewAppointmentData.cs" />
     <Compile Include="Entities\User\PatientDbTable.cs" />
     <Compile Include="Entities\User\UserLoginData.cs" />
@@ -77,6 +79,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

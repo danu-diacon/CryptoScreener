@@ -1,5 +1,5 @@
 ﻿@using System.Web.Optimization;
-@model ProjectTW.Domain.Entities.User.UserMinimal
+
 <!-- MAIN MENU - START -->
 <div class="page-sidebar-wrapper" id="main-menu-wrapper">
 
@@ -15,14 +15,18 @@
         <div class="profile-details col-8">
 
             <h3>
-                <a href="">@Html.DisplayFor(user => user.FullName)</a>
+                <a href="">@if (@ViewBag.user != null)
+                {@ViewBag.user.FullName}</a>
 
                 <!-- Available statuses: online, idle, busy, away and offline -->
                 <span class="profile-status online"></span>
             </h3>
 
-            <p class="profile-title">@Html.DisplayFor(user => user.Level) @if (Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
-                        {@Html.DisplayFor(user => user.Specilality)}</p>
+            <p class="profile-title">
+                @if (@ViewBag.user != null)
+                {@ViewBag.user.Level} @if (@ViewBag.user != null && ViewBag.user.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
+                {@ViewBag.user.Specilality}
+            </p>
 
         </div>
 
@@ -40,7 +44,7 @@
                 <span class="title">Home</span>
             </a>
         </li>
-        @if (Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Admin)
+        @if (ViewBag.user != null && ViewBag.user.Level == ProjectTW.Domain.Enums.UserRole.Admin)
         {
             <li class="">
                 <a href="javascript:;">
@@ -62,7 +66,7 @@
 
             </li>
         }
-        @if (Model != null && !(Model.Level == ProjectTW.Domain.Enums.UserRole.Patient))
+        @if (!(ViewBag.user != null && ViewBag.user.Level == ProjectTW.Domain.Enums.UserRole.Patient))
         {
             <li class="">
                 <a href="javascript:;">
@@ -95,7 +99,7 @@
                 </li>
             </ul>
         </li>
-        @if (Model != null && (Model.Level == ProjectTW.Domain.Enums.UserRole.Admin))
+        @if (ViewBag.user != null && ViewBag.user.Level == ProjectTW.Domain.Enums.UserRole.Admin)
         {
             <li class="">
                 <a href="javascript:;">

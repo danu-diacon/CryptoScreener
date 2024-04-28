@@ -1,5 +1,5 @@
 ﻿@using System.Web.Optimization;
-@model ProjectTW.Domain.Entities.User.UserMinimal
+
 <div class='logo-area'>
 
 </div>
@@ -135,7 +135,8 @@
             <li class="profile list-inline-item">
                 <a href="#" data-toggle="dropdown" class="toggle">
                     <img src="~/Template/data/profile/profile-hospital.jpg" alt="user-image" class="rounded-circle img-inline">
-                    <span>@Html.DisplayFor(user => user.FullName) <i class="fa fa-angle-down"></i></span>
+                    <span>@if (@ViewBag.user != null)
+                    {@ViewBag.user.FullName} <i class="fa fa-angle-down"></i></span>
                 </a>
                 <ul class="dropdown-menu profile animated fadeIn">
                     <li class="dropdown-item">
