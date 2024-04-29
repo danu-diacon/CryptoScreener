@@ -14,6 +14,7 @@ namespace ProjectTW.Domain.Entities.User
         public string Email { get; set; }
         public DoctorSpeciality Specilality { get; set; }
         public string Biography { get; set; }
+        public string ProfileImagePath { get; set; }
         public DateTime LastLogin { get; set; }
         public UserRole Level { get; set; }
     }

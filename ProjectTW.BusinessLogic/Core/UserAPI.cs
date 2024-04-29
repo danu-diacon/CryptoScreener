@@ -181,6 +181,7 @@ namespace ProjectTW.BusinessLogic.Core
                     Email = currentUserPatient.Email,
                     Biography = currentUserPatient.Biography,
                     LastLogin = currentUserPatient.LastLogin,
+                    ProfileImagePath = currentUserPatient.ProfileImage,
                     Level = currentUserPatient.Level
 
                 };
@@ -203,6 +204,7 @@ namespace ProjectTW.BusinessLogic.Core
                     Specilality = currentUserDoctor.Specilality,
                     Biography = currentUserDoctor.Biography,
                     LastLogin = currentUserDoctor.LastLogin,
+                    ProfileImagePath = currentUserDoctor.ProfileImage,
                     Level = currentUserDoctor.Level
 
                 };
@@ -223,6 +225,7 @@ namespace ProjectTW.BusinessLogic.Core
                     FullName = currentUserAdmin.FullName,
                     Email = currentUserAdmin.Email,
                     LastLogin = currentUserAdmin.LastLogin,
+                    ProfileImagePath = currentUserAdmin.ProfileImage,
                     Level = currentUserAdmin.Level
 
                 };

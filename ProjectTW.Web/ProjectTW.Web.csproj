@@ -168,6 +168,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="ProfileImages\Default_ProfileImage.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2543,7 +2544,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ProfileImages\" />
     <Folder Include="Template\assets\plugins\datatables-\extensions\FixedColumns\examples\integration\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

@@ -34,7 +34,14 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-12">
                         <div class="uprofile-image">
-                            <img src="Template/data/patients/patient-1.jpg" class="img-fluid">
+                            @if (ViewBag.user.ProfileImagePath != null)
+                            {
+                                <img alt="" src="@ViewBag.user.ProfileImagePath.Substring(1)" class="img-fluid">
+                            }
+                            else
+                            {
+                                <img alt="" src="~/ProfileImages/Default_ProfileImage.png" class="img-fluid">
+                            }
                         </div>
                         <div class="uprofile-name">
                             <h3>
@@ -73,53 +80,6 @@
                                 <p>@ViewBag.user.Biography</p>
                                 <div class="clearfix"></div>
                                 <hr>
-                                <h4>Education:</h4>
-                                <ul>
-                                    <li>B.Com from Ski University</li>
-                                    <li>In hac habitasse platea dictumst.</li>
-                                    <li>In hac habitasse platea dictumst.</li>
-                                    <li>Vivamus elementum semper nisi.</li>
-                                    <li>Praesent ac sem eget est egestas volutpat.</li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <hr>
-                                <h4>Past Visit History:</h4>
-                                <ul>
-                                    <li>Integer tincidunt.</li>
-                                    <li>Praesent vestibulum dapibus nibh.</li>
-                                    <li>Integer tincidunt.</li>
-                                    <li>Praesent vestibulum dapibus nibh.</li>
-                                    <li>Integer tincidunt.</li>
-                                    <li>Praesent vestibulum dapibus nibh.</li>
-                                </ul>
-
-                                <div class="clearfix"></div>
-                                <hr>
-                                <h4>Medical Issues:</h4>
-                                <ul>
-                                    <li>Integer tincidunt.</li>
-                                    <li>Praesent vestibulum dapibus nibh.</li>
-                                    <li>M.B.B.S from Ski University</li>
-                                    <li>Praesent vestibulum dapibus nibh.</li>
-                                    <li>Proin pretium, leo ac pellentesque mollis justo.</li>
-                                    <li>unc ultrices eros, sed gravida augue augue</li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <hr>
-                                <h4>Medications and Reports:</h4>
-                                <ul>
-                                    <li>Integer tincidunt.</li>
-                                    <li>Praesent vestibulum dapibus nibh.</li>
-                                    <li> Phasellus consectetuer vestibulum elit.</li>
-                                    <li>M.B.B.S from Ski University</li>
-                                    <li>Praesent vestibulum dapibus nibh.</li>
-                                    <li>Proin pretium, leo ac pellentesque mollis justo.</li>
-                                    <li>unc ultrices eros, sed gravida augue augue</li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <hr>
-                                <div class="clearfix"></div>
-
                             </div>
 
                         </div>

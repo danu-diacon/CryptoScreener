@@ -8,7 +8,14 @@
 
         <div class="profile-image col-4">
             <a href="">
-                <img alt="" src="~/Template/data/profile/profile-hospital.jpg" class="img-fluid rounded-circle">
+                @if (ViewBag.user.ProfileImagePath != null)
+                {
+                    <img alt="" src="@ViewBag.user.ProfileImagePath.Substring(1)" class="img-fluid rounded-circle">
+                }
+                else
+                {
+                    <img alt="" src="~/ProfileImages/Default_ProfileImage.png" class="img-fluid rounded-circle">
+                }
             </a>
         </div>
 
