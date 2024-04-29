@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /ProjectTW.Web/Web.config
+/ProjectTW.Web/ProfileImages
