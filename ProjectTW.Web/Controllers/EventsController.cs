@@ -24,18 +24,28 @@ namespace ProjectTW.Web.Controllers
         {
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-            if(user.Level == Domain.Enums.UserRole.Patient)
+            GlobalData globalData = new GlobalData()
+            {
+                Email = user.Email,
+                FullName = user.FullName,
+                Speciality = user.Specilality,
+                Biography = user.Biography,
+                ProfileImagePath = user.ProfileImagePath,
+                Level = user.Level
+            };
+
+            if (user.Level == Domain.Enums.UserRole.Patient)
             {
                 NewAppointmentData AppointmentData = new NewAppointmentData()
                 {
-                    DoctorId = 1,
+                    DoctorId = 3,
                     PatientId = user.Id,
                     AppointmentDate = DateTime.Now.AddMinutes(10)
                 };
 
                 _session.NewAppointment(AppointmentData);
-                ViewBag.User = user;
-                return View();
+
+                return View(globalData);
             }        
             
             if(user.Level == Domain.Enums.UserRole.Doctor)
@@ -58,13 +68,12 @@ namespace ProjectTW.Web.Controllers
                     appointments.Add(appointment_temp);
                 }
 
-                ViewBag.AllAppointments = appointments;
-                ViewBag.User = user;
-                return View();
+                globalData.AllAppointments = appointments;
+
+                return View(globalData);
             }
 
-            ViewBag.User = user;
-            return View();
+            return View(globalData);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization;
+@model ProjectTW.Web.Models.GlobalData
 
 <!-- MAIN MENU - START -->
 <div class="page-sidebar-wrapper" id="main-menu-wrapper">
@@ -8,9 +9,9 @@
 
         <div class="profile-image col-4">
             <a href="">
-                @if (ViewBag.user.ProfileImagePath != null)
+                @if (Model != null && Model.ProfileImagePath != null)
                 {
-                    <img alt="" src="@ViewBag.user.ProfileImagePath.Substring(1)" class="img-fluid rounded-circle">
+                    <img alt="" src="@Model.ProfileImagePath.Substring(1)" class="img-fluid rounded-circle">
                 }
                 else
                 {
@@ -22,17 +23,16 @@
         <div class="profile-details col-8">
 
             <h3>
-                <a href="">@if (@ViewBag.user != null)
-                {@ViewBag.user.FullName}</a>
+                <a href="">@if (Model != null)
+                {@Html.DisplayFor(u => u.FullName)}</a>
 
                 <!-- Available statuses: online, idle, busy, away and offline -->
                 <span class="profile-status online"></span>
             </h3>
 
             <p class="profile-title">
-                @if (@ViewBag.user != null)
-                {@ViewBag.user.Level} @if (@ViewBag.user != null && ViewBag.user.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
-                {@ViewBag.user.Specilality}
+                @if (@Model != null)
+                {@Model.Level} @if (@Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor){@Model.Speciality}
             </p>
 
         </div>
@@ -51,7 +51,7 @@
                 <span class="title">Home</span>
             </a>
         </li>
-        @if (ViewBag.user != null && ViewBag.user.Level == ProjectTW.Domain.Enums.UserRole.Admin)
+        @if (Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Admin)
         {
             <li class="">
                 <a href="javascript:;">
@@ -73,7 +73,7 @@
 
             </li>
         }
-        @if (!(ViewBag.user != null && ViewBag.user.Level == ProjectTW.Domain.Enums.UserRole.Patient))
+        @if (!(Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Patient))
         {
             <li class="">
                 <a href="javascript:;">
@@ -106,7 +106,7 @@
                 </li>
             </ul>
         </li>
-        @if (ViewBag.user != null && ViewBag.user.Level == ProjectTW.Domain.Enums.UserRole.Admin)
+        @if (Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Admin)
         {
             <li class="">
                 <a href="javascript:;">

@@ -2455,6 +2455,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\GlobalData.cs" />
     <Compile Include="Models\NewDoctorData.cs" />
     <Compile Include="Models\NewUserData.cs" />
     <Compile Include="Models\UserData.cs" />

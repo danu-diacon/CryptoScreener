@@ -1,4 +1,6 @@
-﻿<br />
+﻿@model ProjectTW.Web.Models.GlobalData
+
+<br />
 <br />
 <br />
 <div class="col-xl-12">
@@ -20,11 +22,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (ViewBag.AllAppointments != null && ViewBag.AllAppointments.Count > 0)
+                            @if (Model.AllAppointments != null && Model.AllAppointments.Count > 0)
                             {
                                 int i = 1;
 
-                                foreach (var appointment in ViewBag.AllAppointments)
+                                foreach (var appointment in Model.AllAppointments)
                                 {
                                     <tr>
                                         <th scope="row">@i</th>

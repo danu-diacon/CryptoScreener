@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization;
+@model ProjectTW.Web.Models.GlobalData
 
 <div class='logo-area'>
 
@@ -134,17 +135,17 @@
         <ul class="info-menu right-links list-inline list-unstyled">
             <li class="profile list-inline-item">
                 <a href="#" data-toggle="dropdown" class="toggle">
-                    @if (ViewBag.user.ProfileImagePath != null)
+                    @if (Model != null && Model.ProfileImagePath != null)
                     {
-                        <img src="@ViewBag.user.ProfileImagePath.Substring(1)" alt="user-image" class="rounded-circle img-inline">
+                        <img src="@Model.ProfileImagePath.Substring(1)" alt="user-image" class="rounded-circle img-inline">
                     }
                     else
                     {
                         <img src="~/ProfileImages/Default_ProfileImage.png" alt="user-image" class="rounded-circle img-inline">
                     }
-                    <span>
-                        @if (@ViewBag.user != null)
-                        {@ViewBag.user.FullName} <i class="fa fa-angle-down"></i>
+                <span>
+                    @if (Model != null)
+                    {@Html.DisplayFor(u => u.FullName)} <i class="fa fa-angle-down"></i>
                 </span>
                 </a>
                 <ul class="dropdown-menu profile animated fadeIn">

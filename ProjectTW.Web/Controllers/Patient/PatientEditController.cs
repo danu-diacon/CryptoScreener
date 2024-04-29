@@ -1,4 +1,5 @@
 ﻿using ProjectTW.Web.Extension;
+using ProjectTW.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,17 @@ namespace ProjectTW.Web.Controllers
         {
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-            ViewBag.User = user;
-            return View();
+            GlobalData globalData = new GlobalData()
+            {
+                Email = user.Email,
+                FullName = user.FullName,
+                Speciality = user.Specilality,
+                Biography = user.Biography,
+                ProfileImagePath = user.ProfileImagePath,
+                Level = user.Level
+            };
+
+            return View(globalData);
         }
     }
 }

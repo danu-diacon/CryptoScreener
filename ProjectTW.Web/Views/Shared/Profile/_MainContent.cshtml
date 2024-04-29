@@ -1,11 +1,12 @@
 ﻿@using System.Web.Optimization;
+@model ProjectTW.Web.Models.GlobalData
 <section class="wrapper main-wrapper row" style=''>
 
     <div class='col-12'>
         <div class="page-title">
 
             <div class="float-left">
-                <!-- PAGE HEADING TAG - START --><h1 class="title">Patient Profile</h1><!-- PAGE HEADING TAG - END -->
+                <!-- PAGE HEADING TAG - START --><h1 class="title">Profile</h1><!-- PAGE HEADING TAG - END -->
             </div>
 
             <div class="float-right d-none">
@@ -34,9 +35,9 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-12">
                         <div class="uprofile-image">
-                            @if (ViewBag.user.ProfileImagePath != null)
+                            @if (Model != null && Model.ProfileImagePath != null)
                             {
-                                <img alt="" src="@ViewBag.user.ProfileImagePath.Substring(1)" class="img-fluid">
+                                <img alt="" src="@Model.ProfileImagePath.Substring(1)" class="img-fluid">
                             }
                             else
                             {
@@ -45,11 +46,22 @@
                         </div>
                         <div class="uprofile-name">
                             <h3>
-                                <a href="#">Mr. John Wilson</a>
+                                <a href="#">@Html.DisplayFor(u => u.FullName)</a>
                                 <!-- Available statuses: online, idle, busy, away and offline -->
                                 <span class="uprofile-status online"></span>
                             </h3>
-                            <p class="uprofile-title">School Teacher</p>
+                            <p class="uprofile-title">
+                                @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
+                                {
+                                    @Html.DisplayFor(u => u.Level);
+                                    <span>:</span>
+                                    @Html.DisplayFor(u => u.Speciality);
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(u => u.Level);
+                                }
+                            </p>
                         </div>
                         <div class="uprofile-info">
                             <ul class="list-unstyled">
@@ -77,7 +89,7 @@
                             <div class="">
 
                                 <h4>Biography:</h4>
-                                <p>@ViewBag.user.Biography</p>
+                                <p>@Html.DisplayFor(u => u.Biography)</p>
                                 <div class="clearfix"></div>
                                 <hr>
                             </div>

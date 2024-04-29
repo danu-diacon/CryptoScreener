@@ -29,13 +29,22 @@ namespace ProjectTW.Web.Controllers
         {
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-            ViewBag.User = user;
-            return View();
+            GlobalData globalData = new GlobalData()
+            {
+                Email = user.Email,
+                FullName = user.FullName,
+                Speciality = user.Specilality,
+                Biography = user.Biography,
+                ProfileImagePath = user.ProfileImagePath,
+                Level = user.Level
+            };
+
+            return View(globalData);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(NewDoctorData doctorRegisterData)
+        public ActionResult Index(GlobalData doctorRegisterData)
         {
             if(ModelState.IsValid && doctorRegisterData.ProfileImage != null && doctorRegisterData.ProfileImage.ContentLength > 0)
             {
