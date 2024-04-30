@@ -29,5 +29,10 @@ namespace ProjectTW.BusinessLogic
         {
             return new DoctorBL();
         }
+          
+        public IPatient GetPatientBL()
+          {
+               return new PatientBL();
+          }
      }
 }

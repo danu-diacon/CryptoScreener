@@ -1,4 +1,6 @@
-﻿<section id="main-content" class=" ">
+﻿@model ProjectTW.Web.Models.GlobalData
+
+<section id="main-content" class=" ">
      <section class="wrapper main-wrapper row" style=''>
 
           <div class='col-12'>
@@ -41,22 +43,45 @@
                          <div class="row">
                               <form action="#" method="post">
                                    <div class="col-12 col-md-9 col-lg-8">
-                                        <div class="form-group">
-                                             <label class="form-label" for="field-1">Name</label>
-                                             <span class="desc"></span>
-                                             <div class="controls">
-                                                  <input type="text" class="form-control" id="field-1">
+                                        @using (Html.BeginForm("Index", "BookAppointment", FormMethod.Post))
+                                        {
+                                             @Html.AntiForgeryToken()
+                                             <div class="form-group">
+                                                  <label class="form-label" for="field-5">Speciality</label>
+                                                  <span class="desc"></span>
+                                                  <select class="form-control" name="Speciality" onchange="this.form.submit()">
+                                                       <option></option>
+                                                       @foreach (var speciality in Enum.GetValues(typeof(ProjectTW.Domain.Enums.DoctorSpeciality)))
+                                                       {
+                                                            <option>@speciality</option>
+                                                       }
+                                                  </select>
                                              </div>
+                                        }
+
+                                        <div class="form-group">
+                                             <label class="form-label" for="field-5">Doctor</label>
+                                             <span class="desc"></span>
+                                             <select class="form-control">
+                                                  <option></option>
+                                                  @if (Model.DoctorList != null)
+                                                  {
+                                                       foreach (var doctor in Model.DoctorList)
+                                                       {
+                                                            <option>@doctor.FullName</option>
+                                                       }
+                                                  }
+                                             </select>
                                         </div>
                                         <div class="form-group">
-                                             <label class="form-label" for="field-5">Date of Birth</label>
+                                             <label class="form-label" for="field-5">Select date</label>
                                              <span class="desc">e.g. "04/03/2015"</span>
                                              <div class="controls">
                                                   <input type="text" class="form-control datepicker" data-format="mm/dd/yyyy" value="">
                                              </div>
                                         </div>
                                         <div class="form-group">
-                                             <label class="form-label" for="field-5">Gender</label>
+                                             <label class="form-label" for="field-5">Select time</label>
                                              <span class="desc"></span>
                                              <select class="form-control">
                                                   <option></option>

@@ -1,4 +1,5 @@
-﻿using ProjectTW.Domain.Enums;
+﻿using ProjectTW.Domain.Entities.User;
+using ProjectTW.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace ProjectTW.Web.Models
 
         //New Doctor Data
         public DoctorSpeciality Speciality { get; set; }
+
+        public List<UserMinimal> DoctorList { get; set; }
 
 
         //Appointment

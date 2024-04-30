@@ -1,6 +1,7 @@
 ﻿using ProjectTW.BusinessLogic.DBModel;
 using ProjectTW.Domain.Entities.Response;
 using ProjectTW.Domain.Entities.User;
+using ProjectTW.Domain.Enums;
 using ProjectTW.Helper;
 using System;
 using System.Collections.Generic;
@@ -285,8 +286,19 @@ namespace ProjectTW.BusinessLogic.Core
                 };
 
                 return userMinimal;
-            }
-
+            } 
         }
+
+         public List<UserMinimal> DoctorsBySpeciality(DoctorSpeciality doctorSpeciality)
+          {
+               using(var db = new DoctorContext())
+               {
+                    var dbDoctors = db.Doctors.Where(p => p.Specilality == doctorSpeciality).ToList();
+
+                    var doctors = dbDoctors.Select(d => new UserMinimal { FullName = d.FullName }).ToList();
+
+                    return doctors;
+               }
+          }
     }
 }
