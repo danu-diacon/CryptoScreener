@@ -2468,40 +2468,40 @@ var table5 = $('#example-5').DataTable();
         /*----------------------------*/
 
 
-        // datepicker
-        if ($.isFunction($.fn.datepicker)) {
-            $(".datepicker").each(function(i, e) {
-                var $this = $(e),
-                    options = {
-                        minViewMode: getValue($this, 'minViewMode', 0),
-                        format: getValue($this, 'format', 'mm/dd/yyyy'),
-                        startDate: getValue($this, 'startDate', ''),
-                        endDate: getValue($this, 'endDate', ''),
-                        daysOfWeekDisabled: getValue($this, 'disabledDays', ''),
-                        startView: getValue($this, 'startView', 0)
-                    },
-                    $nxt = $this.next(),
-                    $prv = $this.prev();
+         // datepicker
+         if ($.isFunction($.fn.datepicker)) {
+              $(".datepicker").each(function (i, e) {
+                   var $this = $(e),
+                        options = {
+                             minViewMode: getValue($this, 'minViewMode', 0),
+                             format: getValue($this, 'format', 'mm/dd/yyyy'),
+                             startDate: '0d', // Setăm data minimă ca fiind azi
+                             endDate: getValue($this, 'endDate', ''),
+                             daysOfWeekDisabled: getValue($this, 'disabledDays', ''),
+                             startView: getValue($this, 'startView', 0)
+                        },
+                        $nxt = $this.next(),
+                        $prv = $this.prev();
 
 
-                $this.datepicker(options);
+                   $this.datepicker(options);
 
-                if ($nxt.is('.input-group-addon') && $nxt.has('a')) {
-                    $nxt.on('click', function(ev) {
-                        ev.preventDefault();
-                        $this.datepicker('show');
-                    });
-                }
+                   if ($nxt.is('.input-group-addon') && $nxt.has('a')) {
+                        $nxt.on('click', function (ev) {
+                             ev.preventDefault();
+                             $this.datepicker('show');
+                        });
+                   }
 
-                if ($prv.is('.input-group-addon') && $prv.has('a')) {
-                    $prv.on('click', function(ev) {
-                        ev.preventDefault();
+                   if ($prv.is('.input-group-addon') && $prv.has('a')) {
+                        $prv.on('click', function (ev) {
+                             ev.preventDefault();
 
-                        $this.datepicker('show');
-                    });
-                }
-            });
-        }
+                             $this.datepicker('show');
+                        });
+                   }
+              });
+         }
 
 
 

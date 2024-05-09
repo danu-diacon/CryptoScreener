@@ -289,7 +289,7 @@ namespace ProjectTW.BusinessLogic.Core
             } 
         }
 
-         public List<UserMinimal> DoctorsBySpeciality(DoctorSpeciality doctorSpeciality)
+          public List<UserMinimal> DoctorsBySpeciality(DoctorSpeciality doctorSpeciality)
           {
                using(var db = new DoctorContext())
                {
@@ -300,5 +300,20 @@ namespace ProjectTW.BusinessLogic.Core
                     return doctors;
                }
           }
-    }
+
+          public List<DateTime> AvailableTimeByDoctorId(NewAppointmentData partitialData)
+          {
+               List<DateTime> availableTimes = new List<DateTime>();
+               DateTime startTime = DateTime.Today.AddHours(9); // Ora de început (de exemplu, 9:00)
+               DateTime endTime = DateTime.Today.AddHours(16).AddMinutes(30); // Ora de sfârșit (de exemplu, 16:30)
+
+               while (startTime <= endTime)
+               {
+                    availableTimes.Add(startTime);
+                    startTime = startTime.AddMinutes(30); // Intervalul de 30 de minute
+               }
+
+               return availableTimes;
+          }
+     }
 }

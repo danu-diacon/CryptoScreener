@@ -11,5 +11,6 @@ namespace ProjectTW.BusinessLogic.Interfaces
      public interface IPatient
      {
           List<UserMinimal> GetDoctorsBySpeciality(DoctorSpeciality doctorSpeciality);
+          List<DateTime> GetAvailableTimeByDoctorId(NewAppointmentData partitialData);
      }
 }

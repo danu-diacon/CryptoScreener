@@ -16,5 +16,10 @@ namespace ProjectTW.BusinessLogic.AppBL
           {
                return DoctorsBySpeciality(doctorSpeciality);
           }
+
+          public List<DateTime> GetAvailableTimeByDoctorId(NewAppointmentData partitialData)
+          {
+               return AvailableTimeByDoctorId(partitialData);
+          }
      }
 }

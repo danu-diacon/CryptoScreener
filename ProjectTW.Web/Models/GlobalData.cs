@@ -7,37 +7,39 @@ using System.Web;
 
 namespace ProjectTW.Web.Models
 {
-    public class GlobalData
-    {
-        //GLobal Data
-        public string Email { get; set; }
+     public class GlobalData
+     {
+          //GLobal Data
+          public string Email { get; set; }
 
-        public string Password { get; set; }
+          public string Password { get; set; }
 
-        public string FullName { get; set; }
+          public string FullName { get; set; }
 
-        public string Biography { get; set; }
+          public string Biography { get; set; }
 
-        public HttpPostedFileBase ProfileImage { get; set; }
+          public HttpPostedFileBase ProfileImage { get; set; }
 
-        public string ProfileImagePath { get; set; }
+          public string ProfileImagePath { get; set; }
 
-        public UserRole Level { get; set; }
-
-
-        //New Doctor Data
-        public DoctorSpeciality Speciality { get; set; }
-
-        public List<UserMinimal> DoctorList { get; set; }
+          public UserRole Level { get; set; }
 
 
-        //Appointment
-        public int Id { get; set; }
+          //New Doctor Data
+          public DoctorSpeciality Speciality { get; set; }
 
-        public DateTime AppointmentDateTime { get; set; }
+          public List<UserMinimal> DoctorList { get; set; }
 
-        public AppointmentStatus AppointmentStatus { get; set; }
 
-        public List<Appointment> AllAppointments { get; set; }
-    }
+          //Appointment
+          public int Id { get; set; }
+
+          public int DoctorId { get; set; }
+
+          public DateTime AppointmentDateTime { get; set; }
+
+          public AppointmentStatus AppointmentStatus { get; set; }
+
+          public List<Appointment> AllAppointments { get; set; }
+     }
 }
