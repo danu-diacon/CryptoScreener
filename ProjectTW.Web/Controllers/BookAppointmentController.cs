@@ -12,10 +12,10 @@ namespace ProjectTW.Web.Controllers
 {
      public class BookAppointmentController : Controller
      {
-
-          public readonly ISession _session;
           public readonly IPatient _patient;
-          public BookAppointmentController()
+          public readonly ISession _session;
+
+        public BookAppointmentController()
           {
                var bl = new BusinessLogic.BusinessLogic();
                _patient = bl.GetPatientBL();
