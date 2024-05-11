@@ -2468,6 +2468,7 @@ var table5 = $('#example-5').DataTable();
         /*----------------------------*/
 
 
+         
          // datepicker
          if ($.isFunction($.fn.datepicker)) {
               $(".datepicker").each(function (i, e) {
@@ -2476,13 +2477,33 @@ var table5 = $('#example-5').DataTable();
                              minViewMode: getValue($this, 'minViewMode', 0),
                              format: getValue($this, 'format', 'mm/dd/yyyy'),
                              startDate: '0d', // Setăm data minimă ca fiind azi
-                             endDate: getValue($this, 'endDate', ''),
-                             daysOfWeekDisabled: getValue($this, 'disabledDays', ''),
-                             startView: getValue($this, 'startView', 0)
-                        },
-                        $nxt = $this.next(),
-                        $prv = $this.prev();
+                             endDate: '+30d', // Setăm data maximă ca fiind azi plus 30 de zile
+                             startView: getValue($this, 'startView', 0),
+                             beforeShowDay: function (date) {
+                                  var day = date.getDay();
+                                  // Restricție pentru sâmbătă și duminică
+                                  if (day == 0 || day == 6) {
+                                       return {
+                                            enabled: false
+                                       };
+                                  }
+                                  return {
+                                       enabled: true
+                                  };
+                             }
+                        };
 
+                   // Verificăm dacă astăzi este sâmbătă sau duminică
+                   var today = new Date();
+                   var dayOfWeek = today.getDay();
+                   if (dayOfWeek === 6) { // Dacă este sâmbătă
+                        options.startDate = '+2d'; // Setăm data de început la luni
+                   } else if (dayOfWeek === 0) { // Dacă este duminică
+                        options.startDate = '+1d'; // Setăm data de început la următoarea zi
+                   }
+
+                   var $nxt = $this.next(),
+                        $prv = $this.prev();
 
                    $this.datepicker(options);
 
@@ -2496,13 +2517,11 @@ var table5 = $('#example-5').DataTable();
                    if ($prv.is('.input-group-addon') && $prv.has('a')) {
                         $prv.on('click', function (ev) {
                              ev.preventDefault();
-
                              $this.datepicker('show');
                         });
                    }
               });
          }
-
 
 
         /*-------------------------------------------*/

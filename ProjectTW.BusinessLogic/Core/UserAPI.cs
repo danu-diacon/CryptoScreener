@@ -295,7 +295,7 @@ namespace ProjectTW.BusinessLogic.Core
                {
                     var dbDoctors = db.Doctors.Where(p => p.Specilality == doctorSpeciality).ToList();
 
-                    var doctors = dbDoctors.Select(d => new UserMinimal { FullName = d.FullName }).ToList();
+                    var doctors = dbDoctors.Select(d => new UserMinimal { Id = d.Id, FullName = d.FullName }).ToList();
 
                     return doctors;
                }

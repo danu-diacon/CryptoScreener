@@ -13,11 +13,13 @@ namespace ProjectTW.Web.Controllers
      public class BookAppointmentController : Controller
      {
 
+          public readonly ISession _session;
           public readonly IPatient _patient;
           public BookAppointmentController()
           {
                var bl = new BusinessLogic.BusinessLogic();
                _patient = bl.GetPatientBL();
+               _session = bl.GetSessionBL();
           }
           // GET: BookAppointment
           public ActionResult Index()
@@ -57,6 +59,22 @@ namespace ProjectTW.Web.Controllers
                var availableTime = _patient.GetAvailableTimeByDoctorId(partitialData);
 
                return Json(availableTime);
+          }
+          [HttpPost]
+          public ActionResult SaveAppointment(GlobalData globalData)
+          {
+               var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+               NewAppointmentData newAppointmentData = new NewAppointmentData()
+               {
+                    DoctorId = globalData.DoctorId,
+                    PatientId = user.Id,
+                    AppointmentDate = globalData.AppointmentDateTime
+               };
+
+               _session.NewAppointment(newAppointmentData);
+
+               return Json(newAppointmentData);
           }
 
      }

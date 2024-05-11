@@ -3,9 +3,10 @@
      $('select[name="Speciality"]').change(function () {
           // Șterge conținutul câmpurilor de mai jos
           $('#timeSelect').empty();
-          $('textarea#field-6').val('');
+          $('select[name="timeSelect"]').val('');
+          $('#doctorSelect').empty();
+          $('select[name="doctorSelect"]').val('');
           $('.datepicker').val(''); // Șterge valoarea câmpului de dată
-          $('input[name="AppointmentDateTime"]').val('');
 
           // Obține valoarea specialității selectate
           var speciality = $(this).val();
@@ -34,38 +35,53 @@
      });
 
      // La selectarea unui doctor
-     $('#doctorSelect').change(function () {
+     $('select[name="doctorSelect"]').change(function () {
           // Șterge conținutul câmpurilor de mai jos
-          $('textarea#field-6').val('');
           $('.datepicker').val(''); // Șterge valoarea câmpului de dată
           $('#timeSelect').val(''); // Șterge valoarea câmpului pentru ora
+          $('select[name="timeSelect"]').val('');
           $('#timeSelect').empty();
-          $('input[name="AppointmentDateTime"]').val('');
 
           // Obține ID-ul doctorului selectat
           var selectedDoctorId = $(this).val();
           // Actualizează DoctorId cu ID-ul doctorului selectat în modelul GlobalData
-          $('input[name="DoctorId"]').val(selectedDoctorId);
+          $('input[name="doctorSelect"]').val(selectedDoctorId);
      });
 
      // La selectarea unei date
-     $('.datepicker').change(function () {
+     $('input[name="dataSelect"]').change(function () {
           // Șterge conținutul câmpurilor de mai jos
+          $('select[name="timeSelect"]').val('');
           $('#timeSelect').val(''); // Șterge valoarea câmpului pentru ora
           $('#timeSelect').empty();
 
           // Obține data selectată
           var selectedDate = $(this).val();
 
+          // Descompune data în componente: lună, zi și an
+          var dateComponents = selectedDate.split('/');
+          var month = parseInt(dateComponents[0], 10); // Convertiți luna în întreg folosind radixul 10
+          var day = parseInt(dateComponents[1], 10); // Convertiți ziua în întreg folosind radixul 10
+          var year = parseInt(dateComponents[2], 10); // Convertiți anul în întreg folosind radixul 10
+
+          // Crează un obiect Date în JavaScript
+          var jsDate = new Date(year, month - 1, day); // lunile încep de la 0, deci scădem 1 din valoarea lunii
+
+          // Formatează data într-un format corespunzător pentru a fi trimisă la server
+          var formattedDate = jsDate.toISOString(); // obține un șir ISO8601: YYYY-MM-DDTHH: mm: ss.sssZ
+
+          $('input[name="dataSelect"]').val(selectedDate)
+
           // Obține ID-ul doctorului selectat
-          var selectedDoctorId = $('#doctorSelect').val();
+          var selectedDoctorId = $('select[name="doctorSelect"]').val();
+
 
           // Verificăm dacă data și ID-ul doctorului sunt valide
-          if (selectedDate && selectedDoctorId) {
+          if (selectedDate && selectedDoctorId != null) {
                // Creăm un obiect GlobalData cu datele selectate
                var globalData = {
                     DoctorId: selectedDoctorId,
-                    AppointmentDateTime: selectedDate
+                    AppointmentDateTime: formattedDate
                };
 
                // Apelează metoda AvailableTimeByDoctorId pentru a obține orele disponibile
@@ -77,6 +93,7 @@
                     success: function (data) {
                          // Șterge opțiunile existente
                          $('#timeSelect').empty();
+                         $('#timeSelect').append('<option></option>');
 
                          // Adaugă opțiunile pentru fiecare oră disponibilă
                          $.each(data, function (index, time) {
@@ -93,62 +110,88 @@
                               // Construim timpul formatat în formatul dorit
                               var formattedTime = hours + ':' + minutes;
 
-// Adăugăm opțiunea formatată în lista de selecție
-$('#timeSelect').append('<option>' + formattedTime + '</option>');
-                    });
-                },
-error: function (xhr, status, error) {
-     console.error(error);
-}
-            });
-        }
-    });
+                              // Adăugăm opțiunea formatată în lista de selecție
+                              $('#timeSelect').append('<option>' + formattedTime + '</option>');
+                         });
+                    },
+                    error: function (xhr, status, error) {
+                         console.error(error);
+                    }
+               });
+          }
+     });
 
 
-// La selectarea unei ore
-$('#timeSelect').change(function () {
-     // Obține ora selectată
-     var selectedTime = $(this).val();
-     // Actualizează ora în modelul GlobalData
-     var selectedDate = $('.datepicker').val();
-     var selectedDateTime = selectedDate + ' ' + selectedTime;
-     $('input[name="AppointmentDateTime"]').val(selectedDateTime);
-});
+     // La selectarea unei ore
+     $('select[name="timeSelect"]').change(function () {
+          // Obține ora selectată
+          var selectedTime = $(this).val();
+          // Actualizează ora în modelul GlobalData
+          $('select[name="timeSelect"]').val(selectedTime);
+     });
 
-// La apăsarea butonului "Save"
-$('button.btn-primary').click(function () {
-     // Obține toate valorile selectate
-     var speciality = $('select[name="Speciality"]').val();
-     var doctorId = $('input[name="DoctorId"]').val();
-     var appointmentDateTime = $('input[name="AppointmentDateTime"]').val();
+     // La apăsarea butonului "Save"
+     $('button.btn-primary').click(function () {
+          // Obține toate valorile selectate
+          var speciality = $('select[name="Speciality"]').val();
+          var doctorId = $('select[name="doctorSelect"]').val();
+          var selectedDate = $('input[name="dataSelect"]').val();
+          var selectedTime = $('select[name="timeSelect"]').val();
 
-     // Validare: asigură-te că toate câmpurile sunt completate
-     if (speciality && doctorId && appointmentDateTime) {
-          // Adaugă valorile în modelul GlobalData și trimite-le către server
-          var globalData = {
-               Speciality: speciality,
-               DoctorId: doctorId,
-               AppointmentDateTime: appointmentDateTime
-          };
 
-          // Face cererea AJAX pentru a salva programarea
-          $.ajax({
-               type: 'POST',
-               url: 'BookAppointment/SaveAppointment',
-               data: globalData,
-               dataType: 'json',
-               success: function (data) {
-                    // Mesaj de confirmare sau alte acțiuni după salvare
-                    alert('Programarea a fost salvată cu succes!');
-               },
-               error: function (xhr, status, error) {
-                    // În caz de eroare, afișează un mesaj de eroare
-                    console.error(error);
-               }
-          });
-     } else {
-          // Dacă nu sunt completate toate câmpurile, afișează un mesaj de eroare
-          alert('Vă rugăm să completați toate câmpurile!');
-     }
-});
+          // Validare: asigură-te că toate câmpurile sunt completate
+          if (speciality && doctorId && selectedDate && selectedTime) {
+
+               // Descompune data în componente: lună, zi și an
+               var dateComponents = selectedDate.split('/');
+               var month = parseInt(dateComponents[0], 10); // Convertiți luna în întreg folosind radixul 10
+               var day = parseInt(dateComponents[1], 10); // Convertiți ziua în întreg folosind radixul 10
+               var year = parseInt(dateComponents[2], 10); // Convertiți anul în întreg folosind radixul 10
+
+               // Descompune ora în componente: ore și minute
+               var timeComponents = selectedTime.split(':');
+               var hours = parseInt(timeComponents[0], 10); // Convertiți orele în întreg folosind radixul 10
+               var minutes = parseInt(timeComponents[1], 10); // Convertiți minutele în întreg folosind radixul 10
+
+               // Crează un obiect Date în JavaScript pentru data selectată
+               var jsDate = new Date(year, month - 1, day, hours, minutes); // lunile încep de la 0, deci scădem 1 din valoarea lunii
+
+               // Converteste obiectul Date într-un obiect DateTime compatibil cu modelul global
+               var appointmentDateTime = jsDate.toISOString();
+
+
+               // Adaugă valorile în modelul GlobalData și trimite-le către server
+               var globalData = {
+                    Speciality: speciality,
+                    DoctorId: doctorId,
+                    AppointmentDateTime: appointmentDateTime
+               };
+
+               // Face cererea AJAX pentru a salva programarea
+               $.ajax({
+                    type: 'POST',
+                    url: 'BookAppointment/SaveAppointment',
+                    data: globalData,
+                    dataType: 'json',
+                    success: function (data) {
+                         // Șterge conținutul câmpurilor de mai jos
+                         $('select[name = "Speciality"]').val('');
+                         $('#timeSelect').empty();
+                         $('#doctorSelect').empty();
+                         $('input[name="doctorSelect"]').val('');
+                         $('.datepicker').val('');
+
+                         // Mesaj de confirmare sau alte acțiuni după salvare
+                         alert('Programarea a fost salvată cu succes!');
+                    },
+                    error: function (xhr, status, error) {
+                         // În caz de eroare, afișează un mesaj de eroare
+                         console.error(error);
+                    }
+               });
+          } else {
+               // Dacă nu sunt completate toate câmpurile, afișează un mesaj de eroare
+               alert('Vă rugăm să completați toate câmpurile!');
+          }
+     });
 });

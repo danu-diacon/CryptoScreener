@@ -36,15 +36,6 @@ namespace ProjectTW.Web.Controllers
 
             if (user.Level == Domain.Enums.UserRole.Patient)
             {
-                NewAppointmentData AppointmentData = new NewAppointmentData()
-                {
-                    DoctorId = 3,
-                    PatientId = user.Id,
-                    AppointmentDate = DateTime.Now.AddMinutes(10)
-                };
-
-                _session.NewAppointment(AppointmentData);
-
                 return View(globalData);
             }        
             
