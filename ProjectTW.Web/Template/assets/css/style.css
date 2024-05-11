@@ -5047,6 +5047,10 @@ code {
     z-index: 99;
 }
 #main-content {
+    margin-left: 130px;
+    display: block;
+}
+#main-content-others {
     margin-left: 260px;
     display: block;
 }
