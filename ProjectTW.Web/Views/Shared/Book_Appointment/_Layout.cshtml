@@ -15,7 +15,9 @@
      <meta content="" name="description" />
      <meta content="" name="author" />
      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     
 
+     <link href="~/Template/aditional/sweetalert/css/sweetalert2.min.css" rel="stylesheet" />
      @Styles.Render("~/bundles/bootstrap/css")
      @Styles.Render("~/bundles/plugins/css")
      @Styles.Render("~/bundles/core/css")
@@ -26,32 +28,33 @@
      }
 </head>
 <body>
-     <div class="page-topbar">
-          @Html.Partial("_TopBar")
-     </div>
+    <div class="page-topbar">
+        @Html.Partial("_TopBar")
+    </div>
 
-     <div class="page-container row-fluid container-fluid">
-          <div class="page-sidebar pagescroll">
-               @Html.Partial("_SideBar")
-          </div>
+    <div class="page-container row-fluid container-fluid">
+        <div class="page-sidebar pagescroll">
+            @Html.Partial("_SideBar")
+        </div>
 
-          <section id="main-content">
-               @Html.Partial("Book_Appointment/_MainContent")
-          </section>
+        <section id="main-content">
+            @Html.Partial("Book_Appointment/_MainContent")
+        </section>
 
-          <div class="page-chatapi hideit">
-               @Html.Partial("_ChatApi")
-          </div>
-          @RenderBody()
-     </div>
+        <div class="page-chatapi hideit">
+            @Html.Partial("_ChatApi")
+        </div>
+        @RenderBody()
+    </div>
 
-     @Scripts.Render("~/bundles/jquery/js")
-     @Scripts.Render("~/bundles/core/js")
-     @Scripts.Render("~/bundles/other/js")
-     @Scripts.Render("~/bundles/custom/js")
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/core/js")
+    @Scripts.Render("~/bundles/other/js")
+    @Scripts.Render("~/bundles/custom/js")
 
-     <script src="~/Scripts/myScript.js"></script>
-
-     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/myScript.js"></script>
+    <script src="~/Template/aditional/sweetalert/js/sweetalert2.min.js"></script>
+    <script src="~/Template/aditional/sweetalert/js/sweet-alerts.init.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

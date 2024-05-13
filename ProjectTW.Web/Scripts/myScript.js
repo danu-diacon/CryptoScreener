@@ -182,7 +182,15 @@
                          $('.datepicker').val('');
 
                          // Mesaj de confirmare sau alte acțiuni după salvare
-                         alert('Programarea a fost salvată cu succes!');
+                        //alert('Programarea a fost salvată cu succes!');
+
+                        // Afișarea alertei de succes dacă cererea AJAX se încheie cu succes
+                        Swal.fire({
+                            title: "Programare salvată cu succes!",
+                            text: "Vă așteptăm!",
+                            icon: "success",
+                            confirmButtonClass: "btn btn-confirm mt-2"
+                        });
                     },
                     error: function (xhr, status, error) {
                          // În caz de eroare, afișează un mesaj de eroare
@@ -191,7 +199,14 @@
                });
           } else {
                // Dacă nu sunt completate toate câmpurile, afișează un mesaj de eroare
-               alert('Vă rugăm să completați toate câmpurile!');
+              //alert('Vă rugăm să completați toate câmpurile!');
+              Swal.fire({
+                  title: "Oops...",
+                  text: "Vă rugăm să completați toate câmpurile!",
+                  icon: "error",
+                  confirmButtonClass: "btn btn-confirm mt-2"
+              });
+
           }
      });
 });
