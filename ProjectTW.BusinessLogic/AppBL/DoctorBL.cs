@@ -16,5 +16,10 @@ namespace ProjectTW.BusinessLogic.AppBL
         {
             return DoctorRegisterResponse(doctorRegisterData);
         }
+
+        public List<UserMinimal> GetAllDoctorsData()
+        {
+            return AllDoctorsData();
+        }
     }
 }

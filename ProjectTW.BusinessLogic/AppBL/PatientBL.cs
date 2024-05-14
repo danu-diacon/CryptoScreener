@@ -21,5 +21,10 @@ namespace ProjectTW.BusinessLogic.AppBL
           {
                return AvailableTimeByDoctorId(partitialData);
           }
+
+          public List<UserMinimal> GetAllPatientsData()
+          {
+            return AllPatientsData();
+          }
      }
 }

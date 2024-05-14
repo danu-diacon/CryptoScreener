@@ -25,7 +25,7 @@ namespace ProjectTW.Web.Controllers
             {
                 Email = user.Email,
                 FullName = user.FullName,
-                Speciality = user.Specilality,
+                Speciality = user.Speciality,
                 Biography = user.Biography,
                 ProfileImagePath = user.ProfileImagePath,
                 Level = user.Level

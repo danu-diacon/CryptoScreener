@@ -33,7 +33,7 @@ namespace ProjectTW.Web.Controllers
             {
                 Email = user.Email,
                 FullName = user.FullName,
-                Speciality = user.Specilality,
+                Speciality = user.Speciality,
                 Biography = user.Biography,
                 ProfileImagePath = user.ProfileImagePath,
                 Level = user.Level
@@ -81,7 +81,7 @@ namespace ProjectTW.Web.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Login");
+                    return RedirectToAction("Index", "DoctorAdd");
                 }
             }
 

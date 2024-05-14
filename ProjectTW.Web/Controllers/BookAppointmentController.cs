@@ -1,5 +1,6 @@
 ﻿using ProjectTW.BusinessLogic.Interfaces;
 using ProjectTW.Domain.Entities.User;
+using ProjectTW.Web.ActionFilters;
 using ProjectTW.Web.Extension;
 using ProjectTW.Web.Models;
 using System;
@@ -21,7 +22,8 @@ namespace ProjectTW.Web.Controllers
                _patient = bl.GetPatientBL();
                _session = bl.GetSessionBL();
           }
-          // GET: BookAppointment
+        // GET: BookAppointment
+        [PatientMod]
           public ActionResult Index()
           {
                var user = System.Web.HttpContext.Current.GetMySessionObject();
@@ -30,7 +32,7 @@ namespace ProjectTW.Web.Controllers
                {
                     Email = user.Email,
                     FullName = user.FullName,
-                    Speciality = user.Specilality,
+                    Speciality = user.Speciality,
                     Biography = user.Biography,
                     ProfileImagePath = user.ProfileImagePath,
                     Level = user.Level

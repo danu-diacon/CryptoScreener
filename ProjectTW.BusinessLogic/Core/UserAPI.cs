@@ -202,7 +202,7 @@ namespace ProjectTW.BusinessLogic.Core
                     Id = currentUserDoctor.Id,
                     FullName = currentUserDoctor.FullName,
                     Email = currentUserDoctor.Email,
-                    Specilality = currentUserDoctor.Specilality,
+                    Speciality = currentUserDoctor.Specilality,
                     Biography = currentUserDoctor.Biography,
                     LastLogin = currentUserDoctor.LastLogin,
                     ProfileImagePath = currentUserDoctor.ProfileImage,
@@ -314,6 +314,24 @@ namespace ProjectTW.BusinessLogic.Core
                }
 
                return availableTimes;
+          }
+
+          public List<UserMinimal> AllPatientsData()
+          {
+              using (var db = new PatientContext())
+              {
+                  var dbPatients = db.Patients.ToList();
+
+                  var patients = dbPatients.Select(p => new UserMinimal()
+                  {
+                      Id = p.Id,
+                      FullName = p.FullName,
+                      Biography = p.Biography,
+                      ProfileImagePath = p.ProfileImage
+                  }).ToList();
+
+                  return patients;
+              }
           }
      }
 }

@@ -73,7 +73,7 @@
 
             </li>
         }
-        @if (!(Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Patient))
+        @if ((Model != null && Model.Level != ProjectTW.Domain.Enums.UserRole.Patient))
         {
             <li class="">
                 <a href="javascript:;">
@@ -94,18 +94,15 @@
                 </ul>
             </li>
         }
-        <li class="">
-            <a href="javascript:;">
-                <i class="fa fa-calendar-o"></i>
-                <span class="title">Appointment</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    @Html.ActionLink("Book Appointment", "Index", "BookAppointment")
-                </li>
-            </ul>
-        </li>
+        @if ((Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Patient))
+        {
+            <li class="">
+                <a href="@Url.Action("Index", "BookAppointment")">
+                    <i class="fa fa-calendar-o"></i>
+                    Appointment
+                </a>
+            </li>
+        }
         @if (Model != null && Model.Level == ProjectTW.Domain.Enums.UserRole.Admin)
         {
             <li class="">
@@ -124,12 +121,15 @@
                 </ul>
             </li>
         }
-        <li class="">
-            <a href="@Url.Action("Index", "Events")">
-                <i class="fa fa-calendar"></i>
-                <span class="title">Event Management</span>
-            </a>
-        </li>
+        @if (Model != null && Model.Level != ProjectTW.Domain.Enums.UserRole.Admin)
+        {
+            <li class="">
+                <a href="@Url.Action("Index", "Events")">
+                    <i class="fa fa-calendar"></i>
+                    <span class="title">Event Management</span>
+                </a>
+            </li>
+        }
         <li class="">
             <a href="@Url.Action("Index", "Profile")">
                 <i class="fa fa-user"></i>

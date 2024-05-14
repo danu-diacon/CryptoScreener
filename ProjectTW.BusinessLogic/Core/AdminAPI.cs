@@ -73,5 +73,25 @@ namespace ProjectTW.BusinessLogic.Core
 
             return new UserRegisterResponse { Success = true, Message = "Add Doctor Successful" };
         }
+
+        public List<UserMinimal> AllDoctorsData()
+        {
+            using (var db = new DoctorContext())
+            {
+                var dbDoctors = db.Doctors.ToList();
+
+                var doctors = dbDoctors.Select(d => new UserMinimal()
+                {
+                    Id = d.Id,
+                    FullName = d.FullName,
+                    Biography = d.Biography,
+                    Speciality = d.Specilality,
+                    Level = d.Level,
+                    ProfileImagePath = d.ProfileImage
+                }).ToList();
+
+                return doctors;
+            }
+        }
     }
 }

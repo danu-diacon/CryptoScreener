@@ -41,179 +41,25 @@
                          <div class="row">
                               <div class="col-12">
 
-                                   <div class="row">
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
+                                  <div class="row">
+
+                                      @foreach (var doctor in Model.DoctorList)
+                                      {
+                                          <div class="col-md-6 col-lg-4">
+                                              <div class="team-member ">
                                                   <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-1.jpg" alt="">
+                                                      <img class="img-fluid" src="@doctor.ProfileImagePath.Substring(1)" alt="">
                                                   </div>
                                                   <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Dr. Clarine Vassar</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Physician</span>
+                                                      <h3><a href="hos-doctor-profile.html">@doctor.FullName</a></h3>
+                                                      <span class='team-member-edit'><a href="hos-doctor-edit.html"></a></span>
+                                                      <span>@doctor.Speciality</span>
                                                   </div>
-                                                  <p> The surgical specialties are the specialties in which an important part of diagnosis and treatmentby surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
-                                                  <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-2.jpg" alt="">
-                                                  </div>
-                                                  <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Dr. Brooks Latshaw</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Surgeon</span>
-                                                  </div>
-                                                  <p> The surgical specialties are the specialties in which an important part of diagnosis and treatmentby surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
-                                                  <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-3.jpg" alt="">
-                                                  </div>
-                                                  <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Dr. Clementina Brodeur</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Cardiologist</span>
-                                                  </div>
-                                                  <p>The internal medicine specialties are the specialties in which the main diagnosis and  major surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
-                                                  <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-4.jpg" alt="">
-                                                  </div>
-                                                  <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Dr. Carri Busey</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Physician</span>
-                                                  </div>
-                                                  <p> The surgical specialties are the specialties in which an important part of diagnosis and treatmentby surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
-                                                  <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-5.jpg" alt="">
-                                                  </div>
-                                                  <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Melissa Dock</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Orthopaedics</span>
-                                                  </div>
-                                                  <p>The internal medicine specialties are the specialties in which the main diagnosis and  major surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
-                                                  <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-6.jpg" alt="">
-                                                  </div>
-                                                  <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Dr. Clay Peskin</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Neurosurgery</span>
-                                                  </div>
-                                                  <p> The surgical specialties are the specialties in which an important part of diagnosis and treatmentby surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
-                                                  <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-7.jpg" alt="">
-                                                  </div>
-                                                  <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Dr. Winford K.</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Neurology</span>
-                                                  </div>
-                                                  <p>The internal medicine specialties are the specialties in which the main diagnosis and  major surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
-                                                  <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-8.jpg" alt="">
-                                                  </div>
-                                                  <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Dr. Cart</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Physician</span>
-                                                  </div>
-                                                  <p> The surgical specialties are the specialties in which an important part of diagnosis and treatmentby surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                             <div class="team-member ">
-                                                  <div class="team-img">
-                                                       <img class="img-fluid" src="Template/data/doctors/doctor-9.jpg" alt="">
-                                                  </div>
-                                                  <div class="team-info">
-                                                       <h3><a href="hos-doctor-profile.html">Dr. Angle Law</a></h3>
-                                                       <span class='team-member-edit'><a href="hos-doctor-edit.html"><i class='fa fa-pencil icon-xs'></i></a></span>
-                                                       <span>Surgeon</span>
-                                                  </div>
-                                                  <p> The surgical specialties are the specialties in which an important part of diagnosis and treatmentby surgery. </p>
-                                                  <ul class="social-icons list-inline list-unstyled">
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-facebook icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-twitter icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-google-plus icon-bordered icon-primary icon-xs"></i></a></li>
-                                                       <li class='list-inline-item'><a href="#"><i class="fa fa-linkedin icon-bordered icon-primary icon-xs"></i></a></li>
-                                                  </ul>
-                                             </div>
-                                        </div>
-                                   </div>
+                                                  <p>@(doctor.Biography.Length > 150 ? doctor.Biography.Substring(0, 150) + "..." : doctor.Biography)</p>
+                                              </div>
+                                          </div>
+                                      }
+                                  </div>
 
                               </div>
                          </div>

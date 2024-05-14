@@ -11,5 +11,7 @@ namespace ProjectTW.BusinessLogic.Interfaces
     public interface IDoctor
     {
         UserRegisterResponse DoctorRegisterAction(DoctorRegisterData doctorRegisterData);
+
+        List<UserMinimal> GetAllDoctorsData();
     }
 }

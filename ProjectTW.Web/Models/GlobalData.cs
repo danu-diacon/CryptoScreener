@@ -31,6 +31,10 @@ namespace ProjectTW.Web.Models
           public List<UserMinimal> DoctorList { get; set; }
 
 
+          //Patient Data
+          public List<UserMinimal> PatientList { get; set; }
+
+
           //Appointment
           public int Id { get; set; }
 
