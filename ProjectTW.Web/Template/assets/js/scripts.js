@@ -2476,7 +2476,7 @@ var table5 = $('#example-5').DataTable();
                         options = {
                              minViewMode: getValue($this, 'minViewMode', 0),
                              format: getValue($this, 'format', 'mm/dd/yyyy'),
-                             startDate: '0d', // Setăm data minimă ca fiind azi
+                             startDate: '+1d', // Setăm data minimă ca fiind maine
                              endDate: '+30d', // Setăm data maximă ca fiind azi plus 30 de zile
                              startView: getValue($this, 'startView', 0),
                              beforeShowDay: function (date) {

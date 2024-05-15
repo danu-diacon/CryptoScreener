@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -259,7 +260,17 @@ namespace ProjectTW.BusinessLogic.Core
         {
             using (var db = new AppointmentContext())
             {
-                var appointments = db.Appointments.Where(p => p.DoctorId == doctorID).ToList();
+                var appointments = db.Appointments.Where(p => p.DoctorId == doctorID && p.AppointmentDate > DateTime.Now).OrderBy(p => p.AppointmentDate).ToList();
+
+                return appointments;
+            }
+        }
+
+        public List<AppointmentsDbTable> AllPatientAppointments(int patientID)
+        {
+            using (var db = new AppointmentContext())
+            {
+                var appointments = db.Appointments.Where(p => p.PatientId == patientID && p.AppointmentDate > DateTime.Now).OrderBy(p => p.AppointmentDate).ToList();
 
                 return appointments;
             }
@@ -339,6 +350,19 @@ namespace ProjectTW.BusinessLogic.Core
                     startTime = startTime.AddMinutes(30); // Intervalul de 30 de minute
                }
 
+               //Selectez din baza de date
+               using (var db = new AppointmentContext())
+               {
+                   var appointments = db.Appointments.Where(a => a.DoctorId == partitialData.DoctorId && 
+                                                                DbFunctions.TruncateTime(a.AppointmentDate) == partitialData.AppointmentDate.Date)
+                                                                .Select(a => a.AppointmentDate).ToList();
+                   
+                   foreach (var appointment in appointments)
+                   {
+                       availableTimes.RemoveAll(time => time.TimeOfDay == appointment.TimeOfDay);
+                   }
+               }
+
                return availableTimes;
           }
 
@@ -358,16 +382,6 @@ namespace ProjectTW.BusinessLogic.Core
 
                   return patients;
               }
-          }
-
-          public List<AppointmentsDbTable> AllPatientAppointments(int patientID)
-          {
-               using (var db = new AppointmentContext())
-               {
-                    var appointments = db.Appointments.Where(p => p.PatientId == patientID).ToList();
-
-                    return appointments;
-               }
           }
      }
 }

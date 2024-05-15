@@ -55,7 +55,7 @@ namespace ProjectTW.Web.Controllers
                NewAppointmentData partitialData = new NewAppointmentData()
                {
                     DoctorId = globalData.DoctorId,
-                    AppointmentDate = DateTime.Today.AddHours(9).AddMinutes(30)//globalData.AppointmentDateTime
+                    AppointmentDate = globalData.AppointmentDateTime
                };
 
                var availableTime = _patient.GetAvailableTimeByDoctorId(partitialData);
