@@ -255,7 +255,7 @@ namespace ProjectTW.BusinessLogic.Core
             return true;
         }
 
-        public List<AppointmentsDbTable> AllAppointments(int doctorID)
+        public List<AppointmentsDbTable> AllDoctorAppointments(int doctorID)
         {
             using (var db = new AppointmentContext())
             {

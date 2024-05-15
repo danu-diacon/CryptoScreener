@@ -29,9 +29,9 @@ namespace ProjectTW.BusinessLogic.AppBL
             return AddAppointment(AppointmentData);
         }
 
-        public List<AppointmentsDbTable> GetAllAppointments(int doctorID)
+        public List<AppointmentsDbTable> GetAllDoctorAppointments(int doctorID)
         {
-            return AllAppointments(doctorID);
+            return AllDoctorAppointments(doctorID);
         }
 
         public UserMinimal GetPatientById(int Id)

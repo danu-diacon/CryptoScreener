@@ -16,7 +16,7 @@ namespace ProjectTW.BusinessLogic.Interfaces
 
         bool NewAppointment(NewAppointmentData AppointmentData);
 
-        List<AppointmentsDbTable> GetAllAppointments(int doctorID);
+        List<AppointmentsDbTable> GetAllDoctorAppointments(int doctorID);
 
         UserMinimal GetPatientById(int Id);
 

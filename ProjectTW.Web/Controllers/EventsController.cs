@@ -64,7 +64,7 @@ namespace ProjectTW.Web.Controllers
             
             if(user.Level == Domain.Enums.UserRole.Doctor)
             {
-                var allAppointmets = _session.GetAllAppointments(user.Id);
+                var allAppointmets = _session.GetAllDoctorAppointments(user.Id);
                 List<Appointment> appointments = new List<Appointment>();
 
                 foreach (var appointment in allAppointmets)
