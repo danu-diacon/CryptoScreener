@@ -38,5 +38,10 @@ namespace ProjectTW.BusinessLogic.AppBL
         {
             return PatientId(Id);
         }
+
+        public UserMinimal GetDoctorById(int Id)
+        {
+             return DoctorId(Id);
+        }
     }
 }

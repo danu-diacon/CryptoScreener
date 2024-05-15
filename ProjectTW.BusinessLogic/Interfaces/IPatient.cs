@@ -15,5 +15,7 @@ namespace ProjectTW.BusinessLogic.Interfaces
           List<DateTime> GetAvailableTimeByDoctorId(NewAppointmentData partitialData);
 
           List<UserMinimal> GetAllPatientsData();
+
+          List<AppointmentsDbTable> GetAllPatientAppointments(int patientID);
      }
 }

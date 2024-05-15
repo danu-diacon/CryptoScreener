@@ -26,5 +26,10 @@ namespace ProjectTW.BusinessLogic.AppBL
           {
             return AllPatientsData();
           }
+
+          public List<AppointmentsDbTable> GetAllPatientAppointments(int patientID)
+          {
+               return AllPatientAppointments(patientID);
+          }
      }
 }

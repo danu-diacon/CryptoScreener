@@ -1,4 +1,5 @@
-﻿using ProjectTW.BusinessLogic.DBModel;
+﻿using ProjectTW.BusinessLogic.AppBL;
+using ProjectTW.BusinessLogic.DBModel;
 using ProjectTW.Domain.Entities.Response;
 using ProjectTW.Domain.Entities.User;
 using ProjectTW.Domain.Enums;
@@ -289,6 +290,31 @@ namespace ProjectTW.BusinessLogic.Core
             } 
         }
 
+          public UserMinimal DoctorId(int Id)
+          {
+               using (var db = new DoctorContext())
+               {
+                    var resultDoctor = db.Doctors.FirstOrDefault(e => e.Id == Id);
+
+                    if (resultDoctor == null)
+                    {
+                         return null;
+                    }
+
+                    UserMinimal userMinimal = new UserMinimal
+                    {
+                         Id = resultDoctor.Id,
+                         FullName = resultDoctor.FullName,
+                         Email = resultDoctor.Email,
+                         Biography = resultDoctor.Biography,
+                         LastLogin = resultDoctor.LastLogin,
+                         Level = resultDoctor.Level
+                    };
+
+                    return userMinimal;
+               }
+          }
+
           public List<UserMinimal> DoctorsBySpeciality(DoctorSpeciality doctorSpeciality)
           {
                using(var db = new DoctorContext())
@@ -332,6 +358,16 @@ namespace ProjectTW.BusinessLogic.Core
 
                   return patients;
               }
+          }
+
+          public List<AppointmentsDbTable> AllPatientAppointments(int patientID)
+          {
+               using (var db = new AppointmentContext())
+               {
+                    var appointments = db.Appointments.Where(p => p.PatientId == patientID).ToList();
+
+                    return appointments;
+               }
           }
      }
 }

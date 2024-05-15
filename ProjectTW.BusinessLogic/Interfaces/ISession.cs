@@ -19,5 +19,7 @@ namespace ProjectTW.BusinessLogic.Interfaces
         List<AppointmentsDbTable> GetAllAppointments(int doctorID);
 
         UserMinimal GetPatientById(int Id);
-    }
+
+        UserMinimal GetDoctorById(int Id);
+     }
 }
