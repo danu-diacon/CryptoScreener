@@ -2,54 +2,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <!--
-      * Package: Complete Admin - Responsive Theme
-      * Subpackage: Bootstrap
-      * Version: BS4-1.0
-      * This file is part of Complete Admin Theme.
-     -->
-     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-     <meta charset="utf-8" />
-     <title>Patient Profile</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-     <meta content="" name="description" />
-     <meta content="" name="author" />
-     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--
+     * Package: Complete Admin - Responsive Theme
+     * Subpackage: Bootstrap
+     * Version: BS4-1.0
+     * This file is part of Complete Admin Theme.
+    -->
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Add Doctor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-     @Styles.Render("~/bundles/bootstrap/css")
-     @Styles.Render("~/bundles/plugins/css")
-     @Styles.Render("~/bundles/core/css")
+    <link href="~/Template/aditional/sweetalert/css/sweetalert2.min.css" rel="stylesheet" />
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/plugins/css")
+    @Styles.Render("~/bundles/core/css")
 
-     @if (IsSectionDefined("Styles"))
-     {
-          @RenderSection("Styles", required: false)
-     }
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", required: false)
+    }
 </head>
 <body>
-     <div class="page-topbar">
-          @Html.Partial("_TopBar")
-     </div>
+    <div class="page-topbar">
+        @Html.Partial("_TopBar")
+    </div>
 
-     <div class="page-container row-fluid container-fluid">
-          <div class="page-sidebar pagescroll">
-               @Html.Partial("_SideBar")
-          </div>
+    <div class="page-container row-fluid container-fluid">
+        <div class="page-sidebar pagescroll">
+            @Html.Partial("_SideBar")
+        </div>
 
-          <section id="main-content">
-               @Html.Partial("Doctor/Doctor_Add/_MainContent")
-          </section>
+        <section id="main-content">
+            @Html.Partial("Doctor/Doctor_Add/_MainContent")
+        </section>
 
-          <div class="page-chatapi hideit">
-               @Html.Partial("_ChatApi")
-          </div>
-          @RenderBody()
-     </div>
+        <div class="page-chatapi hideit">
+            @Html.Partial("_ChatApi")
+        </div>
+        @RenderBody()
+    </div>
 
-     @Scripts.Render("~/bundles/jquery/js")
-     @Scripts.Render("~/bundles/core/js")
-     @Scripts.Render("~/bundles/other/js")
-     @Scripts.Render("~/bundles/custom/js")
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/core/js")
+    @Scripts.Render("~/bundles/other/js")
+    @Scripts.Render("~/bundles/custom/js")
 
-     @RenderSection("scripts", required: false)
+    <script>
+        document.getElementById('doctorForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var form = document.getElementById('doctorForm');
+            var formData = new FormData(form);
+
+            // Validare form
+            var fullName = formData.get('DoctorAddFullName');
+            var email = formData.get('DoctorAddEmail');
+            var password = formData.get('DoctorAddPassword');
+            var speciality = formData.get('DoctorAddSpeciality');
+            var biography = formData.get('DoctorAddBiography');
+            var profileImage = formData.get('DoctorAddProfileImage');
+
+            if (!fullName || !email || !password || !speciality || !biography || !profileImage) {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Please fill in all the fields.",
+                    icon: "error",
+                    confirmButtonClass: "btn btn-confirm mt-2"
+                });
+                return;
+            }
+
+            fetch('@Url.Action("AddNewDoctor", "DoctorAdd")', { // Modificarea URL-ului aici
+                method: 'POST',
+                headers: {
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: formData
+            }).then(response => response.json())
+              .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        title: "Doctor added successfully!",
+                        text: "The doctor has been added.",
+                        icon: "success",
+                        confirmButtonClass: "btn btn-confirm mt-2"
+                    }).then(() => {
+                        form.reset();  // Golește câmpurile formularului
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: data.message,
+                        icon: "error",
+                        confirmButtonClass: "btn btn-confirm mt-2"
+                    });
+                }
+            }).catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                Swal.fire({
+                    title: "Error!",
+                    text: "There was a problem with the fetch operation.",
+                    icon: "error",
+                    confirmButtonClass: "btn btn-confirm mt-2"
+                });
+            });
+        });
+    </script>
+    <script src="~/Template/aditional/sweetalert/js/sweetalert2.min.js"></script>
+    <script src="~/Template/aditional/sweetalert/js/sweet-alerts.init.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

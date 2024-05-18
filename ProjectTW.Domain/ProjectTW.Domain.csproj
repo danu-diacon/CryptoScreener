@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Admin\HospitalData.cs" />
     <Compile Include="Entities\Response\UserLoginResponse.cs" />
     <Compile Include="Entities\Response\UserRegisterResponse.cs" />
     <Compile Include="Entities\User\AdminDbTable.cs" />

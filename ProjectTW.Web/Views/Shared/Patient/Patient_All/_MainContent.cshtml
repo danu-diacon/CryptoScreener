@@ -63,7 +63,10 @@
                                                 <div class="team-info">
                                                     <h4><a href="hos-patient-profile.html">@patient.FullName</a></h4>
                                                     <span class='team-member-edit'><a href="hos-patient-edit.html"></a></span>
-                                                    <p>@(patient.Biography.Length > 100 ? patient.Biography.Substring(0, 100) + "..." : patient.Biography)</p>
+                                                    @if (@patient.Biography != null)
+                                                    {
+                                                        <p>@(patient.Biography.Length > 100 ? patient.Biography.Substring(0, 100) + "..." : patient.Biography)</p>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>

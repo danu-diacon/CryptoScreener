@@ -160,19 +160,7 @@ jQuery(function($) {
         /*Donut Graph*/
         Morris.Donut({
             element: 'morris_donut_graph',
-            data: [{
-                value: 70,
-                label: 'foo'
-            }, {
-                value: 15,
-                label: 'bar'
-            }, {
-                value: 10,
-                label: 'baz'
-            }, {
-                value: 5,
-                label: 'A really really long label'
-            }],
+            data: chartData,
             resize: true,
             redraw: true,
             backgroundColor: '#ffffff',
@@ -184,7 +172,7 @@ jQuery(function($) {
                 '#ffcc00'
             ],
             formatter: function(x) {
-                return x + "%"
+                return x
             }
         });
 

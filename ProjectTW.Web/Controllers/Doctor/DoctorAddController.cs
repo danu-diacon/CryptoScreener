@@ -44,9 +44,9 @@ namespace ProjectTW.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(GlobalData doctorRegisterData)
+        public ActionResult AddNewDoctor(GlobalData doctorRegisterData)
         {
-            if(ModelState.IsValid && doctorRegisterData.ProfileImage != null && doctorRegisterData.ProfileImage.ContentLength > 0)
+            if(ModelState.IsValid && doctorRegisterData.DoctorAddProfileImage != null && doctorRegisterData.DoctorAddProfileImage.ContentLength > 0)
             {
                 //Save Profile Image
                 string uploadFolderPath = Path.Combine(Server.MapPath("~/ProfileImages"), Guid.NewGuid().ToString());
@@ -56,18 +56,18 @@ namespace ProjectTW.Web.Controllers
                 string directory = directoryInfo.ToString();
 
                 //Save uploaded image to the new created folder
-                string imagePath = Path.Combine(uploadFolderPath, Path.GetFileName(doctorRegisterData.ProfileImage.FileName));
-                doctorRegisterData.ProfileImage.SaveAs(imagePath);
+                string imagePath = Path.Combine(uploadFolderPath, Path.GetFileName(doctorRegisterData.DoctorAddProfileImage.FileName));
+                doctorRegisterData.DoctorAddProfileImage.SaveAs(imagePath);
 
-                var dbImagePath = "~/ProfileImages/" + directory + "/" + doctorRegisterData.ProfileImage.FileName;
+                var dbImagePath = "~/ProfileImages/" + directory + "/" + doctorRegisterData.DoctorAddProfileImage.FileName;
 
                 DoctorRegisterData doctorRegisterData1 = new DoctorRegisterData()
                 {
-                    Email = doctorRegisterData.Email,
-                    Password = doctorRegisterData.Password,
-                    FullName = doctorRegisterData.FullName,
-                    Biography = doctorRegisterData.Biography,
-                    Speciality = doctorRegisterData.Speciality,
+                    Email = doctorRegisterData.DoctorAddEmail,
+                    Password = doctorRegisterData.DoctorAddPassword,
+                    FullName = doctorRegisterData.DoctorAddFullName,
+                    Biography = doctorRegisterData.DoctorAddBiography,
+                    Speciality = doctorRegisterData.DoctorAddSpeciality,
                     ProfileImagePath = dbImagePath,
                     Level = Domain.Enums.UserRole.Doctor
                 };
@@ -77,15 +77,15 @@ namespace ProjectTW.Web.Controllers
                 if (!doctorRegister.Success)
                 {
                     ModelState.AddModelError("", doctorRegister.Message);
-                    return View();
+                    return Json(new { success = false, message = doctorRegister.Message });
                 }
                 else
                 {
-                    return RedirectToAction("Index", "DoctorAdd");
+                    return Json(new { success = true, message = "Doctor registered successfully." });
                 }
             }
 
-            return View();
+            return Json(new { success = false, message = "Model state is invalid or profile image is missing." });
         }
     }
 }

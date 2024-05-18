@@ -59,11 +59,14 @@
                                                           }
                                                       </div>
                                                       <div class="team-info">
-                                                          <h3><a href="hos-doctor-profile.html">@doctor.FullName</a></h3>
+                                                          <h3><a href="">@doctor.FullName</a></h3>
                                                           <span class='team-member-edit'><a href="hos-doctor-edit.html"></a></span>
                                                           <span>@doctor.Speciality</span>
                                                       </div>
-                                                      <p>@(doctor.Biography.Length > 150 ? doctor.Biography.Substring(0, 150) + "..." : doctor.Biography)</p>
+                                                      @if(@doctor.Biography != null)
+                                                      {
+                                                            <p>@(doctor.Biography.Length > 150 ? doctor.Biography.Substring(0, 150) + "..." : doctor.Biography)</p>
+                                                      }
                                                   </div>
                                               </div>
                                           }

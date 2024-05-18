@@ -10,7 +10,7 @@
     -->
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Profile</title>
+    <title>Hospital Reports</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -36,7 +36,7 @@
         </div>
 
         <section id="main-content-others">
-            @Html.Partial("Profile/_MainContent")
+            @Html.Partial("HospitalReports/_MainContent")
         </section>
 
         <div class="page-chatapi hideit">
@@ -49,6 +49,14 @@
     @Scripts.Render("~/bundles/core/js")
     @Scripts.Render("~/bundles/other/js")
     @Scripts.Render("~/bundles/custom/js")
+
+    <script>
+        // Preia datele din ViewData și definește chartData
+        var chartData = @Html.Raw(ViewData["ChartData"]);
+
+        // Afișează datele în consola browserului pentru debug
+        console.log(chartData);
+    </script>
 
     @RenderSection("scripts", required: false)
 </body>

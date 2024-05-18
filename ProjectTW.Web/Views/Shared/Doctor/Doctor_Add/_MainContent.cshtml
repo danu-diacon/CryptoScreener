@@ -6,7 +6,6 @@
 
         <div class='col-12'>
             <div class="page-title">
-
                 <div class="float-left">
                     <!-- PAGE HEADING TAG - START --><h1 class="title">Add a Doctor</h1><!-- PAGE HEADING TAG - END -->
                 </div>
@@ -24,7 +23,6 @@
                         </li>
                     </ol>
                 </div>
-
             </div>
         </div>
         <div class="clearfix"></div>
@@ -37,15 +35,14 @@
                 </header>
                 <div class="content-body">
                     <div class="row">
-                        @using (Html.BeginForm("Index", "DoctorAdd", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                        {
+                        <form id="doctorForm">
                             @Html.AntiForgeryToken()
                             <div class="col-12 col-md-9 col-lg-8">
                                 <div class="form-group">
                                     <label class="form-label" for="field-1">Full Name</label>
                                     <span class="desc"></span>
                                     <div class="controls">
-                                        <input type="text" class="form-control" id="field-1" name="FullName">
+                                        <input type="text" class="form-control" id="field-1" name="DoctorAddFullName">
                                     </div>
                                 </div>
 
@@ -53,7 +50,7 @@
                                     <label class="form-label" for="field-1">Email Address</label>
                                     <span class="desc"></span>
                                     <div class="controls">
-                                        <input class="form-control" type="email" id="emailaddress" required="" name="Email">
+                                        <input class="form-control" type="email" id="emailaddress" required="" name="DoctorAddEmail">
                                     </div>
                                 </div>
 
@@ -61,14 +58,14 @@
                                     <label class="form-label" for="field-1">Password</label>
                                     <span class="desc"></span>
                                     <div class="controls">
-                                        <input class="form-control" type="password" required="" id="password" name="Password">
+                                        <input class="form-control" type="password" required="" id="password" name="DoctorAddPassword">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-label" for="field-5">Speciality</label>
                                     <span class="desc"></span>
-                                    <select class="form-control" name="Speciality">
+                                    <select class="form-control" name="DoctorAddSpeciality">
                                         <option></option>
                                         @foreach (var speciality in Enum.GetValues(typeof(ProjectTW.Domain.Enums.DoctorSpeciality)))
                                         {
@@ -81,7 +78,7 @@
                                     <label class="form-label" for="field-6">Biography</label>
                                     <span class="desc">e.g. "Enter any size of text description here"</span>
                                     <div class="controls">
-                                        <textarea class="form-control autogrow" cols="5" id="field-6" name="Biography"></textarea>
+                                        <textarea class="form-control autogrow" cols="5" id="field-6" name="DoctorAddBiography"></textarea>
                                     </div>
                                 </div>
 
@@ -89,10 +86,9 @@
                                     <label class="form-label" for="field-1">Profile Image</label>
                                     <span class="desc"></span>
                                     <div class="controls">
-                                        <input type="file" class="form-control" id="field-5" name="ProfileImage">
+                                        <input type="file" class="form-control" id="field-5" name="DoctorAddProfileImage">
                                     </div>
                                 </div>
-
                             </div>
 
                             <div class="col-12 col-md-9 col-lg-8 padding-bottom-30">
@@ -100,10 +96,8 @@
                                     <button class="btn btn-primary" type="submit">Save</button>
                                 </div>
                             </div>
-                        }
+                        </form>
                     </div>
-
-
                 </div>
             </section>
         </div>

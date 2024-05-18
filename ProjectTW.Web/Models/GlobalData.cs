@@ -26,6 +26,18 @@ namespace ProjectTW.Web.Models
 
 
           //New Doctor Data
+          public string DoctorAddEmail { get; set; }
+
+          public string DoctorAddPassword { get; set; }
+
+          public string DoctorAddFullName { get; set; }
+
+          public string DoctorAddBiography { get; set; }
+
+          public HttpPostedFileBase DoctorAddProfileImage { get; set; }
+
+          public DoctorSpeciality DoctorAddSpeciality { get; set; }
+
           public DoctorSpeciality Speciality { get; set; }
 
           public List<UserMinimal> DoctorList { get; set; }

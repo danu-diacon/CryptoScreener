@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppBL\AdminBL.cs" />
     <Compile Include="AppBL\DoctorBL.cs" />
     <Compile Include="AppBL\LoginBL.cs" />
     <Compile Include="AppBL\PatientBL.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="DBModel\DoctorContext.cs" />
     <Compile Include="DBModel\PatientContext.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
+    <Compile Include="Interfaces\IAdmin.cs" />
     <Compile Include="Interfaces\IDoctor.cs" />
     <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="Interfaces\IPatient.cs" />

@@ -170,6 +170,7 @@
     <Content Include="Global.asax" />
     <Content Include="ProfileImages\Default_ProfileImage.png" />
     <Content Include="ProfileImages\Default_ProfileImageSquare.png" />
+    <Content Include="Scripts\AddDoctorScript.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2443,6 +2444,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookAppointmentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HospitalReportsController.cs" />
     <Compile Include="Controllers\Patient\AllPatientController.cs" />
     <Compile Include="Controllers\Doctor\AllDoctorsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -2541,6 +2543,9 @@
     <Content Include="Views\Shared\Events\_MainContent.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Shared\Events\_Layout.cshtml" />
+    <Content Include="Views\HospitalReports\Index.cshtml" />
+    <Content Include="Views\Shared\HospitalReports\_Layout.cshtml" />
+    <Content Include="Views\Shared\HospitalReports\_MainContent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

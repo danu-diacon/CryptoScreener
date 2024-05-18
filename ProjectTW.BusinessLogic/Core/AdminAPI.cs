@@ -1,4 +1,5 @@
 ﻿using ProjectTW.BusinessLogic.DBModel;
+using ProjectTW.Domain.Entities.Admin;
 using ProjectTW.Domain.Entities.Response;
 using ProjectTW.Domain.Entities.User;
 using ProjectTW.Helper;
@@ -92,6 +93,23 @@ namespace ProjectTW.BusinessLogic.Core
 
                 return doctors;
             }
+        }
+
+        public HospitalData DoctorAndPatientNumber()
+        {
+            HospitalData hospitalData = new HospitalData();
+
+            using (var db = new DoctorContext())
+            {
+                hospitalData.DoctorCount = db.Doctors.Count();
+            }
+
+            using (var db = new PatientContext())
+            {
+                hospitalData.PatientCount = db.Patients.Count();
+            }
+
+            return hospitalData;
         }
     }
 }

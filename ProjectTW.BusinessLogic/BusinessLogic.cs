@@ -31,8 +31,13 @@ namespace ProjectTW.BusinessLogic
         }
           
         public IPatient GetPatientBL()
-          {
-               return new PatientBL();
-          }
+        {
+            return new PatientBL();
+        }
+
+        public IAdmin GetAdminBL()
+        {
+            return new AdminBL();
+        }
      }
 }
