@@ -1,228 +1,84 @@
-﻿<section id="main-content" class=" ">
-<section class="wrapper main-wrapper row" style=''>
+﻿@using System.Web.Optimization
+@model ProjectTW.Web.Models.GlobalData
 
-     <div class='col-12'>
-          <div class="page-title">
+<section id="main-content" class=" ">
+    <section class="wrapper main-wrapper row" style=''>
 
-               <div class="float-left">
+        <div class='col-12'>
+            <div class="page-title">
+
+                <div class="float-left">
                     <!-- PAGE HEADING TAG - START --><h1 class="title">Edit Doctor</h1><!-- PAGE HEADING TAG - END -->
-               </div>
+                </div>
 
-               <div class="float-right d-none">
+                <div class="float-right d-none">
                     <ol class="breadcrumb">
-                         <li>
-                              <a href="index.html"><i class="fa fa-home"></i>Home</a>
-                         </li>
-                         <li>
-                              <a href="hos-doctors.html">Doctors</a>
-                         </li>
-                         <li class="active">
-                              <strong>Edit Doctor</strong>
-                         </li>
+                        <li>
+                            <a href="index.html"><i class="fa fa-home"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="hos-doctors.html">Doctors</a>
+                        </li>
+                        <li class="active">
+                            <strong>Edit Doctor</strong>
+                        </li>
                     </ol>
-               </div>
+                </div>
 
-          </div>
-     </div>
-     <div class="clearfix"></div>
-     <!-- MAIN CONTENT AREA STARTS -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- MAIN CONTENT AREA STARTS -->
 
-     <div class="col-12">
-          <section class="box ">
-               <header class="panel_header">
-                    <h2 class="title float-left">Basic Info</h2>
+        <div class="col-xl-12">
+            <section class="box ">
+                <header class="panel_header">
+                    <h2 class="title float-left">File Export</h2>
                     <div class="actions panel_actions float-right">
-                         <a class="box_toggle fa fa-chevron-down"></a>
-                         <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
-                         <a class="box_close fa fa-times"></a>
+                        <a class="box_toggle fa fa-chevron-down"></a>
+                        <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                        <a class="box_close fa fa-times"></a>
                     </div>
-               </header>
-               <div class="content-body">
+                </header>
+                <div class="content-body">
                     <div class="row">
-                         <form action="#" method="post">
-                              <div class="col-12 col-md-9 col-lg-8">
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-1">Name</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                             <input type="text" value="Dr. Arthur Yurey" class="form-control" id="field-1">
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-5">Date of Birth</label>
-                                        <span class="desc">e.g. "04/03/2015"</span>
-                                        <div class="controls">
-                                             <input type="text" class="form-control datepicker" data-format="mm/dd/yyyy" value="05/02/1985">
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-5">Gender</label>
-                                        <span class="desc"></span>
-                                        <select class="form-control ">
-                                             <option></option>
-                                             <option selected="selected">Male</option>
-                                             <option>Female</option>
-                                        </select>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-1">Profile Image</label>
-                                        <span class="desc"></span>
-                                        <img class="img-fluid" src="../data/doctors/doctor-1.jpg" alt="" style="max-width:120px;">
-                                        <div class="controls">
-                                             <input type="file" class="form-control" id="field-5">
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-1">Speciality</label>
-                                        <span class="desc">Eg: Surgeon</span>
-                                        <div class="controls">
-                                             <input type="text" class="form-control" value="Neurosurgery" id="field-1">
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-6">Brief</label>
-                                        <span class="desc">e.g. "Enter any size of text description here"</span>
-                                        <div class="controls">
-                                             <textarea class="form-control autogrow" cols="5" id="field-6">The surgical specialties are the specialties in which an important part of diagnosis and treatmentby surgery.</textarea>
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-1">Website URL</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                             <input type="text" class="form-control" value="http://www.example.com" id="field-61">
-                                        </div>
-                                   </div>
-                              </div>
+                        <div class="col-lg-12 col-md-12 col-12 padding-0">
 
+                            <table id="example-11" class="table table-striped dt-responsive display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Photo</th>
+                                        <th>Name</th>
+                                        <th>Speciality</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var doctor in Model.DoctorList)
+                                    {
+                                        <tr id="doctor-row-@doctor.Id">
+                                            @if (@doctor.ProfileImagePath != null)
+                                            {
+                                                <td><img src="@doctor.ProfileImagePath.Substring(1)" height="40" alt="user-image"></td>
+                                            }
+                                            else
+                                            {
+                                                <td><img src="~/ProfileImages/Default_ProfileImageSquare.png" height="40" alt="user-image"></td>
+                                            }
+                                            <td>@doctor.FullName</td>
+                                            <td>@doctor.Speciality</td>
+                                            <td><i class="fa fa-times-circle" style="cursor:pointer;color:red;" onclick="confirmDelete(@doctor.Id, document.getElementById('doctor-row-@doctor.Id'))"></i></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
 
-                              <div class="col-12 col-md-9 col-lg-8 padding-bottom-30">
-                                   <div class="text-left">
-                                        <button type="button" class="btn btn-primary">Save</button>
-                                        <button type="button" class="btn">Cancel</button>
-                                   </div>
-                              </div>
-                         </form>
+                        </div>
                     </div>
-
-
-               </div>
-          </section>
-     </div>
-
-
-     <div class="col-12">
-          <section class="box ">
-               <header class="panel_header">
-                    <h2 class="title float-left">Doctor Account Info</h2>
-                    <div class="actions panel_actions float-right">
-                         <a class="box_toggle fa fa-chevron-down"></a>
-                         <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
-                         <a class="box_close fa fa-times"></a>
-                    </div>
-               </header>
-               <div class="content-body">
-                    <div class="row">
-                         <form action="#" method="post">
-                              <div class="col-12 col-md-9 col-lg-8">
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-1">Email</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                             <input type="text" class="form-control" value="email@example.com" id="field-3">
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-2">Phone</label>
-                                        <span class="desc">e.g. "(534) 253-5353"</span>
-                                        <div class="controls">
-                                             <input type="text" class="form-control" id="field-2" data-mask="phone" placeholder="(999) 999-9999" value="(123) 456-7878">
-                                        </div>
-                                   </div>
-
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-2">Password</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                             <input type="password" value="" class="form-control" id="field-2">
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-2">Confirm Password</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                             <input type="password" value="" class="form-control" id="field-21">
-                                        </div>
-                                   </div>
-                              </div>
-
-
-                              <div class="col-12 col-md-9 col-lg-8 padding-bottom-30">
-                                   <div class="text-left">
-                                        <button type="button" class="btn btn-primary">Save</button>
-                                        <button type="button" class="btn">Cancel</button>
-                                   </div>
-                              </div>
-                         </form>
-                    </div>
-
-
-               </div>
-          </section>
-     </div>
-
-     <div class="col-12">
-          <section class="box ">
-               <header class="panel_header">
-                    <h2 class="title float-left">Doctor Social Media Info</h2>
-                    <div class="actions panel_actions float-right">
-                         <a class="box_toggle fa fa-chevron-down"></a>
-                         <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
-                         <a class="box_close fa fa-times"></a>
-                    </div>
-               </header>
-               <div class="content-body">
-                    <div class="row">
-                         <form action="#" method="post">
-                              <div class="col-12 col-md-9 col-lg-8">
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-1">Facebook URL</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                             <input type="text" class="form-control" value="http://www.facebook.com/userID" id="field-31">
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-1">Twitter URL</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                             <input type="text" class="form-control" value="http://www.twitter.com/userID" id="field-41">
-                                        </div>
-                                   </div>
-                                   <div class="form-group">
-                                        <label class="form-label" for="field-1">Google Plus URL</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                             <input type="text" class="form-control" value="http://www.plus.google.com/userID" id="field-51">
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="col-12 col-md-9 col-lg-8 padding-bottom-30">
-                                   <div class="text-left">
-                                        <button type="button" class="btn btn-primary">Save</button>
-                                        <button type="button" class="btn">Cancel</button>
-                                   </div>
-                              </div>
-
-                         </form>
-                    </div>
-
-
-               </div>
-          </section>
-     </div>
-
-     <!-- MAIN CONTENT AREA ENDS -->
-</section>
+                </div>
             </section>
-<!-- END CONTENT -->
+        </div>
+
+        <!-- MAIN CONTENT AREA ENDS -->
+    </section>
+</section>

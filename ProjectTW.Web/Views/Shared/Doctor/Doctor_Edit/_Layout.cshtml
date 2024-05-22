@@ -2,54 +2,114 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <!--
-      * Package: Complete Admin - Responsive Theme
-      * Subpackage: Bootstrap
-      * Version: BS4-1.0
-      * This file is part of Complete Admin Theme.
-     -->
-     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-     <meta charset="utf-8" />
-     <title>Edit Doctor</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-     <meta content="" name="description" />
-     <meta content="" name="author" />
-     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--
+     * Package: Complete Admin - Responsive Theme
+     * Subpackage: Bootstrap
+     * Version: BS4-1.0
+     * This file is part of Complete Admin Theme.
+    -->
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Edit Doctor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-     @Styles.Render("~/bundles/bootstrap/css")
-     @Styles.Render("~/bundles/plugins/css")
-     @Styles.Render("~/bundles/core/css")
+    <link href="~/Template/aditional/sweetalert/css/sweetalert2.min.css" rel="stylesheet" />
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/plugins/css")
+    @Styles.Render("~/bundles/core/css")
 
-     @if (IsSectionDefined("Styles"))
-     {
-          @RenderSection("Styles", required: false)
-     }
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", required: false)
+    }
 </head>
 <body>
-     <div class="page-topbar">
-          @Html.Partial("_TopBar")
-     </div>
+    <div class="page-topbar">
+        @Html.Partial("_TopBar")
+    </div>
 
-     <div class="page-container row-fluid container-fluid">
-          <div class="page-sidebar pagescroll">
-               @Html.Partial("_SideBar")
-          </div>
+    <div class="page-container row-fluid container-fluid">
+        <div class="page-sidebar pagescroll">
+            @Html.Partial("_SideBar")
+        </div>
 
-          <section id="main-content">
-               @Html.Partial("Doctor/Doctor_Edit/_MainContent")
-          </section>
+        <section id="main-content">
+            @Html.Partial("Doctor/Doctor_Edit/_MainContent")
+        </section>
 
-          <div class="page-chatapi hideit">
-               @Html.Partial("_ChatApi")
-          </div>
-          @RenderBody()
-     </div>
+        <div class="page-chatapi hideit">
+            @Html.Partial("_ChatApi")
+        </div>
+        @RenderBody()
+    </div>
 
-     @Scripts.Render("~/bundles/jquery/js")
-     @Scripts.Render("~/bundles/core/js")
-     @Scripts.Render("~/bundles/other/js")
-     @Scripts.Render("~/bundles/custom/js")
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/core/js")
+    @Scripts.Render("~/bundles/other/js")
+    @Scripts.Render("~/bundles/custom/js")
 
-     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        async function confirmDelete(doctorId, rowElement) {
+            // Afișează fereastra de confirmare folosind SweetAlert
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        const response = await fetch('/DoctorEdit/DeleteDoctor', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ id: doctorId })
+                        });
+
+                        const result = await response.json();
+
+                        if (result.success) {
+                            // Remove the row from the table
+                            rowElement.remove();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "The doctor has been deleted.",
+                                icon: "success",
+                                confirmButtonClass: "btn btn-confirm mt-2"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: result.message,
+                                icon: "error",
+                                confirmButtonClass: "btn btn-confirm mt-2"
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        Swal.fire({
+                            title: "Error!",
+                            text: "An error occurred while trying to delete the doctor.",
+                            icon: "error",
+                            confirmButtonClass: "btn btn-confirm mt-2"
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+
+    <script src="~/Template/aditional/sweetalert/js/sweetalert2.min.js"></script>
+    <script src="~/Template/aditional/sweetalert/js/sweet-alerts.init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

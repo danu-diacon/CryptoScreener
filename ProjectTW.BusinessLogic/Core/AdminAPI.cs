@@ -111,5 +111,47 @@ namespace ProjectTW.BusinessLogic.Core
 
             return hospitalData;
         }
+
+        public List<UserMinimal> AllDoctors()
+        {
+            using (var db = new DoctorContext())
+            {
+                var dbDoctors = db.Doctors
+                    .OrderBy(d => d.Specilality)
+                    .ThenBy(d => d.FullName)
+                    .ToList();
+
+                var doctors = dbDoctors.Select(d => new UserMinimal()
+                {
+                    Id = d.Id,
+                    FullName = d.FullName,
+                    Biography = d.Biography,
+                    Speciality = d.Specilality,
+                    Level = d.Level,
+                    ProfileImagePath = d.ProfileImage
+                }).ToList();
+
+                return doctors;
+            }
+        }
+
+        public bool DeleteDoctor(int id)
+        {
+            using (var db = new DoctorContext())
+            {
+                var doctor = db.Doctors.Find(id);
+                if (doctor != null)
+                {
+                    db.Doctors.Remove(doctor);
+                    db.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

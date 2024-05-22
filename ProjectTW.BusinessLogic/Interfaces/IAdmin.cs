@@ -1,4 +1,5 @@
 ﻿using ProjectTW.Domain.Entities.Admin;
+using ProjectTW.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,9 @@ namespace ProjectTW.BusinessLogic.Interfaces
     public interface IAdmin
     {
         HospitalData GetDoctorAndPatientNumber();
+
+        List<UserMinimal> GetAllDoctors();
+
+        bool DeleteDoctorById(int id);
     }
 }

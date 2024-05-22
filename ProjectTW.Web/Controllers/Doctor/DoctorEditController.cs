@@ -1,4 +1,5 @@
-﻿using ProjectTW.Web.Extension;
+﻿using ProjectTW.BusinessLogic.Interfaces;
+using ProjectTW.Web.Extension;
 using ProjectTW.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,20 @@ namespace ProjectTW.Web.Controllers
 {
     public class DoctorEditController : Controller
     {
+        public readonly IAdmin _admin;
+
+        public DoctorEditController()
+        {
+            var bl = new BusinessLogic.BusinessLogic();
+            _admin = bl.GetAdminBL();
+        }
+
         // GET: DoctorEdit
         public ActionResult Index()
         {
             var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+            var allDoctors = _admin.GetAllDoctors();
 
             GlobalData globalData = new GlobalData()
             {
@@ -22,10 +33,26 @@ namespace ProjectTW.Web.Controllers
                 Speciality = user.Speciality,
                 Biography = user.Biography,
                 ProfileImagePath = user.ProfileImagePath,
-                Level = user.Level
+                Level = user.Level,
+                DoctorList = allDoctors,
             };
 
             return View(globalData);
         }
+
+        [HttpPost]
+        public JsonResult DeleteDoctor(int id)
+        {
+            try
+            {
+                _admin.DeleteDoctorById(id);
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
     }
 }

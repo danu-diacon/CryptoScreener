@@ -29,8 +29,7 @@ namespace ProjectTW.Web.App_Start
                 "~/Template/assets/plugins/rickshaw-chart/css/extensions.css",
                 "~/Template/assets/plugins/rickshaw-chart/css/rickshaw.min.css",
                 "~/Template/assets/plugins/rickshaw-chart/css/lines.css",
-                "~/Template/assets/plugins/datepicker/css/datepicker.css",
-                "~/Template/assets/plugins/jvectormap/jquery-jvectormap-2.0.1.css")
+                "~/Template/assets/plugins/datepicker/css/datepicker.css")
                 .Include("~/Template/assets/plugins/icheck/skins/minimal/white.css", new CssRewriteUrlTransform()));
 
             // Core CSS template
@@ -59,8 +58,6 @@ namespace ProjectTW.Web.App_Start
                 "~/Template/assets/plugins/morris-chart/js/raphael-min.js",
                 "~/Template/assets/plugins/morris-chart/js/morris.min.js",
                 "~/Template/assets/js/chart-morris.js",
-                "~/Template/assets/plugins/jvectormap/jquery-jvectormap-2.0.1.min.js",
-                "~/Template/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
                 "~/Template/assets/plugins/gauge/gauge.min.js",
                 "~/Template/assets/plugins/icheck/icheck.min.js",
                 "~/Template/assets/plugins/datepicker/js/datepicker.js",
