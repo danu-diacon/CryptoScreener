@@ -2449,7 +2449,7 @@
     <Compile Include="Controllers\Doctor\AllDoctorsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Doctor\DoctorAddController.cs" />
-    <Compile Include="Controllers\Doctor\DoctorEditController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorDeleteController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -2511,9 +2511,9 @@
     <Content Include="Views\DoctorAdd\Index.cshtml" />
     <Content Include="Views\Shared\Doctor\Doctor_Add\_Layout.cshtml" />
     <Content Include="Views\Shared\Doctor\Doctor_Add\_MainContent.cshtml" />
-    <Content Include="Views\DoctorEdit\Index.cshtml" />
-    <Content Include="Views\Shared\Doctor\Doctor_Edit\_Layout.cshtml" />
-    <Content Include="Views\Shared\Doctor\Doctor_Edit\_MainContent.cshtml" />
+    <Content Include="Views\DoctorDelete\Index.cshtml" />
+    <Content Include="Views\Shared\Doctor\DoctorDelete\_Layout.cshtml" />
+    <Content Include="Views\Shared\Doctor\DoctorDelete\_MainContent.cshtml" />
     <Content Include="Views\PatientAdd\Index.cshtml" />
     <Content Include="Views\AllPatient\Index.cshtml" />
     <Content Include="Views\Shared\Patient\Patient_Add\_Layout.cshtml" />

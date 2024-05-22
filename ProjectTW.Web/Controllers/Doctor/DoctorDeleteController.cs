@@ -9,11 +9,11 @@ using System.Web.Mvc;
 
 namespace ProjectTW.Web.Controllers
 {
-    public class DoctorEditController : Controller
+    public class DoctorDeleteController : Controller
     {
         public readonly IAdmin _admin;
 
-        public DoctorEditController()
+        public DoctorDeleteController()
         {
             var bl = new BusinessLogic.BusinessLogic();
             _admin = bl.GetAdminBL();
