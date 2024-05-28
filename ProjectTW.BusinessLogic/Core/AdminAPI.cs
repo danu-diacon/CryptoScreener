@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ProjectTW.BusinessLogic.Core
 {
@@ -142,8 +143,20 @@ namespace ProjectTW.BusinessLogic.Core
                 var doctor = db.Doctors.Find(id);
                 if (doctor != null)
                 {
+                    string imagePath = doctor.ProfileImage;
+
                     db.Doctors.Remove(doctor);
                     db.SaveChanges();
+
+                    // Sterg fisierul si folderul imaginii daca exista
+                    if (!string.IsNullOrEmpty(imagePath))
+                    {
+                        string directoryPath = Path.GetDirectoryName(HttpContext.Current.Server.MapPath(imagePath));
+                        if (Directory.Exists(directoryPath))
+                        {
+                            Directory.Delete(directoryPath, true);
+                        }
+                    }
 
                     return true;
                 }
