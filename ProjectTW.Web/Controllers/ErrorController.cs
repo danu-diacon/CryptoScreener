@@ -11,6 +11,7 @@ namespace ProjectTW.Web.Controllers
         // GET: Error
         public ActionResult Index()
         {
+            Response.StatusCode = 404;
             return View();
         }
     }

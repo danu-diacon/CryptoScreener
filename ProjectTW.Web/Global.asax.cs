@@ -22,5 +22,24 @@ namespace ProjectTW.Web
             //Bundles
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_Error()
+        {
+            var exception = Server.GetLastError();
+            var httpException = exception as HttpException;
+
+            if (httpException != null)
+            {
+                int errorCode = httpException.GetHttpCode();
+
+                if (errorCode == 404)
+                {
+                    Response.Clear();
+                    Server.ClearError();
+                    Response.Redirect("/Error");
+                }
+            }
+        }
+
     }
 }
