@@ -1,5 +1,7 @@
 ﻿using ProjectTW.BusinessLogic.Core;
 using ProjectTW.BusinessLogic.Interfaces;
+using ProjectTW.Domain.Entities.Patient;
+using ProjectTW.Domain.Entities.Response;
 using ProjectTW.Domain.Entities.User;
 using ProjectTW.Domain.Enums;
 using System;
@@ -30,6 +32,11 @@ namespace ProjectTW.BusinessLogic.AppBL
           public List<AppointmentsDbTable> GetAllPatientAppointments(int patientID)
           {
                return AllPatientAppointments(patientID);
+          }
+
+          public UserRegisterResponse PatientRegisterAction(PatientRegisterData patientRegisterData)
+          {
+              return PatientRegister(patientRegisterData);
           }
      }
 }

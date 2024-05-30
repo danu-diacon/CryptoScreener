@@ -76,7 +76,7 @@
                 return;
             }
 
-            fetch('@Url.Action("AddNewDoctor", "DoctorAdd")', { // Modificarea URL-ului aici
+            fetch('@Url.Action("AddNewDoctor", "DoctorAdd")', {
                 method: 'POST',
                 headers: {
                     'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value

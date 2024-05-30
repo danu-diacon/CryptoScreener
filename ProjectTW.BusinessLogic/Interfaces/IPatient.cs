@@ -1,4 +1,6 @@
-﻿using ProjectTW.Domain.Entities.User;
+﻿using ProjectTW.Domain.Entities.Patient;
+using ProjectTW.Domain.Entities.Response;
+using ProjectTW.Domain.Entities.User;
 using ProjectTW.Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -17,5 +19,7 @@ namespace ProjectTW.BusinessLogic.Interfaces
           List<UserMinimal> GetAllPatientsData();
 
           List<AppointmentsDbTable> GetAllPatientAppointments(int patientID);
+
+          UserRegisterResponse PatientRegisterAction(PatientRegisterData patientRegisterData);
      }
 }

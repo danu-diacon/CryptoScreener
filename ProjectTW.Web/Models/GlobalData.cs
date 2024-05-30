@@ -42,9 +42,19 @@ namespace ProjectTW.Web.Models
 
           public List<UserMinimal> DoctorList { get; set; }
 
+          //New Patient Data
+          public string PatientAddEmail { get; set; }
 
-          //Patient Data
-          public List<UserMinimal> PatientList { get; set; }
+          public string PatientAddPassword { get; set; }
+
+          public string PatientAddFullName { get; set; }
+
+          public string PatientAddBiography { get; set; }
+
+          public HttpPostedFileBase PatientAddProfileImage { get; set; }
+
+        //Patient Data
+        public List<UserMinimal> PatientList { get; set; }
 
 
           //Appointment

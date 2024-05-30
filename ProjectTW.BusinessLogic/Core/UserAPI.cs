@@ -1,5 +1,6 @@
 ﻿using ProjectTW.BusinessLogic.AppBL;
 using ProjectTW.BusinessLogic.DBModel;
+using ProjectTW.Domain.Entities.Patient;
 using ProjectTW.Domain.Entities.Response;
 using ProjectTW.Domain.Entities.User;
 using ProjectTW.Domain.Enums;
@@ -569,6 +570,66 @@ namespace ProjectTW.BusinessLogic.Core
                 // Log the exception
                 return false;
             }
+        }
+
+        public UserRegisterResponse PatientRegister(PatientRegisterData patientRegisterData)
+        {
+            PatientDbTable resultPatient;
+            DoctorDbTable resultDoctor;
+            AdminDbTable resultAdmin;
+
+            //Search in Patients Table
+            using (var dbPatient = new PatientContext())
+            {
+                resultPatient = dbPatient.Patients.FirstOrDefault(u => u.Email == patientRegisterData.Email);
+            }
+            if (resultPatient != null)
+            {
+                return new UserRegisterResponse() { Success = false, Message = "A user with this email already exists" };
+            }
+
+            //Search in Doctors Table
+            using (var dbDoctor = new DoctorContext())
+            {
+                resultDoctor = dbDoctor.Doctors.FirstOrDefault(u => u.Email == patientRegisterData.Email);
+            }
+            if (resultDoctor != null)
+            {
+                return new UserRegisterResponse() { Success = false, Message = "A user with this email already exists" };
+            }
+
+            //Search in Admins Table
+            using (var dbAdmin = new AdminContext())
+            {
+                resultAdmin = dbAdmin.Admins.FirstOrDefault(u => u.Email == patientRegisterData.Email);
+            }
+            if (resultAdmin != null)
+            {
+                return new UserRegisterResponse() { Success = false, Message = "A user with this email already exists" };
+            }
+
+
+            //Add new User Doctor
+            var HashPassword = LoginHelper.HashGen(patientRegisterData.Password);
+
+            var todo = new PatientDbTable
+            {
+                Password = HashPassword,
+                Email = patientRegisterData.Email,
+                FullName = patientRegisterData.FullName,
+                Biography = patientRegisterData.Biography,
+                Level = patientRegisterData.Level,
+                ProfileImage = patientRegisterData.ProfileImagePath,
+                LastLogin = DateTime.Now
+            };
+
+            using (var db = new PatientContext())
+            {
+                db.Patients.Add(todo);
+                db.SaveChanges();
+            }
+
+            return new UserRegisterResponse { Success = true, Message = "Add Patient Successful" };
         }
 
     }
