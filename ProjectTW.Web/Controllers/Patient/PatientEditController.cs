@@ -1,4 +1,5 @@
-﻿using ProjectTW.Web.Extension;
+﻿using ProjectTW.Web.ActionFilters;
+using ProjectTW.Web.Extension;
 using ProjectTW.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,18 @@ using System.Web.Mvc;
 
 namespace ProjectTW.Web.Controllers
 {
-    public class PatientEditController : Controller
+    public class PatientEditController : BaseController
     {
         // GET: PatientEdit
+        [AdminOrDoctorMod]
         public ActionResult Index()
         {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
             GlobalData globalData = new GlobalData()

@@ -1,0 +1,98 @@
+﻿@using System.Web.Optimization
+@model ProjectTW.Web.Models.GlobalData
+
+<section class="wrapper main-wrapper row" style=''>
+
+    <div class='col-12'>
+        <div class="page-title">
+
+            <div class="float-left">
+                <!-- PAGE HEADING TAG - START --><h1 class="title">Settings</h1><!-- PAGE HEADING TAG - END -->
+            </div>
+
+
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <!-- MAIN CONTENT AREA STARTS -->
+
+    <div class="row margin-0">
+        <div class="col-xl-6">
+            <section class="box ">
+                <header class="panel_header">
+                    <h2 class="title float-left">Edit profile data</h2>
+                </header>
+                <div class="content-body">
+
+                    <form id="msg_validate" action="javascript:;" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <span class="desc">Enter new Full Name</span>
+                                    <div class="controls">
+                                        <input type="text" class="form-control" value="@Model.FullName" name="fullName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="field-6">Biography</label>
+                                    <span class="desc">Enter new Biography</span>
+                                    <div class="controls">
+                                        <textarea class="form-control autogrow" cols="5" id="field-6" name="biography">@Model.Biography</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="formfield10">Upload File</label>
+                                    <span class="desc">Select new Profile Image</span>
+                                    <div class="controls">
+                                        <input type="file" class="" id="formfield10" name="profileImage">
+                                    </div>
+                                </div>
+                                <div class="float-right">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </section>
+        </div>
+
+        <div class="col-xl-6">
+            <section class="box ">
+                <header class="panel_header">
+                    <h2 class="title float-left">Change password</h2>
+                </header>
+                <div class="content-body">
+                    <form id="general_validate" action="javascript:;" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <span class="desc">Enter current Email</span>
+                                    <div class="controls">
+                                        <input type="text" class="form-control" name="formfield2">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Password</label>
+                                    <span class="desc">Enter new Password</span>
+                                    <div class="controls">
+                                        <input type="password" class="form-control" name="password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="float-right">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- MAIN CONTENT AREA ENDS -->
+</section>

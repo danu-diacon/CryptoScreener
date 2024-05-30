@@ -2438,7 +2438,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionFilters\AdminModAttribute.cs" />
+    <Compile Include="ActionFilters\AdminOrDoctorMod.cs" />
     <Compile Include="ActionFilters\DoctorModAttribute.cs" />
+    <Compile Include="ActionFilters\DoctorOrPatientMod.cs" />
     <Compile Include="ActionFilters\PatientModAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -2457,6 +2459,7 @@
     <Compile Include="Controllers\Patient\PatientEditController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2546,6 +2549,9 @@
     <Content Include="Views\HospitalReports\Index.cshtml" />
     <Content Include="Views\Shared\HospitalReports\_Layout.cshtml" />
     <Content Include="Views\Shared\HospitalReports\_MainContent.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Shared\Settings\_Layout.cshtml" />
+    <Content Include="Views\Shared\Settings\_MainContent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

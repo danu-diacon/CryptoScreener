@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace ProjectTW.Web.Controllers
 {
-     public class BookAppointmentController : Controller
+     public class BookAppointmentController : BaseController
      {
           public readonly IPatient _patient;
           public readonly ISession _session;
@@ -24,60 +24,66 @@ namespace ProjectTW.Web.Controllers
           }
         // GET: BookAppointment
         [PatientMod]
-          public ActionResult Index()
-          {
-               var user = System.Web.HttpContext.Current.GetMySessionObject();
+        public ActionResult Index()
+        {
+        SessionStatus();
+        if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+        {
+            return RedirectToAction("Index", "Login");
+        }
 
-               GlobalData globalData = new GlobalData()
-               {
-                    Email = user.Email,
-                    FullName = user.FullName,
-                    Speciality = user.Speciality,
-                    Biography = user.Biography,
-                    ProfileImagePath = user.ProfileImagePath,
-                    Level = user.Level
-               };
+        var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-               return View(globalData);
-          }
+            GlobalData globalData = new GlobalData()
+            {
+                Email = user.Email,
+                FullName = user.FullName,
+                Speciality = user.Speciality,
+                Biography = user.Biography,
+                ProfileImagePath = user.ProfileImagePath,
+                Level = user.Level
+            };
 
-          [HttpPost]
-          public ActionResult DoctorsBySpeciality(GlobalData globalData)
-          {
-               var doctors = _patient.GetDoctorsBySpeciality(globalData.Speciality);
+            return View(globalData);
+        }
 
-               return Json(doctors);
-          }
+        [HttpPost]
+        public ActionResult DoctorsBySpeciality(GlobalData globalData)
+        {
+            var doctors = _patient.GetDoctorsBySpeciality(globalData.Speciality);
 
-          [HttpPost]
-          public ActionResult AvailableTimeByDoctorId(GlobalData globalData)
-          {
-               NewAppointmentData partitialData = new NewAppointmentData()
-               {
-                    DoctorId = globalData.DoctorId,
-                    AppointmentDate = globalData.AppointmentDateTime
-               };
+            return Json(doctors);
+        }
 
-               var availableTime = _patient.GetAvailableTimeByDoctorId(partitialData);
+        [HttpPost]
+        public ActionResult AvailableTimeByDoctorId(GlobalData globalData)
+        {
+            NewAppointmentData partitialData = new NewAppointmentData()
+            {
+                DoctorId = globalData.DoctorId,
+                AppointmentDate = globalData.AppointmentDateTime
+            };
 
-               return Json(availableTime);
-          }
-          [HttpPost]
-          public ActionResult SaveAppointment(GlobalData globalData)
-          {
-               var user = System.Web.HttpContext.Current.GetMySessionObject();
+            var availableTime = _patient.GetAvailableTimeByDoctorId(partitialData);
 
-               NewAppointmentData newAppointmentData = new NewAppointmentData()
-               {
-                    DoctorId = globalData.DoctorId,
-                    PatientId = user.Id,
-                    AppointmentDate = globalData.AppointmentDateTime
-               };
+            return Json(availableTime);
+        }
+        [HttpPost]
+        public ActionResult SaveAppointment(GlobalData globalData)
+        {
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-               _session.NewAppointment(newAppointmentData);
+            NewAppointmentData newAppointmentData = new NewAppointmentData()
+            {
+                DoctorId = globalData.DoctorId,
+                PatientId = user.Id,
+                AppointmentDate = globalData.AppointmentDateTime
+            };
 
-               return Json(newAppointmentData);
-          }
+            _session.NewAppointment(newAppointmentData);
+
+            return Json(newAppointmentData);
+        }
 
      }
 }

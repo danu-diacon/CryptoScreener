@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace ProjectTW.BusinessLogic.AppBL
 {
@@ -42,6 +43,16 @@ namespace ProjectTW.BusinessLogic.AppBL
         public UserMinimal GetDoctorById(int Id)
         {
              return DoctorId(Id);
+        }
+
+        public bool UpdateProfileData(NewProfileData newProfileData)
+        {
+            return UpdateProfile(newProfileData);
+        }
+
+        public bool UpdatePassword(NewProfileData newProfileData)
+        {
+            return UpdateOldPassword(newProfileData);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ProjectTW.BusinessLogic.AppBL;
 using ProjectTW.BusinessLogic.Interfaces;
 using ProjectTW.Domain.Entities.User;
+using ProjectTW.Web.ActionFilters;
 using ProjectTW.Web.Extension;
 using ProjectTW.Web.Models;
 using System;
@@ -11,7 +12,7 @@ using System.Web.Mvc;
 
 namespace ProjectTW.Web.Controllers
 {
-    public class EventsController : Controller
+    public class EventsController : BaseController
     {
         public readonly ISession _session;
         public readonly IPatient _patient;
@@ -23,8 +24,15 @@ namespace ProjectTW.Web.Controllers
             _patient = bl.GetPatientBL();
         }
         // GET: Events
+        [DoctorOrPatientMod]
         public ActionResult Index()
         {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
             GlobalData globalData = new GlobalData()

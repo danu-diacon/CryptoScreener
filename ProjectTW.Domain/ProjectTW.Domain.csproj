@@ -60,6 +60,7 @@
     <Compile Include="Entities\User\DoctorDbTable.cs" />
     <Compile Include="Entities\Doctor\DoctorRegisterData.cs" />
     <Compile Include="Entities\User\NewAppointmentData.cs" />
+    <Compile Include="Entities\User\NewProfileData.cs" />
     <Compile Include="Entities\User\PatientDbTable.cs" />
     <Compile Include="Entities\User\UserLoginData.cs" />
     <Compile Include="Entities\User\UserMinimal.cs" />

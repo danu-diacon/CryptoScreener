@@ -1,4 +1,5 @@
 ﻿using ProjectTW.BusinessLogic.Interfaces;
+using ProjectTW.Web.ActionFilters;
 using ProjectTW.Web.Extension;
 using ProjectTW.Web.Models;
 using System;
@@ -21,6 +22,7 @@ namespace ProjectTW.Web.Controllers
         }
 
         // GET: HospitalReports
+        [AdminMod]
         public ActionResult Index()
         {
             SessionStatus();

@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace ProjectTW.Web.Controllers
 {
-    public class DoctorAddController : Controller
+    public class DoctorAddController : BaseController
     {
         public readonly IDoctor _doctor;
 
@@ -27,6 +27,12 @@ namespace ProjectTW.Web.Controllers
         [AdminMod]
         public ActionResult Index()
         {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
             GlobalData globalData = new GlobalData()

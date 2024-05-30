@@ -1,0 +1,175 @@
+﻿@using System.Web.Optimization;
+@model ProjectTW.Web.Models.GlobalData
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+     * Package: Complete Admin - Responsive Theme
+     * Subpackage: Bootstrap
+     * Version: BS4-1.0
+     * This file is part of Complete Admin Theme.
+    -->
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Admin)
+    {
+        <title>Complete Admin : Settings</title>
+    }
+    else
+    {
+        <title>Settings</title>
+    }
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link href="~/Template/aditional/sweetalert/css/sweetalert2.min.css" rel="stylesheet" />
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/plugins/css")
+    @Styles.Render("~/bundles/core/css")
+
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", required: false)
+    }
+</head>
+<body>
+    <div class="page-topbar">
+        @Html.Partial("_TopBar")
+    </div>
+
+    <div class="page-container row-fluid container-fluid">
+        <div class="page-sidebar pagescroll">
+            @Html.Partial("_SideBar")
+        </div>
+
+        <section id="main-content-others">
+            @Html.Partial("Settings/_MainContent")
+        </section>
+
+        <div class="page-chatapi hideit">
+            @Html.Partial("_ChatApi")
+        </div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/core/js")
+    @Scripts.Render("~/bundles/other/js")
+    @Scripts.Render("~/bundles/custom/js")
+    <script src="~/Template/assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/Template/assets/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="~/Template/assets/js/form-validation.js" type="text/javascript"></script>
+
+    <script>
+        document.querySelector('#msg_validate button[type="submit"]').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const fullName = document.querySelector('input[name="fullName"]').value;
+            const biography = document.querySelector('textarea[name="biography"]').value;
+            const profileImage = document.querySelector('input[name="profileImage"]').files[0];
+            const formData = new FormData();
+            formData.append('NewFullName', fullName);
+            formData.append('NewBiography', biography);
+            formData.append('NewProfileImage', profileImage);
+
+            fetch('@Url.Action("UpdateProfile", "Settings")', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: data.message,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = '@Url.Action("Index", "Profile")';
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'An error occurred while updating the profile.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+        });
+
+        document.querySelector('#general_validate button[type="submit"]').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const email = document.querySelector('input[name="formfield2"]').value;
+            const newPassword = document.querySelector('input[name="password"]').value;
+
+            if (!email || !newPassword) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Email and New Password are required.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('Email', email);
+            formData.append('NewPassword', newPassword);
+
+            fetch('@Url.Action("UpdatePassword", "Settings")', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: data.message,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = '@Url.Action("Index", "Login")';
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'An error occurred while updating the password.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+        });
+    </script>
+
+
+    <script src="~/Template/aditional/sweetalert/js/sweetalert2.min.js"></script>
+    <script src="~/Template/aditional/sweetalert/js/sweet-alerts.init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

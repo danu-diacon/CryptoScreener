@@ -8,21 +8,6 @@
             <div class="float-left">
                 <!-- PAGE HEADING TAG - START --><h1 class="title">Profile</h1><!-- PAGE HEADING TAG - END -->
             </div>
-
-            <div class="float-right d-none">
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="index.html"><i class="fa fa-home"></i>Home</a>
-                    </li>
-                    <li>
-                        <a href="hos-patients.html">Patients</a>
-                    </li>
-                    <li class="active">
-                        <strong>Patient Profile</strong>
-                    </li>
-                </ol>
-            </div>
-
         </div>
     </div>
     <div class="clearfix"></div>
@@ -50,37 +35,22 @@
                                 <!-- Available statuses: online, idle, busy, away and offline -->
                                 <span class="uprofile-status online"></span>
                             </h3>
-                            <p class="uprofile-title">
-                                @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
-                                {
-                                    @Html.DisplayFor(u => u.Level);
-                                    <span>:</span>
-                                    @Html.DisplayFor(u => u.Speciality);
-                                }
-                                else
-                                {
-                                    @Html.DisplayFor(u => u.Level);
-                                }
-                            </p>
                         </div>
                         <div class="uprofile-info">
                             <ul class="list-unstyled">
-                                <li><i class='fa fa-home'></i> New York, USA</li>
-                                <li><i class='fa fa-user'></i> 340 Contacts</li>
+                                @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
+                                {
+                                    <li><i class='fa fa-user'></i> @Html.DisplayFor(u => u.Level): @Html.DisplayFor(u => u.Speciality)</li>
+                                }
+                                else
+                                {
+                                    <li><i class='fa fa-user'></i> @Html.DisplayFor(u => u.Level)</li>
+                                }
                             </ul>
                         </div>
                         <div class="uprofile-buttons">
-                            <a class="btn btn-md btn-primary">Send Message</a>
-                            <a class="btn btn-md btn-primary">Add as Friend</a>
+                            <a href="@Url.Action("Index", "Settings")" class="btn btn-md btn-primary"><i class="fa fa-wrench"></i> Settings</a>
                         </div>
-
-                        <div class=" uprofile-social">
-                            <a href="#" class="btn btn-primary btn-md facebook"><i class="fa fa-facebook icon-xs"></i></a>
-                            <a href="#" class="btn btn-primary btn-md twitter"><i class="fa fa-twitter icon-xs"></i></a>
-                            <a href="#" class="btn btn-primary btn-md google-plus"><i class="fa fa-google-plus icon-xs"></i></a>
-                            <a href="#" class="btn btn-primary btn-md dribbble"><i class="fa fa-dribbble icon-xs"></i></a>
-                        </div>
-
                     </div>
                     <div class="col-lg-9 col-md-8 col-12">
 

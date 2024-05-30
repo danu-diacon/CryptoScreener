@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -414,5 +415,161 @@ namespace ProjectTW.BusinessLogic.Core
                   return patients;
               }
           }
-     }
+
+        public bool UpdateProfile(NewProfileData newProfileData)
+        {
+            try
+            {
+                switch (newProfileData.UserLevel)
+                {
+                    case UserRole.Admin:
+                        using (var context = new AdminContext())
+                        {
+                            var admin = context.Admins.Find(newProfileData.UserID);
+                            if (admin != null)
+                            {
+                                UpdateUserProfile(admin, newProfileData, context);
+                            }
+                        }
+                        break;
+
+                    case UserRole.Doctor:
+                        using (var context = new DoctorContext())
+                        {
+                            var doctor = context.Doctors.Find(newProfileData.UserID);
+                            if (doctor != null)
+                            {
+                                UpdateUserProfile(doctor, newProfileData, context);
+                            }
+                        }
+                        break;
+
+                    case UserRole.Patient:
+                        using (var context = new PatientContext())
+                        {
+                            var patient = context.Patients.Find(newProfileData.UserID);
+                            if (patient != null)
+                            {
+                                UpdateUserProfile(patient, newProfileData, context);
+                            }
+                        }
+                        break;
+                }
+
+                return true;
+            }
+            catch
+            {
+                // Log the exception
+                return false;
+            }
+        }
+
+        private void UpdateUserProfile(dynamic user, NewProfileData newProfileData, DbContext context)
+        {
+            user.FullName = newProfileData.NewFullName;
+
+            // Check if the user is not an Admin before updating the Biography
+            if (newProfileData.UserLevel != UserRole.Admin)
+            {
+                user.Biography = newProfileData.NewBiography;
+            }
+
+            if (newProfileData.NewProfileImage != null)
+            {
+                string oldImagePath = user.ProfileImage;
+                string folderPath;
+
+                if (string.IsNullOrEmpty(oldImagePath))
+                {
+                    // User doesn't have an image, create a new directory
+                    folderPath = Path.Combine("ProfileImages", Guid.NewGuid().ToString());
+                    string serverFolderPath = Path.Combine(newProfileData.BasePhysicalPath, folderPath);
+                    Directory.CreateDirectory(serverFolderPath);
+                }
+                else
+                {
+                    // Get the existing folder path
+                    folderPath = Path.GetDirectoryName(oldImagePath.Replace("~", newProfileData.BasePhysicalPath)).Replace(newProfileData.BasePhysicalPath, "").Replace("\\", "/");
+                }
+
+                string newFileName = Path.GetFileName(newProfileData.NewProfileImage.FileName);
+                string newFilePath = Path.Combine(newProfileData.BasePhysicalPath, folderPath, newFileName);
+
+                // Delete old image if it exists
+                if (!string.IsNullOrEmpty(oldImagePath))
+                {
+                    string oldPhysicalPath = Path.Combine(newProfileData.BasePhysicalPath, oldImagePath.Replace("~", "").TrimStart('/').Replace("/", "\\"));
+                    if (File.Exists(oldPhysicalPath))
+                    {
+                        File.Delete(oldPhysicalPath);
+                    }
+                }
+
+                // Save new image
+                newProfileData.NewProfileImage.SaveAs(newFilePath);
+
+                // Update image path in the database
+                user.ProfileImage = Path.Combine("~", folderPath, newFileName).Replace("\\", "/");
+            }
+
+            context.Entry(user).State = EntityState.Modified;
+            context.SaveChanges();
+        }
+
+        public bool UpdateOldPassword(NewProfileData newProfileData)
+        {
+            var HashPassword = LoginHelper.HashGen(newProfileData.NewPassword);
+
+            try
+            {
+                switch (newProfileData.UserLevel)
+                {
+                    case UserRole.Admin:
+                        using (var context = new AdminContext())
+                        {
+                            var admin = context.Admins.Find(newProfileData.UserID);
+                            if (admin != null)
+                            {
+                                admin.Password = HashPassword;
+                                context.SaveChanges();
+                            }
+                        }
+                        break;
+
+                    case UserRole.Doctor:
+                        using (var context = new DoctorContext())
+                        {
+                            var doctor = context.Doctors.Find(newProfileData.UserID);
+                            if (doctor != null)
+                            {
+                                doctor.Password = HashPassword;
+                                context.SaveChanges();
+                            }
+                        }
+                        break;
+
+                    case UserRole.Patient:
+                        using (var context = new PatientContext())
+                        {
+                            var patient = context.Patients.Find(newProfileData.UserID);
+                            if (patient != null)
+                            {
+                                patient.Password = HashPassword;
+                                context.SaveChanges();
+                            }
+                        }
+                        break;
+                }
+
+                return true;
+            }
+            catch
+            {
+                // Log the exception
+                return false;
+            }
+        }
+
+    }
 }

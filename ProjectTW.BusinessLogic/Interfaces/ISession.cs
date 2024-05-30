@@ -21,5 +21,9 @@ namespace ProjectTW.BusinessLogic.Interfaces
         UserMinimal GetPatientById(int Id);
 
         UserMinimal GetDoctorById(int Id);
-     }
+
+        bool UpdateProfileData(NewProfileData newProfileData);
+
+        bool UpdatePassword(NewProfileData newProfileData);
+    }
 }

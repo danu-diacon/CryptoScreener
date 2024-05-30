@@ -1,4 +1,5 @@
 ﻿using ProjectTW.BusinessLogic.Interfaces;
+using ProjectTW.Web.ActionFilters;
 using ProjectTW.Web.Extension;
 using ProjectTW.Web.Models;
 using System;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace ProjectTW.Web.Controllers
 {
-    public class AllPatientController : Controller
+    public class AllPatientController : BaseController
     {
         public readonly IPatient _patient;
 
@@ -20,8 +21,15 @@ namespace ProjectTW.Web.Controllers
         }
 
         // GET: AllPatient
+        [AdminOrDoctorMod]
         public ActionResult Index()
         {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
             var patients = _patient.GetAllPatientsData();

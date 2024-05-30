@@ -57,5 +57,14 @@ namespace ProjectTW.Web.Models
           public AppointmentStatus AppointmentStatus { get; set; }
 
           public List<Appointment> AllAppointments { get; set; }
-     }
+
+          //Settings
+          public string NewFullName { get; set; }
+
+          public string NewBiography { get; set; }
+
+          public HttpPostedFileBase NewProfileImage { get; set; }
+
+          public string NewPassword { get; set; }
+    }
 }
