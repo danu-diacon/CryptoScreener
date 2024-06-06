@@ -1,19 +1,74 @@
-﻿<section class="wrapper main-wrapper row" style=''>
+﻿@using System.Web.Optimization;
+@model ProjectTW.Web.Models.GlobalData
 
-    <div class='col-12'>
-        <div class="page-title">
+<section class="main_section">
+    <div class="container">
+        <div class="main_body">
+            <div class="main_text">
+                <h1>Servicii medicale virtuale pentru tine</h1>
+                <p>EasyMed oferă îngrijire medicală progresivă și accesibilă, disponibilă online pentru toată lumea</p>
+                @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Patient)
+                {
+                    <a href="@Url.Action("Index", "BookAppointment")">Programează-te azi</a>
+                }
+                @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Doctor)
+                {
+                    <a href="@Url.Action("Index", "Events")">Vezi programările</a>
+                }
+                @if (Model.Level == ProjectTW.Domain.Enums.UserRole.Admin)
+                {
+                    <a href="@Url.Action("Index", "HospitalReports")">Raport clinică</a>
+                }
+            </div>
 
-            <div class="float-left">
-                <!-- PAGE HEADING TAG - START --><h1 class="title">Hospital</h1><!-- PAGE HEADING TAG - END -->
+            <div class="main_image">
+                <picture>
+                    <source srcset="~/Template/aditional/HomePage/img/headerimg.svg" type="image/webp">
+                    <img src="~/Template/aditional/HomePage/img/headerimg.svg" alt="">
+                </picture>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services_section">
+    <div class="container">
+        <div class="services_header">
+            <div class="services_text">
+                <h2>Serviciile noastre</h2>
+                <hr>
+                <p>Îți oferim cele mai bune opțiuni. Ajustează-le nevoilor tale de sănătate și asigură-te că urmezi tratamentul cu medicii noștri înalt calificați. Poți consulta cu noi care tip de serviciu este potrivit pentru sănătatea ta.</p>
+            </div>
+        </div>
+
+        <div class="service_body">
+            <div class="service_card">
+                <picture>
+                    <source srcset="~/Template/aditional/HomePage/img/search.svg" type="image/webp">
+                    <img src="~/Template/aditional/HomePage/img/search.svg" alt="">
+                </picture>
+                <h4>Caută medic</h4>
+                <p>Alege-ți medicul din mii de specialiști, generaliști și spitale de încredere</p>
             </div>
 
 
+            <div class="service_card">
+                <picture>
+                    <source srcset="~/Template/aditional/HomePage/img/consultation.svg" type="image/webp">
+                    <img src="~/Template/aditional/HomePage/img/consultation.svg" alt="">
+                </picture>
+                <h4>Consultație</h4>
+                <p>Consultație gratuită cu medicii noștri de încredere și obține cele mai bune recomandări</p>
+            </div>
+
+            <div class="service_card">
+                <picture>
+                    <source srcset="~/Template/aditional/HomePage/img/details.svg" type="image/webp">
+                    <img src="~/Template/aditional/HomePage/img/details.svg" alt="">
+                </picture>
+                <h4>Informații detaliate</h4>
+                <p>Consultație gratuită cu medicii noștri de încredere și obține cele mai bune recomandări</p>
+            </div>
         </div>
     </div>
-    <div class="clearfix"></div>
-    <!-- MAIN CONTENT AREA STARTS -->
-
-    <img src="~/Template/assets/images/logo-med.png" />
-
-    <!-- MAIN CONTENT AREA ENDS -->
 </section>
